@@ -25,8 +25,43 @@ class PokemonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setUpPokemonData<T: Decodable>(_ type: T.Type){
+    func setUpPokemonData(pokemon: PokemonRaw){
+        numberLabel.text = setPokemonNumber(id: pokemon.id)
+        nameLabel.text = pokemon.name
         
+        guard let types = pokemon.pokemonDetails.first?.types else { return }
+        setPokemonTypes(types: types)
+    }
+    
+    func setPokemonNumber(id: Int) -> String {
+        var number = ""
+        switch id {
+            case 0...9:
+                number = "#00\(id)"
+            case 10...99:
+                number = "#0\(id)"
+            case 100...999:
+                number = "#\(id)"
+        default:
+            number = ""
+        }
+        
+        return number
+    }
+    
+    //MARK: REFACTOR THIS FUNCTION
+    func setPokemonTypes(types: [TypeElement]) {
+        
+        if let firstType = types.first {
+            let imageName = "badge-\(firstType.type.name)"
+            self.firstTypeImageView.image = UIImage(named: imageName)
+        }
+        
+        let secondType = types[1]
+        if secondType != nil {
+            let imageName = "badge-\(secondType.type.name)"
+            self.secondTypeImageView.image = UIImage(named: imageName)
+        }
     }
     
 }

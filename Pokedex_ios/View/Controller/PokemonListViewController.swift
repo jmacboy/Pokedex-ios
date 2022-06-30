@@ -59,9 +59,7 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokeCell", for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
         
         let cellData = viewModel.getCellData(at: indexPath)
-        
-        // MARK: FIX THIS
-        cell.setUpPokemonData(cellData)
+        cell.setUpPokemonData(pokemon: cellData)
 
         return cell
     }
