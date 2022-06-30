@@ -51,20 +51,19 @@ class PokemonListViewController: UIViewController {
 
 extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pokemonsCellViewModels.count
+//        return viewModel.pokemonsCellViewModels.count
+        return viewModel.pokemons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PokeCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "PokeCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PokeCell", for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
         
-        // cell.setupViews(pokemon: )
+        let cellData = viewModel.getCellData(at: indexPath)
         
-        let cellVM = viewModel.getCellViewModel(at: indexPath)
-        
-//        cell.textLabel?.text = "title"
-//        cell.detailTextLabel?.text = "description"
+        // MARK: FIX THIS
+        cell.setUpPokemonData(cellData)
 
-        return cellVM
+        return cell
     }
 }
 

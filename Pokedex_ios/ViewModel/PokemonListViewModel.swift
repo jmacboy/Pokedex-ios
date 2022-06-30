@@ -14,11 +14,12 @@ class PokemonListViewModel: NSObject {
     var reloadTableView: (() -> Void)?
     
     var pokemons = [PokemonRaw]()
-    var pokemonsCellViewModels = [UITableViewCell]() {
-        didSet {
-            reloadTableView?()
-        }
-    }
+    
+//    var pokemonsCellViewModels = [PokemonTableViewCell]() {
+//        didSet {
+//            reloadTableView?()
+//        }
+//    }
     
     init(pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
@@ -36,27 +37,23 @@ class PokemonListViewModel: NSObject {
     
     func fetchData(pokemons: [PokemonRaw]) {
         self.pokemons = pokemons
-        var vms = [UITableViewCell]()
-        for pokemon in pokemons {
-            vms.append(createCellModel(pokemon: pokemon))
-        }
-        pokemonsCellViewModels = vms
+//        var vms = [PokemonTableViewCell]()
+//        for pokemon in pokemons {
+//            vms.append(createCellModel(pokemon: pokemon))
+//        }
+//        pokemonsCellViewModels = vms
     }
     
-    private func createCellModel(pokemon: PokemonRaw) -> UITableViewCell {
-        let title = pokemon.name
-        let description = pokemon.url
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "PokeCell")
-        
-        cell.textLabel?.text = title
-        cell.detailTextLabel?.text = description
-        
+    private func createCellModel(pokemon: PokemonRaw) -> PokemonTableViewCell {
+        let cell = PokemonTableViewCell()
         return cell
     }
     
-    func getCellViewModel(at indexPath: IndexPath) -> UITableViewCell {
-        return pokemonsCellViewModels[indexPath.row]
-    }
+//    func getCellViewModel(at indexPath: IndexPath) -> PokemonTableViewCell {
+//        return pokemonsCellViewModels[indexPath.row]
+//    }
     
+    func getCellData(at indexPath: IndexPath) -> PokemonRaw {
+        return pokemons[indexPath.row]
+    }
 }

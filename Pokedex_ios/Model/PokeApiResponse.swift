@@ -7,36 +7,42 @@
 
 import Foundation
 
+// MARK: - PokeApiResponse
 struct PokeApiResponse: Codable {
-    let count: Int
-    let next: String
-    let previous: JSONNull?
-    let results: [PokemonRaw]
+    let data: DataClass
 }
 
-// MARK: - Encode/decode helpers
+// MARK: - DataClass
+struct DataClass: Codable {
+    let species: [PokemonRaw]
+}
 
-class JSONNull: Codable, Hashable {
+struct PokemonRaw: Codable {
+    let id: Int
+    let name: String
+    let generation: Generation
+    let pokemonDetails: [PokemonDetail]
 
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
+    enum CodingKeys: String, CodingKey {
+        case id, name, generation
+        case pokemonDetails = "pokemon_details"
     }
+}
 
-    public var hashValue: Int {
-        return 0
-    }
+// MARK: - Generation
+struct Generation: Codable {
+    let id: Int
+    let name: String
+}
 
-    public init() {}
+// MARK: - PokemonDetail
+struct PokemonDetail: Codable {
+    let name: String
+    let height, weight: Int
+    let types: [TypeElement]
+}
 
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
+// MARK: - TypeElement
+struct TypeElement: Codable {
+    let type: Generation
 }
