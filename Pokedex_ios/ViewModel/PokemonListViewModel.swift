@@ -20,8 +20,6 @@ class PokemonListViewModel: NSObject {
         }
     }
     
-    // Some logic for the cell is needed here
-    
     init(pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
     }
