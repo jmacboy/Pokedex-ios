@@ -49,7 +49,6 @@ class PokemonTableViewCell: UITableViewCell {
         return number
     }
     
-    //MARK: REFACTOR THIS FUNCTION
     func setPokemonTypes(types: [TypeElement]) {
         
         if let firstType = types.first {
@@ -57,8 +56,7 @@ class PokemonTableViewCell: UITableViewCell {
             self.firstTypeImageView.image = UIImage(named: imageName)
         }
         
-        let secondType = types[1]
-        if secondType != nil {
+        if let secondType = types.last, types.count > 1 {
             let imageName = "badge-\(secondType.type.name)"
             self.secondTypeImageView.image = UIImage(named: imageName)
         }
