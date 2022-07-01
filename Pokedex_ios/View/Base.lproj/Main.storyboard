@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Zn7-ty-vL5">
-                                <rect key="frame" x="0.0" y="195.5" width="414" height="666.5"/>
+                                <rect key="frame" x="30" y="195.5" width="354" height="666.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -38,7 +38,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="P5x-lb-knG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="8E3-hp-c5W"/>
-                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KbQ-1x-jBZ"/>
+                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="KbQ-1x-jBZ"/>
                             <constraint firstItem="HEN-HP-g0g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="LYK-d9-G4c"/>
                             <constraint firstItem="P5x-lb-knG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Lu3-JV-2HU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P5x-lb-knG" secondAttribute="trailing" constant="30" id="ZKI-H6-dKA"/>
@@ -46,7 +46,7 @@
                             <constraint firstItem="Zn7-ty-vL5" firstAttribute="top" secondItem="HEN-HP-g0g" secondAttribute="bottom" constant="10" id="dRK-OD-FU6"/>
                             <constraint firstAttribute="trailing" secondItem="HEN-HP-g0g" secondAttribute="trailing" constant="30" id="q8O-Mj-dXl"/>
                             <constraint firstItem="HEN-HP-g0g" firstAttribute="top" secondItem="P5x-lb-knG" secondAttribute="bottom" constant="10" id="s6t-Ym-9Ap"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zn7-ty-vL5" secondAttribute="trailing" id="zYU-ag-dDn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zn7-ty-vL5" secondAttribute="trailing" constant="30" id="zYU-ag-dDn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P1X-Ej-5yD">

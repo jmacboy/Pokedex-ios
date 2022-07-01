@@ -24,7 +24,6 @@ class NetworkManager {
     @discardableResult
     func get<T: Decodable>(_ type: T.Type, from url: URL, completion: @escaping (Result<T, Error>)-> Void) -> URLSessionDataTask {
         let task = session.dataTask(with: url) { (data, response, error) in
-            
             if let error = error {
                 DispatchQueue.main.async {
                     completion(.failure(error))
@@ -45,7 +44,6 @@ class NetworkManager {
             }
         }
         task.resume()
-        
         return task
     }
 }

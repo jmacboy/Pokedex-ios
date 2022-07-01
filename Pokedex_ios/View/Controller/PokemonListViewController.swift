@@ -21,6 +21,9 @@ class PokemonListViewController: UIViewController {
         tableView.dataSource = self
         setBackground()
         initViewModel()
+        
+        let uiNib = UINib(nibName: "PokemonTableViewCell", bundle: nil)
+        tableView.register(uiNib, forCellReuseIdentifier: "PokeCell")
     }
     
     private func setBackground() {
@@ -41,6 +44,8 @@ class PokemonListViewController: UIViewController {
     
     func initViewModel() {
         viewModel.getPokemons()
+        print(viewModel.pokemons)
+        
         viewModel.reloadTableView = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -51,7 +56,6 @@ class PokemonListViewController: UIViewController {
 
 extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.pokemonsCellViewModels.count
         return viewModel.pokemons.count
     }
     
@@ -60,7 +64,7 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cellData = viewModel.getCellData(at: indexPath)
         cell.setUpPokemonData(pokemon: cellData)
-
+        
         return cell
     }
 }

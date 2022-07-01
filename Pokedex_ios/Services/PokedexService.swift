@@ -14,13 +14,15 @@ protocol PokedexServiceProtocol {
 class PokedexService: PokedexServiceProtocol {
     func getPokemons(completion: @escaping (Bool, [PokemonRaw]?, String?) -> ()) {
         
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon") else {return}
+        // MARK: REFACTOR, Here change the whole function to work with apollo/graphql
+//        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon") else {return}
+        guard let url = URL(string: "http://localhost:8000/result") else {return} // <- Just for test
         
         NetworkManager.shared.get(PokeApiResponse.self, from: url){result in
     
             switch result {
             case .success(let responseData):
-                completion(true, responseData.results, nil)
+                completion(true, responseData.data.species, nil)
             case .failure(let error):
                 completion(false, nil, "Something went wrong: \(error)")
             }
