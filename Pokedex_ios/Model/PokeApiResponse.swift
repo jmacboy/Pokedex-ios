@@ -14,12 +14,13 @@ struct PokeApiResponse: Codable {
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    let species: [PokemonRaw]
+    var species: [PokemonRaw]
 }
 
 struct PokemonRaw: Codable {
     let id: Int
     let name: String
+    var urlImage: String = ""
     let generation: Generation
     let pokemonDetails: [PokemonDetail]
 

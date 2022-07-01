@@ -13,53 +13,36 @@ class PokemonListViewModel: NSObject {
     
     var reloadTableView: (() -> Void)?
     
-    var pokemons = [PokemonRaw]()
-    
-//    var pokemonsCellViewModels = [PokemonTableViewCell]() {
-//        didSet {
-//            reloadTableView?()
-//        }
-//    }
+    var pokemons = [PokemonRaw]() {
+        didSet {
+            reloadTableView?()
+        }
+    }
     
     init(pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
     }
     
     func getPokemons() {
-        pokedexService.getPokemons { success, results, error in
-            if success, let pokemons = results {
-                self.fetchData(pokemons: pokemons)
-            } else {
-                print(error!)
+        pokedexService.getPokemons { result in
+            switch result {
+            case.success(let pokemons):
+                self.pokemons = pokemons
+            case.failure(let error):
+                print("Error: ", error)
             }
+
         }
     }
-    
-    func fetchData(pokemons: [PokemonRaw]) {
-        self.pokemons = pokemons
-//        var vms = [PokemonTableViewCell]()
-//        for pokemon in pokemons {
-//            vms.append(createCellModel(pokemon: pokemon))
-//        }
-//        pokemonsCellViewModels = vms
-    }
-    
-    private func createCellModel(pokemon: PokemonRaw) -> PokemonTableViewCell {
-        let cell = PokemonTableViewCell()
-        return cell
-    }
-    
-//    func getCellViewModel(at indexPath: IndexPath) -> PokemonTableViewCell {
-//        return pokemonsCellViewModels[indexPath.row]
-//    }
     
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]
     }
     
     func getPokemonsImageBy(id: Int) -> UIImage? {
-        let url = pokedexService.getPokemonsImageBy(id: id)
-        let data = try? Data(contentsOf: url)
+        let urlStr = pokedexService.getPokemonsImageBy(id: id)
+        let url = URL(string: urlStr)
+        let data = try? Data(contentsOf: url!)
         let image = UIImage(data: data!)
         
         return image

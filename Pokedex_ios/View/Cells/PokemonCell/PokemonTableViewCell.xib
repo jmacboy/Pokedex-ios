@@ -32,7 +32,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge-poison" translatesAutoresizingMaskIntoConstraints="NO" id="5wN-ab-gyh">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="badge-poison" translatesAutoresizingMaskIntoConstraints="NO" id="5wN-ab-gyh">
                                 <rect key="frame" x="91" y="70" width="65" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KaW-MW-321"/>
