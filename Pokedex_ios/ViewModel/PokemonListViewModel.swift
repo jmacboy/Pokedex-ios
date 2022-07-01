@@ -24,12 +24,14 @@ class PokemonListViewModel: NSObject {
     }
     
     func getPokemons() {
-        pokedexService.getPokemons { success, results, error in
-            if success, let pokemons = results {
+        pokedexService.getPokemons { result in
+            switch result {
+            case.success(let pokemons):
                 self.pokemons = pokemons
-            } else {
-                print(error!)
+            case.failure(let error):
+                print("Error: ", error)
             }
+
         }
     }
     
