@@ -16,18 +16,31 @@ class PokemonTableViewCell: UITableViewCell {
     @IBOutlet weak var firstTypeImageView: UIImageView!
     @IBOutlet weak var secondTypeImageView: UIImageView!
     @IBOutlet weak var pokemonImageView: UIImageView!
+    
+    lazy var viewModel = {
+        PokemonListViewModel()
+    }()
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUpCellDesign()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    func setUpCellDesign() {
+        infoContainer.layer.cornerRadius = 10
+    }
+    
     func setUpPokemonData(pokemon: PokemonRaw){
         numberLabel.text = setPokemonNumber(id: pokemon.id)
         nameLabel.text = pokemon.name
+        if let image = viewModel.getPokemonsImageBy(id: pokemon.id) {
+            pokemonImageView.image = image
+        }
+        
         
         guard let types = pokemon.pokemonDetails.first?.types else { return }
         setPokemonTypes(types: types)

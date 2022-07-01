@@ -9,6 +9,7 @@ import Foundation
 
 protocol PokedexServiceProtocol {
     func getPokemons(completion: @escaping (_ success: Bool, _ results: [PokemonRaw]?, _ error: String?) -> ())
+    func getPokemonsImageBy(id: Int) -> URL
 }
 
 class PokedexService: PokedexServiceProtocol {
@@ -24,6 +25,12 @@ class PokedexService: PokedexServiceProtocol {
             case .failure(let error):
                 completion(false, nil, "Something went wrong: \(error)")
             }
+        }
+    }
+    
+    func getPokemonsImageBy(id: Int) -> URL {
+        if let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png") {
+            return url
         }
     }
 }
