@@ -11,6 +11,10 @@ class PokemonListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let pokeImageHeader = "PokeballSVG"
+    let pokemonCell = "PokemonTableViewCell"
+    let pokeCellIdentifier = "PokeCell"
+    
     lazy var viewModel = {
         PokemonListViewModel()
     }()
@@ -22,15 +26,15 @@ class PokemonListViewController: UIViewController {
         setBackground()
         initViewModel()
         
-        let uiNib = UINib(nibName: "PokemonTableViewCell", bundle: nil)
-        tableView.register(uiNib, forCellReuseIdentifier: "PokeCell")
+        let uiNib = UINib(nibName: pokemonCell, bundle: nil)
+        tableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
     
     private func setBackground() {
         let margins = view.layoutMarginsGuide
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "PokeballSVG")
+        imageView.image = UIImage(named: pokeImageHeader)
         imageView.alpha = 0.03
         view.addSubview(imageView)
         
@@ -44,12 +48,17 @@ class PokemonListViewController: UIViewController {
     
     func initViewModel() {
         viewModel.getPokemons()
-        print(viewModel.pokemons)
         
         viewModel.reloadTableView = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
+        }
+        
+        viewModel.showErrorAlert = {
+            let sheet = UIAlertController(title: "Something went wrong", message: "Can't show pokemons right now, please try again later", preferredStyle: .alert)
+            sheet.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.navigationController?.present(sheet, animated: true, completion: nil)
         }
     }
 }
@@ -60,7 +69,7 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PokeCell", for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: pokeCellIdentifier, for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
         
         let cellData = viewModel.getCellData(at: indexPath)
         cell.setUpPokemonData(pokemon: cellData)

@@ -14,8 +14,6 @@ protocol PokedexServiceProtocol {
 class PokedexService: PokedexServiceProtocol {
     func getPokemons(completion: @escaping (Bool, [PokemonRaw]?, String?) -> ()) {
         
-        // MARK: REFACTOR, Here change the whole function to work with apollo/graphql
-//        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon") else {return}
         guard let url = URL(string: "http://localhost:8000/result") else {return} // <- Just for test
         
         NetworkManager.shared.get(PokeApiResponse.self, from: url){result in

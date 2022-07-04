@@ -25,9 +25,7 @@ class Pokedex_iosTests: XCTestCase {
     
     func testGetPokemonsFromNetwork() {
         viewModel.getPokemons()
-        XCTAssertNotEqual(viewModel.pokemons.count, 0)
-//        guard let funcCalled = viewModel.pokedexService.getPokemonsGotCalled else {return}
-//        XCTAssertTrue(funcCalled)
+        XCTAssertEqual(viewModel.pokemons.count, 1)
     }
 
     override func setUpWithError() throws {

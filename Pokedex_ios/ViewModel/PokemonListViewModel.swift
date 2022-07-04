@@ -12,6 +12,7 @@ class PokemonListViewModel: NSObject {
     var pokedexService: PokedexServiceProtocol
     
     var reloadTableView: (() -> Void)?
+    var showErrorAlert: (() -> Void)?
     
     var pokemons = [PokemonRaw]() {
         didSet {
@@ -28,7 +29,7 @@ class PokemonListViewModel: NSObject {
             if success, let pokemons = results {
                 self.pokemons = pokemons
             } else {
-                print(error!)
+                self.showErrorAlert?()
             }
         }
     }
