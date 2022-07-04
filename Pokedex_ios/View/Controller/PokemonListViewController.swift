@@ -9,7 +9,7 @@ import UIKit
 
 class PokemonListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pokemonsTableView: UITableView!
     
     let pokeImageHeader = "PokeballSVG"
     let pokemonCell = "PokemonTableViewCell"
@@ -21,13 +21,13 @@ class PokemonListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        pokemonsTableView.delegate = self
+        pokemonsTableView.dataSource = self
         setBackground()
         initViewModel()
         
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
-        tableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
+        pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
     
     private func setBackground() {
@@ -49,9 +49,9 @@ class PokemonListViewController: UIViewController {
     func initViewModel() {
         viewModel.getPokemons()
         
-        viewModel.reloadTableView = { [weak self] in
+        viewModel.reloadData = { [weak self] in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.pokemonsTableView.reloadData()
             }
         }
         

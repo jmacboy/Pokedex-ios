@@ -11,12 +11,12 @@ import UIKit
 class PokemonListViewModel: NSObject {
     var pokedexService: PokedexServiceProtocol
     
-    var reloadTableView: (() -> Void)?
+    var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
     
     var pokemons = [PokemonRaw]() {
         didSet {
-            reloadTableView?()
+            reloadData?()
         }
     }
     
