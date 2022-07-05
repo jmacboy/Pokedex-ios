@@ -6,7 +6,7 @@ target 'Pokedex_ios' do
   use_frameworks!
 
   # Pods for Pokedex_ios
-  pod 'SwiftLint'
+  pod 'SwiftLint', '0.47.1'
 
   target 'Pokedex_iosTests' do
     inherit! :search_paths
