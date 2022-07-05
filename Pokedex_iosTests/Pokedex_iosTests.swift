@@ -8,14 +8,16 @@
 import XCTest
 @testable import Pokedex_ios
 
-//let data = PokemonRaw(id: 4, name: "some", generation: Generation(id: 4, name: "gen1"), pokemonDetails: [PokemonDetail(name: "detail1", height: 5, weight: 5, types: [TypeElement(type: Generation(id: 3, name: "gen1"))])])
-
 
 class MockPokedexService: PokedexServiceProtocol {
     var getPokemonsGotCalled = false
-    func getPokemons(completion: @escaping (Bool, [PokemonRaw]?, String?) -> ()) {
-        completion(true, [SampleTest.shared.singlePokemon], nil)
+    func getPokemons(completion: @escaping (Result<[PokemonRaw], Error>) -> Void) {
+        completion(.success([TestResources.shared.singlePokemon]))
         getPokemonsGotCalled = true
+    }
+    
+    func getPokemonsImageBy(id: Int) -> String {
+        return "some"
     }
 }
 
