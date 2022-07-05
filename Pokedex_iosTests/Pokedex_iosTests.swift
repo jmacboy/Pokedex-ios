@@ -8,7 +8,27 @@
 import XCTest
 @testable import Pokedex_ios
 
+
+class MockPokedexService: PokedexServiceProtocol {
+    var getPokemonsGotCalled = false
+    func getPokemons(completion: @escaping (Result<[PokemonRaw], Error>) -> Void) {
+        completion(.success([TestResources.shared.singlePokemon]))
+        getPokemonsGotCalled = true
+    }
+    
+    func getPokemonsImageBy(id: Int) -> String {
+        return "some"
+    }
+}
+
 class Pokedex_iosTests: XCTestCase {
+    let mockTest = MockPokedexService()
+    let viewModel = PokemonListViewModel(pokedexService: MockPokedexService())
+    
+    func testGetPokemonsFromNetwork() {
+        viewModel.getPokemons()
+        XCTAssertEqual(viewModel.pokemons.count, 1)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

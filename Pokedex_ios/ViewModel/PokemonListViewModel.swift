@@ -11,11 +11,12 @@ import UIKit
 class PokemonListViewModel: NSObject {
     var pokedexService: PokedexServiceProtocol
 
-    var reloadTableView: (() -> Void)?
+    var reloadData: (() -> Void)?
+    var showErrorAlert: (() -> Void)?
 
     var pokemons = [PokemonRaw]() {
         didSet {
-            reloadTableView?()
+            reloadData?()
         }
     }
 
@@ -26,12 +27,11 @@ class PokemonListViewModel: NSObject {
     func getPokemons() {
         pokedexService.getPokemons { result in
             switch result {
-            case.success(let pokemons):
+            case .success(let pokemons):
                 self.pokemons = pokemons
-            case.failure(let error):
-                print("Error: ", error)
+            case .failure( _):
+                self.showErrorAlert?()
             }
-
         }
     }
 

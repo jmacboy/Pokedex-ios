@@ -11,6 +11,7 @@ import Apollo
 class NetworkManager {
 
     static let shared = NetworkManager()
-    lazy var apollo = ApolloClient(url: URL(string: "https://beta.pokeapi.co/graphql/v1beta")!)
+
+    lazy var apollo = ApolloClient(url: URL(string: ConstantVariables.pokeApiEndpoint)!)
 
 }
