@@ -25,10 +25,11 @@ class PokemonListViewModel: NSObject {
     }
     
     func getPokemons() {
-        pokedexService.getPokemons { success, results, error in
-            if success, let pokemons = results {
+        pokedexService.getPokemons { result in
+            switch result {
+            case .success(let pokemons):
                 self.pokemons = pokemons
-            } else {
+            case .failure( _):
                 self.showErrorAlert?()
             }
         }
@@ -36,5 +37,14 @@ class PokemonListViewModel: NSObject {
     
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]
+    }
+    
+    func getPokemonsImageBy(id: Int) -> UIImage? {
+        let urlStr = pokedexService.getPokemonsImageBy(id: id)
+        let url = URL(string: urlStr)
+        let data = try? Data(contentsOf: url!)
+        let image = UIImage(data: data!)
+        
+        return image
     }
 }

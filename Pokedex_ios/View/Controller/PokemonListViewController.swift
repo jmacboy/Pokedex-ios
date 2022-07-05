@@ -73,6 +73,7 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cellData = viewModel.getCellData(at: indexPath)
         cell.setUpPokemonData(pokemon: cellData)
+//        print(cellData)
         
         return cell
     }

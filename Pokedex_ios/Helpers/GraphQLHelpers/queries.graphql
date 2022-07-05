@@ -1,0 +1,21 @@
+query homePage{
+  species: pokemon_v2_pokemonspecies(order_by: {id: asc}) {
+    id
+    name
+    generation: pokemon_v2_generation {
+      id
+      name
+    }
+    pokemon_details: pokemon_v2_pokemons(order_by: {id: asc}, limit: 1) {
+      name
+      height
+      weight
+      types: pokemon_v2_pokemontypes {
+        type: pokemon_v2_type {
+          id
+          name
+        }
+      }
+    }
+  }
+}
