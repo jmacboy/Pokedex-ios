@@ -97,7 +97,7 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <namedColor name="TextGreyColor">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
