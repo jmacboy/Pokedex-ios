@@ -11,7 +11,6 @@ class PokemonListViewController: UIViewController {
     
     @IBOutlet weak var pokemonsTableView: UITableView!
     
-    let pokeImageHeader = "PokeballSVG"
     let pokemonCell = "PokemonTableViewCell"
     let pokeCellIdentifier = "PokeCell"
     
@@ -34,7 +33,7 @@ class PokemonListViewController: UIViewController {
         let margins = view.layoutMarginsGuide
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: pokeImageHeader)
+        imageView.image = UIImage(named: ConstantVariables.pokeImageHeader)
         imageView.alpha = 0.03
         view.addSubview(imageView)
         
