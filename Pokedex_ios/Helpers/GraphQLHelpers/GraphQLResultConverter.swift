@@ -7,11 +7,10 @@
 
 import Foundation
 
-
 class ConversionHelper {
 
     static let shared = ConversionHelper()
-    
+
     func convertFromDataToPokemonStruct(data: HomePageQuery.Data, completion: @escaping(Result<[PokemonRaw], Error>) -> Void) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data.jsonObject)
@@ -23,6 +22,6 @@ class ConversionHelper {
         } catch {
             completion(.failure(error))
         }
-        
+
     }
 }

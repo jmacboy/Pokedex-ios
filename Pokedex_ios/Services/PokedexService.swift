@@ -15,6 +15,7 @@ protocol PokedexServiceProtocol {
 
 class PokedexService: PokedexServiceProtocol {
     func getPokemons(completion: @escaping (Result<[PokemonRaw], Error>) -> Void) {
+
         NetworkManager.shared.apollo.fetch(query: HomePageQuery()) { data in
             switch data {
             case .success(let graphResult):
@@ -36,8 +37,9 @@ class PokedexService: PokedexServiceProtocol {
                 }
             }
         }
+
     }
-    
+
     func getPokemonsImageBy(id: Int) -> String {
         let url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png"
         return url
