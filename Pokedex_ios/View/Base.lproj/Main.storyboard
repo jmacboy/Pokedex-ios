@@ -53,7 +53,7 @@
                         <barButtonItem key="backBarButtonItem" title="  " id="tL1-Vm-hjP"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="Zn7-ty-vL5" id="9IE-5e-IGJ"/>
+                        <outlet property="pokemonsTableView" destination="Zn7-ty-vL5" id="Lsf-og-v1D"/>
                         <segue destination="Kh8-De-YM9" kind="show" id="dMc-1e-Iwf"/>
                     </connections>
                 </viewController>
