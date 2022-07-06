@@ -68,9 +68,10 @@ class PokemonListViewController: UIViewController {
                 self?.pokemonsTableView.reloadData()
             }
         }
+
         viewModel.showErrorAlert = {
-            let sheet = UIAlertController(title: "Something went wrong",
-                                          message: "Can't show pokemons right now, please try again later", preferredStyle: .alert)
+            let sheet = UIAlertController(title: "Something went wrong", message: "Can't show pokemons right now, please try again later",
+            preferredStyle: .alert)
             sheet.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.navigationController?.present(sheet, animated: true, completion: nil)
         }
@@ -94,7 +95,9 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: pokeCellIdentifier, for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: pokeCellIdentifier, for: indexPath) as? PokemonTableViewCell
+        ?? PokemonTableViewCell()
+
         let cellData = viewModel.getCellData(at: indexPath)
         cell.setUpPokemonData(pokemon: cellData)
 
