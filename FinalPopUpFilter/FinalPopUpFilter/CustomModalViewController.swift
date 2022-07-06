@@ -5,7 +5,7 @@ class CustomModalViewController: UIViewController {
     lazy var lineView: UIView = {
         let line = UIView()
         line.backgroundColor = .lightGray
-        line.layer.cornerRadius = 15
+        line.layer.cornerRadius = 5
         line.translatesAutoresizingMaskIntoConstraints = false
         return line
     }()
@@ -109,8 +109,7 @@ class CustomModalViewController: UIViewController {
         sheetPresentationController?.prefersGrabberVisible = true
         
         NSLayoutConstraint.activate([
-            lineView.widthAnchor.constraint(equalToConstant: 0.2),
-            lineView.heightAnchor.constraint(equalToConstant: 3),
+            lineView.heightAnchor.constraint(equalToConstant: 5),
             lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -153,9 +152,9 @@ class CustomModalViewController: UIViewController {
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             // content stackView
-            contentLineStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5),
-            contentLineStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 155),
-            contentLineStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -155),
+            contentLineStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 7),
+            contentLineStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 150),
+            contentLineStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -150),
         ])
         
         // Set static constraints
@@ -169,7 +168,7 @@ class CustomModalViewController: UIViewController {
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             // content stackView
-            contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 25),
+            contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 40),
             contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
