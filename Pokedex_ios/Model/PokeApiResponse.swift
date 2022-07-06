@@ -22,7 +22,7 @@ struct PokemonRaw: Codable {
     let name: String
     var urlImage: String = ""
     let generation: Generation
-    let pokemonDetails: [PokemonDetail]
+    var pokemonDetails: [PokemonDetail]
 
     enum CodingKeys: String, CodingKey {
         case id, name, generation
@@ -41,9 +41,16 @@ struct PokemonDetail: Codable {
     let name: String
     let height, weight: Int
     let types: [TypeElement]
+    var weaknesses: [Weakness]? = []
 }
 
 // MARK: - TypeElement
 struct TypeElement: Codable {
     let type: Generation
+}
+
+// MARK: - Weakness
+struct Weakness: Codable {
+    let fromType: Generation
+    let damageTaken: Double
 }
