@@ -29,7 +29,7 @@ class PokemonListViewModel: NSObject {
             switch result {
             case .success(let pokemons):
                 self.pokemons = pokemons
-            case .failure( _):
+            case .failure:
                 self.showErrorAlert?()
             }
         }

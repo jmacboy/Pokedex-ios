@@ -10,6 +10,7 @@
 		65699920D346AE9350353CAE /* Pods_Pokedex_ios_Pokedex_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF05B0BE6D3A2D89BE4E197A /* Pods_Pokedex_ios_Pokedex_iosUITests.framework */; };
 		843AEF08287394FD007039DB /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 843AEF07287394FD007039DB /* queries.graphql */; };
 		843AEF0A28739521007039DB /* ConstantVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AEF0928739521007039DB /* ConstantVariables.swift */; };
+		843AEF0F2874E446007039DB /* PokemonWeaknessesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843AEF0E2874E446007039DB /* PokemonWeaknessesHelper.swift */; };
 		8471C901286CF54D005E069A /* PokemonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C8FF286CF54D005E069A /* PokemonTableViewCell.swift */; };
 		8471C902286CF54D005E069A /* PokemonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8471C900286CF54D005E069A /* PokemonTableViewCell.xib */; };
 		849EAB39286CC4040064705B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EAB38286CC4040064705B /* AppDelegate.swift */; };
@@ -25,7 +26,6 @@
 		849F5D2E286F984B007B782B /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 849F5D2D286F984B007B782B /* Apollo */; };
 		849F5D31286F9984007B782B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F5D30286F9984007B782B /* API.swift */; };
 		84AFCD61286F9B2F00F5B7D6 /* GraphQLResultConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */; };
-		84AFCD63286F9CF600F5B7D6 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 84AFCD62286F9CF600F5B7D6 /* queries.graphql */; };
 		A1320CB03B2868A10E299EF5 /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */; };
 		C24185F52873C3E4009C3061 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C24185F42873C3E4009C3061 /* Apollo */; };
 		C2599BEC28739A420079F454 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2599BEB28739A420079F454 /* TestResources.swift */; };
@@ -61,6 +61,7 @@
 		641819E5F0C677E5DDFF9006 /* Pods_Pokedex_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		843AEF07287394FD007039DB /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
 		843AEF0928739521007039DB /* ConstantVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantVariables.swift; sourceTree = "<group>"; };
+		843AEF0E2874E446007039DB /* PokemonWeaknessesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeaknessesHelper.swift; sourceTree = "<group>"; };
 		8471C8FF286CF54D005E069A /* PokemonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTableViewCell.swift; sourceTree = "<group>"; };
 		8471C900286CF54D005E069A /* PokemonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonTableViewCell.xib; sourceTree = "<group>"; };
 		849EAB35286CC4040064705B /* Pokedex_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +80,6 @@
 		849EAB6C286CC48A0064705B /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		849F5D30286F9984007B782B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLResultConverter.swift; sourceTree = "<group>"; };
-		84AFCD62286F9CF600F5B7D6 /* queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
 		908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2599BEB28739A420079F454 /* TestResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResources.swift; sourceTree = "<group>"; };
 		C2FEC5B4286D2D8700220A13 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-    0E15226C20A1E3CDA58EE782 /* Pods */ = {
+		0E15226C20A1E3CDA58EE782 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				DE40841C22B257F2FA48873A /* Pods-Pokedex_ios.debug.xcconfig */,
@@ -142,7 +142,7 @@
 				641819E5F0C677E5DDFF9006 /* Pods_Pokedex_iosTests.framework */,
 			);
 			name = Frameworks;
-            sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		843AEF06287394FD007039DB /* GraphQLServices */ = {
 			isa = PBXGroup;
@@ -276,6 +276,7 @@
 				849F5D2F286F98F2007B782B /* GraphQLHelpers */,
 				C2FEC5B4286D2D8700220A13 /* NetworkManager.swift */,
 				843AEF0928739521007039DB /* ConstantVariables.swift */,
+				843AEF0E2874E446007039DB /* PokemonWeaknessesHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -521,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843AEF0F2874E446007039DB /* PokemonWeaknessesHelper.swift in Sources */,
 				C2FEC5BC286D3C5700220A13 /* PokeApiResponse.swift in Sources */,
 				C2FEC5BA286D302200220A13 /* PokedexService.swift in Sources */,
 				84AFCD61286F9B2F00F5B7D6 /* GraphQLResultConverter.swift in Sources */,
