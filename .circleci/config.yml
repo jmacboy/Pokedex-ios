@@ -2,16 +2,16 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 13.4.1 
+      xcode: 13.4.1 # Specify the Xcode version 
 
     steps:
       - checkout
-     - run: pod install
+     # - run: pod install # Install CocoaPods dependencies
       - run: 
           name: Build and run tests
           command: fastlane scan 
           enviroment: 
-            SCAN_DEVICE: iPhone 13 Pro max
+            SCAN_DEVICE: iPhone 11 pro max
             SCAN_SCHEME : mvvm
 
       - store_test_results:
