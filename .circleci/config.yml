@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 13.4.1 # Specify the Xcode version 
+      xcode: 13.4.1  
 
     steps:
       - checkout
