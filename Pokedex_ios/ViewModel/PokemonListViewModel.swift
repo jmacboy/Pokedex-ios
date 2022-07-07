@@ -34,6 +34,16 @@ class PokemonListViewModel: NSObject {
             }
         }
     }
+    
+    func searchPokemonsByName(searchText: String) {
+        pokemons = pokemons.filter({
+            $0.name.lowercased().prefix(searchText.count) == searchText.lowercased()
+        })
+    }
+    
+    func getCellData(at indexPath: IndexPath, search: Bool) -> PokemonRaw {
+        return pokemons[indexPath.row]
+    }
 
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]

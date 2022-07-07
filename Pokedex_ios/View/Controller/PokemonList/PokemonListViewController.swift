@@ -9,7 +9,9 @@ import UIKit
 
 class PokemonListViewController: UIViewController {
     @IBOutlet weak var pokemonsTableView: UITableView!
-
+    @IBOutlet weak var pokemonSearchTextField: UITextField!
+    @IBOutlet weak var searchView: UIView!
+    
     let pokemonCell = "PokemonTableViewCell"
     let pokeCellIdentifier = "PokeCell"
 
@@ -26,6 +28,7 @@ class PokemonListViewController: UIViewController {
         // Setup for the advanced filter image and button
         setUpAdvanceFilterPopup()
         // Register the custom cell
+        setSearchView()
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
@@ -73,6 +76,11 @@ class PokemonListViewController: UIViewController {
             self.navigationController?.present(sheet, animated: true, completion: nil)
         }
     }
+    
+    func setSearchView() {
+        pokemonSearchTextField.delegate = self
+        searchView.layer.cornerRadius = 10
+    }
 }
 
 extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,5 +96,15 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setUpPokemonData(pokemon: cellData)
 
       return cell
+    }
+}
+
+extension PokemonListViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            initViewModel()
+        }
+        viewModel.searchPokemonsByName(searchText: text)
     }
 }
