@@ -30,36 +30,71 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Zn7-ty-vL5">
-                                <rect key="frame" x="30" y="195.5" width="354" height="666.5"/>
+                                <rect key="frame" x="30" y="280.5" width="354" height="551.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdE-xD-Tri">
+                                <rect key="frame" x="30" y="200.5" width="354" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What Pokémon are you looking for?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqU-xs-wc2">
+                                        <rect key="frame" x="50" y="15" width="284" height="30"/>
+                                        <color key="backgroundColor" name="background-grey"/>
+                                        <color key="textColor" name="TextGreyColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-M4-ZXu">
+                                        <rect key="frame" x="20" y="20.5" width="30" height="18.5"/>
+                                        <color key="tintColor" name="TextGreyColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="9QX-lw-NTq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="background-grey"/>
+                                <constraints>
+                                    <constraint firstItem="MG5-M4-ZXu" firstAttribute="leading" secondItem="TdE-xD-Tri" secondAttribute="leading" constant="20" id="2iq-ub-Tk6"/>
+                                    <constraint firstAttribute="trailing" secondItem="jqU-xs-wc2" secondAttribute="trailing" constant="20" id="9Ox-Re-lp1"/>
+                                    <constraint firstAttribute="bottom" secondItem="jqU-xs-wc2" secondAttribute="bottom" constant="15" id="Klj-LI-rgc"/>
+                                    <constraint firstItem="MG5-M4-ZXu" firstAttribute="top" secondItem="TdE-xD-Tri" secondAttribute="top" constant="20" id="aNg-Nc-lo6"/>
+                                    <constraint firstItem="jqU-xs-wc2" firstAttribute="top" secondItem="TdE-xD-Tri" secondAttribute="top" constant="15" id="cgh-3H-Zz3"/>
+                                    <constraint firstAttribute="height" constant="60" id="d5R-LF-e6N"/>
+                                    <constraint firstAttribute="bottom" secondItem="MG5-M4-ZXu" secondAttribute="bottom" constant="20" id="ntm-wI-lad"/>
+                                    <constraint firstItem="jqU-xs-wc2" firstAttribute="leading" secondItem="MG5-M4-ZXu" secondAttribute="trailing" id="yoM-Y2-ZIb"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zn7-ty-vL5" secondAttribute="bottom" constant="30" id="0o3-Lp-VXT"/>
                             <constraint firstItem="P5x-lb-knG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="8E3-hp-c5W"/>
-                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="KbQ-1x-jBZ"/>
+                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="G2q-fl-xl8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zn7-ty-vL5" secondAttribute="trailing" constant="30" id="GTN-Yo-Cou"/>
                             <constraint firstItem="HEN-HP-g0g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="LYK-d9-G4c"/>
                             <constraint firstItem="P5x-lb-knG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Lu3-JV-2HU"/>
+                            <constraint firstItem="TdE-xD-Tri" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="YZD-X8-8ZR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P5x-lb-knG" secondAttribute="trailing" constant="30" id="ZKI-H6-dKA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Zn7-ty-vL5" secondAttribute="bottom" id="Zo9-95-jpg"/>
-                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="top" secondItem="HEN-HP-g0g" secondAttribute="bottom" constant="10" id="dRK-OD-FU6"/>
+                            <constraint firstItem="Zn7-ty-vL5" firstAttribute="top" secondItem="TdE-xD-Tri" secondAttribute="bottom" constant="20" id="dRw-eQ-yTk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TdE-xD-Tri" secondAttribute="trailing" constant="30" id="ogf-YP-XBs"/>
                             <constraint firstAttribute="trailing" secondItem="HEN-HP-g0g" secondAttribute="trailing" constant="30" id="q8O-Mj-dXl"/>
                             <constraint firstItem="HEN-HP-g0g" firstAttribute="top" secondItem="P5x-lb-knG" secondAttribute="bottom" constant="10" id="s6t-Ym-9Ap"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zn7-ty-vL5" secondAttribute="trailing" constant="30" id="zYU-ag-dDn"/>
+                            <constraint firstItem="TdE-xD-Tri" firstAttribute="top" secondItem="HEN-HP-g0g" secondAttribute="bottom" constant="15" id="vgZ-Aa-ILp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P1X-Ej-5yD">
                         <barButtonItem key="backBarButtonItem" title="  " id="tL1-Vm-hjP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="pokemonSearchTextField" destination="jqU-xs-wc2" id="RK6-dI-Nts"/>
                         <outlet property="pokemonsTableView" destination="Zn7-ty-vL5" id="Lsf-og-v1D"/>
+                        <outlet property="searchView" destination="TdE-xD-Tri" id="77q-DH-9NP"/>
                         <segue destination="Kh8-De-YM9" kind="show" id="dMc-1e-Iwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="21"/>
+            <point key="canvasLocation" x="698.55072463768124" y="20.758928571428569"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="T4P-gz-fH7">
@@ -96,8 +131,12 @@
     </scenes>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="TextGreyColor">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.090000003576278687" green="0.090000003576278687" blue="0.10599999874830246" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="background-grey">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
