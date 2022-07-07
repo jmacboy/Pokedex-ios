@@ -24,17 +24,19 @@ class PokemonListViewController: UIViewController {
         setBackground()
         initViewModel()
         // Setup for the advanced filter image and button
-        let advancedFilterImage = UIImage(named: "AdvancedFilter")?.withRenderingMode(.alwaysOriginal)
-        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
-                                                   target: self, action: #selector(showAdvancedFilterPopup))
-        navigationItem.rightBarButtonItem = advancedFilterButton
+        setUpAdvanceFilterPopup()
         // Register the custom cell
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
-
+    }
+    func setUpAdvanceFilterPopup() {
+        let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
+        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain, target: self, action: #selector(showAdvancedFilterPopup))
+        navigationItem.rightBarButtonItem = advancedFilterButton
     }
     @objc func showAdvancedFilterPopup() {
-        let vc = AdvancedFilterPopup()
+//        let vc = AdvancedFilterPopup()
+        let vc = AdvancedFilterPopupViewController()
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
