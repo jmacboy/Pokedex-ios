@@ -14,6 +14,7 @@ class PokemonListViewModel: NSObject {
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
 
+    var pokemonsOriginalList = [PokemonRaw]()
     var pokemons = [PokemonRaw]() {
         didSet {
             reloadData?()
@@ -28,7 +29,8 @@ class PokemonListViewModel: NSObject {
         pokedexService.getPokemons { result in
             switch result {
             case .success(let pokemons):
-                self.pokemons = pokemons
+                self.pokemonsOriginalList = pokemons
+                self.pokemons = self.pokemonsOriginalList
             case .failure( _):
                 self.showErrorAlert?()
             }
@@ -36,9 +38,11 @@ class PokemonListViewModel: NSObject {
     }
     
     func searchPokemonsByName(searchText: String) {
-        pokemons = pokemons.filter({
-            $0.name.lowercased().prefix(searchText.count) == searchText.lowercased()
-        })
+        if !searchText.isEmpty {
+            pokemons = pokemons.filter({
+                $0.name.lowercased().prefix(searchText.count) == searchText.lowercased()
+            })
+        }
     }
     
     func getCellData(at indexPath: IndexPath, search: Bool) -> PokemonRaw {
