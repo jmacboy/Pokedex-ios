@@ -78,8 +78,16 @@ class PokemonListViewController: UIViewController {
     }
     
     func setSearchView() {
-        pokemonSearchTextField.delegate = self
+        pokemonSearchTextField.addTarget(self, action: #selector(PokemonListViewController.textFieldDidChange(_:)), for: .editingChanged)
         searchView.layer.cornerRadius = 10
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            viewModel.pokemons = viewModel.pokemonsOriginalList
+        }
+        viewModel.searchPokemonsByName(searchText: text)
     }
 }
 
@@ -96,15 +104,5 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setUpPokemonData(pokemon: cellData)
 
       return cell
-    }
-}
-
-extension PokemonListViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        if text.isEmpty {
-            initViewModel()
-        }
-        viewModel.searchPokemonsByName(searchText: text)
     }
 }

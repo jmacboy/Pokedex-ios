@@ -30,13 +30,21 @@ class Pokedex_iosTests: XCTestCase {
         XCTAssertEqual(viewModel.pokemons.count, 1)
     }
     
-    func testFilterByName() {
+    func testSearchByNameSuccess() {
+        viewModel.getPokemons()
+        viewModel.searchPokemonsByName(searchText: "so")
+        XCTAssertEqual(viewModel.pokemons.count, 1)
+    }
+    
+    func testSearchByNameFailure() {
         viewModel.getPokemons()
         viewModel.searchPokemonsByName(searchText: "someo")
         XCTAssertEqual(viewModel.pokemons.count, 0)
-        
+    }
+    
+    func testSearchByNameEmpty() {
         viewModel.getPokemons()
-        viewModel.searchPokemonsByName(searchText: "so")
+        viewModel.searchPokemonsByName(searchText: "")
         XCTAssertEqual(viewModel.pokemons.count, 1)
     }
 
