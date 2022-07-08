@@ -1,7 +1,9 @@
 PODS:
+  - SwiftEntryKit (2.0.0)
   - SwiftLint (0.47.1)
 
 DEPENDENCIES:
+  - SwiftEntryKit (= 2.0.0)
   - SwiftLint (= 0.47.1)
 
 SPEC REPOS:
@@ -10,8 +12,9 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: 41f3ea9dc0589de19f287e9683c0680464507fb3
+PODFILE CHECKSUM: d801afb9a5b8e4e5c68a1c4cbfc184e7015efb84
 
 COCOAPODS: 1.11.3
