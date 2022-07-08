@@ -20,6 +20,7 @@ class PokemonListViewModel: NSObject {
             reloadData?()
         }
     }
+    var searchText = ""
 
     init(pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
@@ -30,23 +31,25 @@ class PokemonListViewModel: NSObject {
             switch result {
             case .success(let pokemons):
                 self.pokemonsOriginalList = pokemons
-                self.pokemons = self.pokemonsOriginalList
+                self.pokemons = pokemons
             case .failure( _):
                 self.showErrorAlert?()
             }
         }
     }
-    
-    func searchPokemonsByName(searchText: String) {
-        if !searchText.isEmpty {
+
+    func applyFilters() {
+        pokemons = self.pokemonsOriginalList
+        
+        self.searchPokemonsByName()
+    }
+
+    func searchPokemonsByName() {
+        if !self.searchText.isEmpty {
             pokemons = pokemons.filter({
-                $0.name.lowercased().prefix(searchText.count) == searchText.lowercased()
+                $0.name.contains(searchText.lowercased())
             })
         }
-    }
-    
-    func getCellData(at indexPath: IndexPath, search: Bool) -> PokemonRaw {
-        return pokemons[indexPath.row]
     }
 
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {

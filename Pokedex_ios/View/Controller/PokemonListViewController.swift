@@ -75,7 +75,8 @@ class PokemonListViewController: UIViewController {
         if text.isEmpty {
             viewModel.pokemons = viewModel.pokemonsOriginalList
         }
-        viewModel.searchPokemonsByName(searchText: text)
+        viewModel.searchText = text
+        viewModel.applyFilters()
     }
 }
 
