@@ -72,9 +72,6 @@ class PokemonListViewController: UIViewController {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        if text.isEmpty {
-            viewModel.pokemons = viewModel.pokemonsOriginalList
-        }
         viewModel.searchText = text
         viewModel.applyFilters()
     }
