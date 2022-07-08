@@ -25,10 +25,14 @@
 		849F5D2E286F984B007B782B /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 849F5D2D286F984B007B782B /* Apollo */; };
 		849F5D31286F9984007B782B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F5D30286F9984007B782B /* API.swift */; };
 		84AFCD61286F9B2F00F5B7D6 /* GraphQLResultConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */; };
-		84AFCD63286F9CF600F5B7D6 /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 84AFCD62286F9CF600F5B7D6 /* queries.graphql */; };
 		A1320CB03B2868A10E299EF5 /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */; };
+		C2343AAB2874CE32008D7022 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C2343AAA2874CE32008D7022 /* Apollo */; };
+		C2343AB22874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2343AB12874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift */; };
 		C24185F52873C3E4009C3061 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C24185F42873C3E4009C3061 /* Apollo */; };
+		C25299D928763598007C74AB /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25299D828763598007C74AB /* PopupViewController.swift */; };
 		C2599BEC28739A420079F454 /* TestResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2599BEB28739A420079F454 /* TestResources.swift */; };
+		C2FBBB262877606B00246202 /* AdvancedFilterPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FBBB242877606B00246202 /* AdvancedFilterPopupViewController.swift */; };
+		C2FBBB272877606B00246202 /* AdvancedFilterPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FBBB252877606B00246202 /* AdvancedFilterPopupViewController.xib */; };
 		C2FEC5B5286D2D8700220A13 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FEC5B4286D2D8700220A13 /* NetworkManager.swift */; };
 		C2FEC5B7286D2F6200220A13 /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FEC5B6286D2F6200220A13 /* PokemonListViewModel.swift */; };
 		C2FEC5BA286D302200220A13 /* PokedexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FEC5B9286D302200220A13 /* PokedexService.swift */; };
@@ -79,9 +83,12 @@
 		849EAB6C286CC48A0064705B /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		849F5D30286F9984007B782B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLResultConverter.swift; sourceTree = "<group>"; };
-		84AFCD62286F9CF600F5B7D6 /* queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
 		908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2343AB12874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFilterPopupViewModel.swift; sourceTree = "<group>"; };
+		C25299D828763598007C74AB /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		C2599BEB28739A420079F454 /* TestResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResources.swift; sourceTree = "<group>"; };
+		C2FBBB242877606B00246202 /* AdvancedFilterPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFilterPopupViewController.swift; sourceTree = "<group>"; };
+		C2FBBB252877606B00246202 /* AdvancedFilterPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedFilterPopupViewController.xib; sourceTree = "<group>"; };
 		C2FEC5B4286D2D8700220A13 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C2FEC5B6286D2F6200220A13 /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
 		C2FEC5B9286D302200220A13 /* PokedexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexService.swift; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849F5D2E286F984B007B782B /* Apollo in Frameworks */,
+				C2343AAB2874CE32008D7022 /* Apollo in Frameworks */,
 				A1320CB03B2868A10E299EF5 /* Pods_Pokedex_ios.framework in Frameworks */,
 				C24185F52873C3E4009C3061 /* Apollo in Frameworks */,
 			);
@@ -121,7 +129,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-    0E15226C20A1E3CDA58EE782 /* Pods */ = {
+		0E15226C20A1E3CDA58EE782 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				DE40841C22B257F2FA48873A /* Pods-Pokedex_ios.debug.xcconfig */,
@@ -142,7 +150,7 @@
 				641819E5F0C677E5DDFF9006 /* Pods_Pokedex_iosTests.framework */,
 			);
 			name = Frameworks;
-            sourceTree = "<group>";
+			sourceTree = "<group>";
 		};
 		843AEF06287394FD007039DB /* GraphQLServices */ = {
 			isa = PBXGroup;
@@ -194,6 +202,7 @@
 		849EAB37286CC4040064705B /* Pokedex_ios */ = {
 			isa = PBXGroup;
 			children = (
+				C25299D628763562007C74AB /* Utilities */,
 				C2FEC5B8286D300000220A13 /* Services */,
 				C2FEC5B3286D2D7300220A13 /* Helpers */,
 				849EAB6A286CC4250064705B /* ViewModel */,
@@ -239,7 +248,6 @@
 			children = (
 				8471C8FD286CF50D005E069A /* Cells */,
 				849EAB6B286CC4400064705B /* Controller */,
-				849EAB3E286CC4040064705B /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				C2FEC5B6286D2F6200220A13 /* PokemonListViewModel.swift */,
+				C2343AB12874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -255,7 +264,8 @@
 		849EAB6B286CC4400064705B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				849EAB3C286CC4040064705B /* PokemonListViewController.swift */,
+				C2343AB02874D020008D7022 /* AdvancedFilterPopup */,
+				C2343AAF2874CFEA008D7022 /* PokemonList */,
 				849EAB6C286CC48A0064705B /* PokemonDetailViewController.swift */,
 			);
 			path = Controller;
@@ -268,6 +278,40 @@
 				84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */,
 			);
 			path = GraphQLHelpers;
+			sourceTree = "<group>";
+		};
+		C2343AAF2874CFEA008D7022 /* PokemonList */ = {
+			isa = PBXGroup;
+			children = (
+				849EAB3C286CC4040064705B /* PokemonListViewController.swift */,
+				849EAB3E286CC4040064705B /* Main.storyboard */,
+			);
+			path = PokemonList;
+			sourceTree = "<group>";
+		};
+		C2343AB02874D020008D7022 /* AdvancedFilterPopup */ = {
+			isa = PBXGroup;
+			children = (
+				C2FBBB242877606B00246202 /* AdvancedFilterPopupViewController.swift */,
+				C2FBBB252877606B00246202 /* AdvancedFilterPopupViewController.xib */,
+			);
+			path = AdvancedFilterPopup;
+			sourceTree = "<group>";
+		};
+		C25299D628763562007C74AB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C25299D72876356E007C74AB /* Views */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C25299D72876356E007C74AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C25299D828763598007C74AB /* PopupViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C2FEC5B3286D2D7300220A13 /* Helpers */ = {
@@ -301,6 +345,7 @@
 				849EAB31286CC4040064705B /* Sources */,
 				849EAB32286CC4040064705B /* Frameworks */,
 				849EAB33286CC4040064705B /* Resources */,
+				6057CC17D7AC3BD7C1C0095D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -310,6 +355,7 @@
 			packageProductDependencies = (
 				849F5D2D286F984B007B782B /* Apollo */,
 				C24185F42873C3E4009C3061 /* Apollo */,
+				C2343AAA2874CE32008D7022 /* Apollo */,
 			);
 			productName = Pokedex_ios;
 			productReference = 849EAB35286CC4040064705B /* Pokedex_ios.app */;
@@ -342,6 +388,7 @@
 				849EAB51286CC4060064705B /* Sources */,
 				849EAB52286CC4060064705B /* Frameworks */,
 				849EAB53286CC4060064705B /* Resources */,
+				6B7C4A375897D74F2804C1C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +435,7 @@
 			packageReferences = (
 				849F5D2C286F984B007B782B /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				C24185F32873C3E4009C3061 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				C2343AA92874CE32008D7022 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 849EAB36286CC4040064705B /* Products */;
 			projectDirPath = "";
@@ -410,6 +458,7 @@
 				849EAB42286CC4060064705B /* Assets.xcassets in Resources */,
 				843AEF08287394FD007039DB /* queries.graphql in Resources */,
 				849EAB40286CC4040064705B /* Main.storyboard in Resources */,
+				C2FBBB272877606B00246202 /* AdvancedFilterPopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +499,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6057CC17D7AC3BD7C1C0095D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B7C4A375897D74F2804C1C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		843AEF0D28747F38007039DB /* SwiftLint */ = {
@@ -522,9 +605,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2FEC5BC286D3C5700220A13 /* PokeApiResponse.swift in Sources */,
+				C2FBBB262877606B00246202 /* AdvancedFilterPopupViewController.swift in Sources */,
+				C2343AB22874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift in Sources */,
 				C2FEC5BA286D302200220A13 /* PokedexService.swift in Sources */,
 				84AFCD61286F9B2F00F5B7D6 /* GraphQLResultConverter.swift in Sources */,
 				C2FEC5B5286D2D8700220A13 /* NetworkManager.swift in Sources */,
+				C25299D928763598007C74AB /* PopupViewController.swift in Sources */,
 				849EAB3D286CC4040064705B /* PokemonListViewController.swift in Sources */,
 				843AEF0A28739521007039DB /* ConstantVariables.swift in Sources */,
 				849F5D31286F9984007B782B /* API.swift in Sources */,
@@ -919,6 +1005,14 @@
 				minimumVersion = 0.49.0;
 			};
 		};
+		C2343AA92874CE32008D7022 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.5;
+			};
+		};
 		C24185F32873C3E4009C3061 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
@@ -933,6 +1027,11 @@
 		849F5D2D286F984B007B782B /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 849F5D2C286F984B007B782B /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		C2343AAA2874CE32008D7022 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C24185F32873C3E4009C3061 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
 		C24185F42873C3E4009C3061 /* Apollo */ = {

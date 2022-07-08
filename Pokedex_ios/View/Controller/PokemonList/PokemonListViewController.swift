@@ -26,10 +26,22 @@ class PokemonListViewController: UIViewController {
         setBackground()
         initViewModel()
         setSearchView()
-
+        // Setup for the advanced filter image and button
+        setUpAdvanceFilterPopup()
+        // Register the custom cell
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
-
+    }
+    func setUpAdvanceFilterPopup() {
+        let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
+        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain, target: self, action: #selector(showAdvancedFilterPopup))
+        navigationItem.rightBarButtonItem = advancedFilterButton
+    }
+    @objc func showAdvancedFilterPopup() {
+//        let vc = AdvancedFilterPopup()
+        let vc = AdvancedFilterPopupViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 
     private func setBackground() {
@@ -52,14 +64,13 @@ class PokemonListViewController: UIViewController {
         viewModel.getPokemons()
 
         viewModel.reloadData = { [weak self] in
-
-        DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self?.pokemonsTableView.reloadData()
             }
         }
-        
         viewModel.showErrorAlert = {
-            let sheet = UIAlertController(title: "Something went wrong", message: "Can't show pokemons right now, please try again later", preferredStyle: .alert)
+            let sheet = UIAlertController(title: "Something went wrong",
+                                          message: "Can't show pokemons right now, please try again later", preferredStyle: .alert)
             sheet.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.navigationController?.present(sheet, animated: true, completion: nil)
         }
@@ -84,7 +95,6 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: pokeCellIdentifier, for: indexPath) as? PokemonTableViewCell ?? PokemonTableViewCell()
-        
         let cellData = viewModel.getCellData(at: indexPath)
         cell.setUpPokemonData(pokemon: cellData)
 
