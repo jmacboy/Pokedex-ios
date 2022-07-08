@@ -14,11 +14,13 @@ class PokemonListViewModel: NSObject {
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
 
+    var pokemonsOriginalList = [PokemonRaw]()
     var pokemons = [PokemonRaw]() {
         didSet {
             reloadData?()
         }
     }
+    var searchText = ""
 
     init(pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
@@ -28,10 +30,25 @@ class PokemonListViewModel: NSObject {
         pokedexService.getPokemons { result in
             switch result {
             case .success(let pokemons):
+                self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
             case .failure( _):
                 self.showErrorAlert?()
             }
+        }
+    }
+
+    func applyFilters() {
+        pokemons = self.pokemonsOriginalList
+        
+        self.searchPokemonsByName()
+    }
+
+    func searchPokemonsByName() {
+        if !self.searchText.isEmpty {
+            pokemons = pokemons.filter({
+                $0.name.contains(searchText.lowercased())
+            })
         }
     }
 

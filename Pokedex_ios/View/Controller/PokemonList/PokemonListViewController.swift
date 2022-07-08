@@ -9,7 +9,9 @@ import UIKit
 
 class PokemonListViewController: UIViewController {
     @IBOutlet weak var pokemonsTableView: UITableView!
-
+    @IBOutlet weak var pokemonSearchTextField: UITextField!
+    @IBOutlet weak var searchView: UIView!
+    
     let pokemonCell = "PokemonTableViewCell"
     let pokeCellIdentifier = "PokeCell"
 
@@ -23,6 +25,7 @@ class PokemonListViewController: UIViewController {
         pokemonsTableView.dataSource = self
         setBackground()
         initViewModel()
+        setSearchView()
         // Setup for the advanced filter image and button
         setUpAdvanceFilterPopup()
         // Register the custom cell
@@ -71,6 +74,17 @@ class PokemonListViewController: UIViewController {
             sheet.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.navigationController?.present(sheet, animated: true, completion: nil)
         }
+    }
+    
+    func setSearchView() {
+        pokemonSearchTextField.addTarget(self, action: #selector(PokemonListViewController.textFieldDidChange(_:)), for: .editingChanged)
+        searchView.layer.cornerRadius = 10
+    }
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        viewModel.searchText = text
+        viewModel.applyFilters()
     }
 }
 

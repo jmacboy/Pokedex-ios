@@ -29,6 +29,24 @@ class Pokedex_iosTests: XCTestCase {
         viewModel.getPokemons()
         XCTAssertEqual(viewModel.pokemons.count, 1)
     }
+    
+    func testSearchByNameSuccess() {
+        viewModel.getPokemons()
+        viewModel.searchPokemonsByName(searchText: "so")
+        XCTAssertEqual(viewModel.pokemons.count, 1)
+    }
+    
+    func testSearchByNameFailure() {
+        viewModel.getPokemons()
+        viewModel.searchPokemonsByName(searchText: "someo")
+        XCTAssertEqual(viewModel.pokemons.count, 0)
+    }
+    
+    func testSearchByNameEmpty() {
+        viewModel.getPokemons()
+        viewModel.searchPokemonsByName(searchText: "")
+        XCTAssertEqual(viewModel.pokemons.count, 1)
+    }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
