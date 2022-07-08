@@ -15,6 +15,7 @@
                 <outlet property="contentStackView" destination="mQc-Ze-f4u" id="rl9-jC-0Of"/>
                 <outlet property="resetButton" destination="GwL-L8-s21" id="1lV-8R-Mxt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weaknessesCollectionView" destination="Qff-vt-SNj" id="ZhD-fw-iM4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mQc-Ze-f4u">
-                    <rect key="frame" x="20" y="76" width="374" height="146.5"/>
+                    <rect key="frame" x="20" y="562.5" width="374" height="274.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOQ-7T-OKB">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -37,8 +38,37 @@
                             <color key="textColor" name="TextGreyColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weaknesses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD6-8L-Dfj">
+                            <rect key="frame" x="0.0" y="86.5" width="374" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMB-EK-rVB">
+                            <rect key="frame" x="0.0" y="122.5" width="374" height="80"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Qff-vt-SNj">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="fcM-eY-odI">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Qff-vt-SNj" secondAttribute="bottom" id="5V7-8s-4lU"/>
+                                <constraint firstItem="Qff-vt-SNj" firstAttribute="leading" secondItem="kMB-EK-rVB" secondAttribute="leading" id="6tu-Ty-81B"/>
+                                <constraint firstItem="Qff-vt-SNj" firstAttribute="top" secondItem="kMB-EK-rVB" secondAttribute="top" id="Aoa-oF-GaN"/>
+                                <constraint firstAttribute="trailing" secondItem="Qff-vt-SNj" secondAttribute="trailing" id="Gjx-1J-dI9"/>
+                                <constraint firstAttribute="height" constant="80" id="cgf-aQ-rmk"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Eda-Q4-KlU">
-                            <rect key="frame" x="0.0" y="86.5" width="374" height="60"/>
+                            <rect key="frame" x="0.0" y="214.5" width="374" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwL-L8-s21">
                                     <rect key="frame" x="0.0" y="0.0" width="182" height="60"/>
