@@ -362,7 +362,6 @@
 				849EAB31286CC4040064705B /* Sources */,
 				849EAB32286CC4040064705B /* Frameworks */,
 				849EAB33286CC4040064705B /* Resources */,
-				6057CC17D7AC3BD7C1C0095D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -405,7 +404,6 @@
 				849EAB51286CC4060064705B /* Sources */,
 				849EAB52286CC4060064705B /* Frameworks */,
 				849EAB53286CC4060064705B /* Resources */,
-				6B7C4A375897D74F2804C1C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -517,40 +515,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6057CC17D7AC3BD7C1C0095D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B7C4A375897D74F2804C1C9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pokedex_ios-Pokedex_iosUITests/Pods-Pokedex_ios-Pokedex_iosUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		843AEF0D28747F38007039DB /* SwiftLint */ = {

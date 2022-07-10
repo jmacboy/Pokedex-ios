@@ -16,17 +16,16 @@ class PokemonTypeCollectionCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundUIView.layer.cornerRadius = backgroundUIView.layer.bounds.width / 2
-        backgroundUIView.clipsToBounds = true
-//        backgroundUIView.layer.borderColor = UIColor.darkGray.cgColor
-//        backgroundUIView.layer.borderWidth = 2.0
+        DispatchQueue.main.async {
+            self.backgroundUIView.layer.cornerRadius = self.backgroundUIView.frame.size.width/2
+            self.backgroundUIView.layer.masksToBounds = true
+            self.backgroundUIView.clipsToBounds = true
+        }
     }
-
     func setupData(pokemonType: TypeElement, isTypeSelected: Bool) {
-        pokemonTypeImageView.image = UIImage(named: pokemonType.type.name)
+        pokemonTypeImageView.image = UIImage(named: pokemonType.type.name)?.withRenderingMode(.alwaysTemplate)
         let namedColor = UIColor(named: "type-\(pokemonType.type.name)")
         backgroundUIView.backgroundColor = isTypeSelected ? namedColor : .white
         pokemonTypeImageView.tintColor = isTypeSelected ? .white : namedColor
     }
-
 }
