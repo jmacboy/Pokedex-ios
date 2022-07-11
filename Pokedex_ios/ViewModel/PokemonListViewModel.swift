@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 class PokemonListViewModel: NSObject {
+
     var pokedexService: PokedexServiceProtocol
+    var pokemonsOriginal = [PokemonRaw]()
 
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
@@ -63,5 +65,11 @@ class PokemonListViewModel: NSObject {
         let image = UIImage(data: data!)
 
         return image
+    }
+}
+
+extension PokemonListViewModel: PokemonListViewModelDelegate {
+    func filteredPokemonData(filteredPokemons: [PokemonRaw]) {
+        self.pokemons = filteredPokemons
     }
 }

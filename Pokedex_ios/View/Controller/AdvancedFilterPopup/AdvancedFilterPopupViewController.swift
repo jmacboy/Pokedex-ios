@@ -16,9 +16,16 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
     var selectedTypesForWeakness = [TypeElement]()
 
-    lazy var viewmodel = {
-        AdvancedFilterPopupViewModel()
-    }()
+    var viewModel: AdvancedFilterPopupViewModel
+
+    init(viewModel: AdvancedFilterPopupViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +35,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     func initViewModel() {
-        viewmodel.closePopup = {[weak self] in
+        viewModel.closePopup = {[weak self] in
             self?.animateDismissView()
         }
     }
@@ -50,20 +57,20 @@ class AdvancedFilterPopupViewController: PopupViewController {
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
             contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
-            contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+            contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
+            contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
         ])
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        viewmodel.applyFilters()
+        viewModel.applyFilters(weaknesses: selectedTypesForWeakness)
     }
     @IBAction func resetFilters(_ sender: Any) {
-        viewmodel.resetFilters()
+        viewModel.resetFilters()
     }
 }
 
-extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ConstantVariables.pokemonTypes.count
     }
@@ -87,6 +94,12 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             selectedTypesForWeakness.append(pokemonType)
         }
         weaknessesCollectionView.reloadItems(at: [indexPath])
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 6.7
+        let height = width
+        return CGSize(width: width, height: height)
     }
 
 }
