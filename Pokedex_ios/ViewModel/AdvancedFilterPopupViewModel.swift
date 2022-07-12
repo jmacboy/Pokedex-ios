@@ -31,7 +31,8 @@ class AdvancedFilterPopupViewModel {
         selectedWeaknesses.removeAll()
     }
 
-    func filterByWeaknesses() {
+    @discardableResult
+    func filterByWeaknesses() -> [PokemonRaw] {
         if selectedWeaknesses.isEmpty {
             filtered = pokemonOriginal
         } else {
@@ -44,6 +45,6 @@ class AdvancedFilterPopupViewModel {
                 }
             }
         }
-
+        return filtered
     }
 }
