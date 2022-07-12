@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol PokemonListViewModelProtocol: AnyObject {
-    func reevaluatePokemonData(filteredPokemons: [PokemonRaw])
+protocol ReevaluateDataProtocol: AnyObject {
+    func reevaluate(pokemons: [PokemonRaw])
 }
 
 class AdvancedFilterPopupViewModel {
@@ -17,13 +17,13 @@ class AdvancedFilterPopupViewModel {
     var filtered = [PokemonRaw]()
     var selectedWeaknesses = [TypeElement]()
 
-    var delegate: PokemonListViewModelProtocol?
+    var delegate: ReevaluateDataProtocol?
 
     var closePopup: (() -> Void)?
 
     func applyFilters() {
         filterByWeaknesses()
-        self.delegate?.reevaluatePokemonData(filteredPokemons: filtered)
+        self.delegate?.reevaluate(pokemons: filtered)
         closePopup?()
     }
 

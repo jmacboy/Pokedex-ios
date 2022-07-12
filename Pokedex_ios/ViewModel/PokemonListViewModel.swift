@@ -80,8 +80,8 @@ class PokemonListViewModel: NSObject {
     }
 }
 
-extension PokemonListViewModel: PokemonListViewModelProtocol {
-    func reevaluatePokemonData(filteredPokemons: [PokemonRaw]) {
-        self.pokemons = filteredPokemons
+extension PokemonListViewModel: ReevaluateDataProtocol {
+    func reevaluate(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
     }
 }
