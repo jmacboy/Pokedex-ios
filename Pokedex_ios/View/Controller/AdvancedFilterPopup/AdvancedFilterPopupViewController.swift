@@ -16,16 +16,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
     var selectedTypesForWeakness = [TypeElement]()
 
-    var viewModel: AdvancedFilterPopupViewModel
-
-    init(viewModel: AdvancedFilterPopupViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var viewModel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +26,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     func initViewModel() {
-        viewModel.closePopup = {[weak self] in
+        viewModel?.closePopup = {[weak self] in
             self?.animateDismissView()
         }
     }
@@ -63,10 +54,11 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        viewModel.applyFilters(weaknesses: selectedTypesForWeakness)
+        viewModel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
-        viewModel.resetFilters()
+        viewModel?.resetFilters()
+        weaknessesCollectionView.reloadData()
     }
 }
 
@@ -80,7 +72,7 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
                 as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
 
-        let index = selectedTypesForWeakness.firstIndex(where: { $0.type.id == pokemonType.type.id })
+        let index = viewModel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id })
         cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
         return cell
     }
@@ -88,10 +80,10 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
 
-        if let index = selectedTypesForWeakness.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
-            selectedTypesForWeakness.remove(at: index)
+        if let index = viewModel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
+            viewModel?.selectedWeaknesses.remove(at: index)
         } else {
-            selectedTypesForWeakness.append(pokemonType)
+            viewModel?.selectedWeaknesses.append(pokemonType)
         }
         weaknessesCollectionView.reloadItems(at: [indexPath])
     }

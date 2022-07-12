@@ -24,8 +24,18 @@ class PokemonListViewModel: NSObject {
     }
     var searchText = ""
 
-    init(pokedexService: PokedexServiceProtocol = PokedexService()) {
+    var advancedViewModel = AdvancedFilterPopupViewModel() {
+        didSet {
+            advancedViewModel.delegate = self
+        }
+    }
+
+    init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
+        defer {
+            self.advancedViewModel = filterVM
+        }
+        super.init()
     }
 
     func getPokemons() {
@@ -34,6 +44,8 @@ class PokemonListViewModel: NSObject {
             case .success(let pokemons):
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
+                self.pokemonsOriginal = pokemons
+                self.advancedViewModel.pokemonOriginal = pokemons
             case .failure:
                 self.showErrorAlert?()
             }
@@ -68,8 +80,8 @@ class PokemonListViewModel: NSObject {
     }
 }
 
-extension PokemonListViewModel: PokemonListViewModelDelegate {
-    func filteredPokemonData(filteredPokemons: [PokemonRaw]) {
+extension PokemonListViewModel: PokemonListViewModelProtocol {
+    func reevaluatePokemonData(filteredPokemons: [PokemonRaw]) {
         self.pokemons = filteredPokemons
     }
 }

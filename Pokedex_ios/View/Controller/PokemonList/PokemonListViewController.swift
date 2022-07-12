@@ -34,14 +34,13 @@ class PokemonListViewController: UIViewController {
     }
     func setUpAdvanceFilterPopup() {
         let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
-        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain, target: self, action: #selector(showAdvancedFilterPopup))
+        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
+                                                   target: self, action: #selector(showAdvancedFilterPopup))
         navigationItem.rightBarButtonItem = advancedFilterButton
     }
     @objc func showAdvancedFilterPopup() {
-//        let vc = AdvancedFilterPopup()
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel(pokemons: viewModel.pokemons)
-        advancedFilterViewModel.delegate = viewModel.self
-        let vc = AdvancedFilterPopupViewController(viewModel: advancedFilterViewModel)
+        let vc = AdvancedFilterPopupViewController()
+        vc.viewModel = viewModel.advancedViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }

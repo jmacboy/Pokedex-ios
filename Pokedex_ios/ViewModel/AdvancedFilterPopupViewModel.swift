@@ -7,38 +7,43 @@
 
 import Foundation
 
-protocol PokemonListViewModelDelegate {
-    func filteredPokemonData(filteredPokemons: [PokemonRaw])
+protocol PokemonListViewModelProtocol: AnyObject {
+    func reevaluatePokemonData(filteredPokemons: [PokemonRaw])
 }
 
 class AdvancedFilterPopupViewModel {
 
-    var pokemonOriginal: [PokemonRaw]
+    var pokemonOriginal = [PokemonRaw]()
     var filtered = [PokemonRaw]()
+    var selectedWeaknesses = [TypeElement]()
 
-    var delegate: PokemonListViewModelDelegate?
-
-    init(pokemons: [PokemonRaw]) {
-        self.pokemonOriginal = pokemons
-    }
+    var delegate: PokemonListViewModelProtocol?
 
     var closePopup: (() -> Void)?
 
-    func applyFilters(weaknesses: [TypeElement]) {
-        filterByWeaknesses(weaknesses)
-        self.delegate?.filteredPokemonData(filteredPokemons: filtered)
+    func applyFilters() {
+        filterByWeaknesses()
+        self.delegate?.reevaluatePokemonData(filteredPokemons: filtered)
         closePopup?()
     }
 
     func resetFilters() {
-        // TODO: Make all the logic for reset the filters
+        selectedWeaknesses.removeAll()
     }
 
-    func filterByWeaknesses(_ weaknessesTypes: [TypeElement]) {
-        filtered = pokemonOriginal.filter { $0.pokemonDetails[0].weaknesses!.contains { weakness in
-            let aux = weaknessesTypes.contains { $0.type.id == weakness.fromType.id }
-            return weakness.damageTaken == 2.0 && aux
-        }}
+    func filterByWeaknesses() {
+        if selectedWeaknesses.isEmpty {
+            filtered = pokemonOriginal
+        } else {
+            filtered = pokemonOriginal.filter { pokemon in
+                let aux = pokemon.pokemonDetails[0].weaknesses!.filter { $0.damageTaken >= 2.0 }
+                return selectedWeaknesses.allSatisfy { selectedType in
+                    aux.contains { weaks in
+                    return weaks.fromType.id == selectedType.type.id
+                    }
+                }
+            }
+        }
 
     }
 }
