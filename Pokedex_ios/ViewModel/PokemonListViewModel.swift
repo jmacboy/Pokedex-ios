@@ -60,6 +60,7 @@ class PokemonListViewModel: NSObject {
             })
         }
     }
+
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]
     }

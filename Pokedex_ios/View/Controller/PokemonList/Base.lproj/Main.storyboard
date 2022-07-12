@@ -136,8 +136,7 @@
             <color red="0.090000003576278687" green="0.090000003576278687" blue="0.10599999874830246" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="background-grey">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
->>>>>>> e134b09 (added search pokemon by name):Pokedex_ios/View/Base.lproj/Main.storyboard
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
