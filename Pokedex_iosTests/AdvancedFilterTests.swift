@@ -16,15 +16,13 @@ class AdvancedFilterTests: XCTestCase {
     func testGetPokemonsFilteredByTest() {
         let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.selectedTypesForTypes = TestResources.shared.filterTypesCriteria
+        advancedFilterViewModel.pokemons = TestResources.shared.pokemonsList
         
-        let result = advancedFilterViewModel.filterByTypes(pokeData: TestResources.shared.pokemonsList)
+        let result = advancedFilterViewModel.filterByTypes()
         
         XCTAssertEqual(result.count, 2)
     }
     
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     var mockTest: MockPokedexService?
     var viewModel: PokemonListViewModel?
 
@@ -40,7 +38,7 @@ class AdvancedFilterTests: XCTestCase {
     func testWeaknessesFilterWithSelectedValues() throws {
         let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.selectedWeaknesses = TestResources.filterByWeankessCriteria
-        advancedFilterViewModel.pokemonOriginal = TestResources.pokemonRaw
+        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
@@ -50,7 +48,7 @@ class AdvancedFilterTests: XCTestCase {
     func testWeaknessesFilterWithNoSelectedValues() throws {
         let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.selectedWeaknesses = []
-        advancedFilterViewModel.pokemonOriginal = TestResources.pokemonRaw
+        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
@@ -65,3 +63,4 @@ class AdvancedFilterTests: XCTestCase {
     }
 
 }
+

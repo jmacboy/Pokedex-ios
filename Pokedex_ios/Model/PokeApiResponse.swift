@@ -62,9 +62,3 @@ struct Weakness: Codable {
     let fromType: Generation
     let damageTaken: Double
 }
-
-// MARK: - Weakness
-struct Weakness: Codable {
-    let fromType: Generation
-    let damageTaken: Double
-}
