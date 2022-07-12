@@ -115,16 +115,13 @@ extension PopupViewController {
             // Condition 1: If new height is below min, dismiss controller
             if newHeight < dismissibleHeight {
                 self.animateDismissView()
-            }
-            else if newHeight < defaultHeight {
+            } else if newHeight < defaultHeight {
                 // Condition 2: If new height is below default, animate back to default
                 animateContainerHeight(defaultHeight)
-            }
-            else if newHeight < maximumContainerHeight && isDraggingDown {
+            } else if newHeight < maximumContainerHeight && isDraggingDown {
                 // Condition 3: If new height is below max and going down, set to default height
                 animateContainerHeight(defaultHeight)
-            }
-            else if newHeight > defaultHeight && !isDraggingDown {
+            } else if newHeight > defaultHeight && !isDraggingDown {
                 // Condition 4: If new height is below max and going up, set to max height at top
                 animateContainerHeight(maximumContainerHeight)
             }
