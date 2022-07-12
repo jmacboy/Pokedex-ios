@@ -11,12 +11,7 @@ import XCTest
 @testable import Pokedex_ios
 
 class AdvancedFilterTests: XCTestCase {
-    let mockTest = MockPokedexService()
-    let viewModel = PokemonListViewModel(pokedexService: MockPokedexService())
-    
     func testGetPokemonsFilteredByTest() {
-//        viewModel.getPokemons()
-        
         let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.selectedTypesForTypes = TestResources.shared.filterTypesCriteria
         

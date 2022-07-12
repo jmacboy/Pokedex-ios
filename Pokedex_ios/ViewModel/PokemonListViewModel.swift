@@ -13,9 +13,9 @@ class PokemonListViewModel: NSObject {
 
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
-    var filter = AdvancedFilterPopupViewModel() {
+    var filterViewModel = AdvancedFilterPopupViewModel() {
         didSet {
-            filter.delegate = self
+            filterViewModel.delegate = self
         }
     }
 
@@ -31,7 +31,7 @@ class PokemonListViewModel: NSObject {
         self.pokedexService = pokedexService
         super.init()
         defer {
-            self.filter = filterVM
+            self.filterViewModel = filterVM
         }
     }
 
@@ -41,7 +41,7 @@ class PokemonListViewModel: NSObject {
             case .success(let pokemons):
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
-                self.filter.pokemons = pokemons
+                self.filterViewModel.pokemons = pokemons
             case .failure:
                 self.showErrorAlert?()
             }

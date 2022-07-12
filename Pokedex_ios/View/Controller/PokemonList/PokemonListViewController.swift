@@ -41,7 +41,7 @@ class PokemonListViewController: UIViewController {
     }
     @objc func showAdvancedFilterPopup() {
         let vc = AdvancedFilterPopupViewController()
-        vc.viewmodel = viewModel.filter
+        vc.viewmodel = viewModel.filterViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }

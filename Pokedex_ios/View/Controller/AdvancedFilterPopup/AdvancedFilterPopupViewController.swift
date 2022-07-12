@@ -55,7 +55,6 @@ class AdvancedFilterPopupViewController: PopupViewController {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
-//            contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
         ])
