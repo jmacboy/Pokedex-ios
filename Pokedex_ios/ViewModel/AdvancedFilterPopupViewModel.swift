@@ -7,23 +7,34 @@
 
 import Foundation
 
-protocol ReevaluateDataProtocol {
+protocol ReevaluateDataProtocol: AnyObject {
     func reevaluate(pokemons: [PokemonRaw])
 }
 
 class AdvancedFilterPopupViewModel {
+
+    var pokemonOriginal = [PokemonRaw]()
+    var filtered = [PokemonRaw]()
+    var selectedWeaknesses = [TypeElement]()
+
+    var delegate: ReevaluateDataProtocol?
+
     var closePopup: (() -> Void)?
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
     var delegate: ReevaluateDataProtocol?
-    @objc func applyFilters() {
-        // Make all the filter logic here
+
+    func applyFilters() {
+        filterByWeaknesses()
         closePopup?()
-        self.filterByTypes(pokeData: self.pokemons)
+        filterByTypes(pokeData: pokemons)
+        delegate?.reevaluate(pokemons: filtered)
     }
+
     func resetFilters() {
         // Make all the logic for reset the filters
         selectedTypesForTypes.removeAll()
+        selectedWeaknesses.removeAll()
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
@@ -39,5 +50,22 @@ class AdvancedFilterPopupViewModel {
         })
         delegate?.reevaluate(pokemons: filteredData)
         return filteredData
+    }
+
+    @discardableResult
+    func filterByWeaknesses() -> [PokemonRaw] {
+        if selectedWeaknesses.isEmpty {
+            filtered = pokemonOriginal
+        } else {
+            filtered = pokemonOriginal.filter { pokemon in
+                let aux = pokemon.pokemonDetails[0].weaknesses!.filter { $0.damageTaken >= 2.0 }
+                return selectedWeaknesses.allSatisfy { selectedType in
+                    aux.contains { weaks in
+                    return weaks.fromType.id == selectedType.type.id
+                    }
+                }
+            }
+        }
+        return filtered
     }
 }

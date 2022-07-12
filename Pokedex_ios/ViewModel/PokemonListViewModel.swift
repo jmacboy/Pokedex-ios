@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class PokemonListViewModel: NSObject {
+
     var pokedexService: PokedexServiceProtocol
 
     var reloadData: (() -> Void)?
@@ -29,10 +30,10 @@ class PokemonListViewModel: NSObject {
 
     init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
-        super.init()
         defer {
             self.filterViewModel = filterVM
         }
+        super.init()
     }
 
     func getPokemons() {

@@ -47,7 +47,7 @@ large_tuple: # warn user when using 3 values in tuple, give error if there are 4
 type_name:
   min_length: 4 # only warning
   max_length: # warning and error
-    warning: 30
-    error: 35
+    warning: 35
+    error: 36
   excluded: iPhone # excluded via string
 reporter: "xcode"

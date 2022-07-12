@@ -22,8 +22,9 @@ class PokemonTypeCollectionCell: UICollectionViewCell {
             self.backgroundUIView.clipsToBounds = true
         }
     }
+
     func setupData(pokemonType: TypeElement, isTypeSelected: Bool) {
-        pokemonTypeImageView.image = UIImage(named: pokemonType.type.name)?.withRenderingMode(.alwaysTemplate)
+        pokemonTypeImageView.image = UIImage(named: pokemonType.type.name)
         let namedColor = UIColor(named: "type-\(pokemonType.type.name)")
         backgroundUIView.backgroundColor = isTypeSelected ? namedColor : .white
         pokemonTypeImageView.tintColor = isTypeSelected ? .white : namedColor
