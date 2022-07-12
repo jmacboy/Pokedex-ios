@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PokemonTypeCollectionCell" customModule="Pokedex_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfl-BY-cwv">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ddn-MT-AuP">
+                                <rect key="frame" x="25" y="25" width="50" height="50"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ddn-MT-AuP" firstAttribute="height" secondItem="pfl-BY-cwv" secondAttribute="height" multiplier="0.5" id="Ess-wC-yBH"/>
+                            <constraint firstItem="Ddn-MT-AuP" firstAttribute="width" secondItem="pfl-BY-cwv" secondAttribute="width" multiplier="0.5" id="N4k-8f-ZQ6"/>
+                            <constraint firstItem="Ddn-MT-AuP" firstAttribute="centerY" secondItem="pfl-BY-cwv" secondAttribute="centerY" id="aow-zT-wXK"/>
+                            <constraint firstItem="Ddn-MT-AuP" firstAttribute="centerX" secondItem="pfl-BY-cwv" secondAttribute="centerX" id="xQf-Va-2ly"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="pfl-BY-cwv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1cJ-BH-Lhi"/>
+                <constraint firstAttribute="bottom" secondItem="pfl-BY-cwv" secondAttribute="bottom" id="MPU-xU-Fvs"/>
+                <constraint firstItem="pfl-BY-cwv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jc0-vD-RoO"/>
+                <constraint firstAttribute="trailing" secondItem="pfl-BY-cwv" secondAttribute="trailing" id="vV8-el-kUG"/>
+            </constraints>
+            <size key="customSize" width="124" height="100"/>
+            <connections>
+                <outlet property="backgroundUIView" destination="pfl-BY-cwv" id="Akh-gQ-xMI"/>
+                <outlet property="pokemonTypeImageView" destination="Ddn-MT-AuP" id="vAN-hL-G2S"/>
+            </connections>
+            <point key="canvasLocation" x="185.50724637681162" y="94.419642857142847"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

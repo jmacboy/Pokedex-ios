@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 class PokemonListViewModel: NSObject {
+
     var pokedexService: PokedexServiceProtocol
+    var pokemonsOriginal = [PokemonRaw]()
 
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
@@ -22,8 +24,18 @@ class PokemonListViewModel: NSObject {
     }
     var searchText = ""
 
-    init(pokedexService: PokedexServiceProtocol = PokedexService()) {
+    var advancedViewModel = AdvancedFilterPopupViewModel() {
+        didSet {
+            advancedViewModel.delegate = self
+        }
+    }
+
+    init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
+        defer {
+            self.advancedViewModel = filterVM
+        }
+        super.init()
     }
 
     func getPokemons() {
@@ -32,7 +44,9 @@ class PokemonListViewModel: NSObject {
             case .success(let pokemons):
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
-            case .failure( _):
+                self.pokemonsOriginal = pokemons
+                self.advancedViewModel.pokemonOriginal = pokemons
+            case .failure:
                 self.showErrorAlert?()
             }
         }
@@ -63,5 +77,11 @@ class PokemonListViewModel: NSObject {
         let image = UIImage(data: data!)
 
         return image
+    }
+}
+
+extension PokemonListViewModel: ReevaluateDataProtocol {
+    func reevaluate(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
     }
 }
