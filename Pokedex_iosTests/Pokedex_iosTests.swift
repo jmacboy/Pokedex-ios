@@ -34,7 +34,7 @@ class Pokedex_iosTests: XCTestCase {
         viewModel.getPokemons()
         viewModel.searchText = "so"
         viewModel.searchPokemonsByName()
-        XCTAssertEqual(viewModel.pokemons.count, 1)
+        XCTAssertEqual(viewModel.pokemons.count, 4)
     }
     
     func testSearchByNameFailure() {
@@ -48,7 +48,7 @@ class Pokedex_iosTests: XCTestCase {
         viewModel.getPokemons()
         viewModel.searchText = ""
         viewModel.searchPokemonsByName()
-        XCTAssertEqual(viewModel.pokemons.count, 1)
+        XCTAssertEqual(viewModel.pokemons.count, 4  )
     }
 
     override func setUpWithError() throws {
