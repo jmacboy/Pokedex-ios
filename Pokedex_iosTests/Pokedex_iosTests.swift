@@ -12,7 +12,7 @@ import XCTest
 class MockPokedexService: PokedexServiceProtocol {
     var getPokemonsGotCalled = false
     func getPokemons(completion: @escaping (Result<[PokemonRaw], Error>) -> Void) {
-        completion(.success([TestResources.shared.singlePokemon]))
+        completion(.success(TestResources.shared.pokemonsList))
         getPokemonsGotCalled = true
     }
     
@@ -27,7 +27,7 @@ class Pokedex_iosTests: XCTestCase {
     
     func testGetPokemonsFromNetwork() {
         viewModel.getPokemons()
-        XCTAssertEqual(viewModel.pokemons.count, 1)
+        XCTAssertEqual(viewModel.pokemons.count, 4)
     }
     
     func testSearchByNameSuccess() {

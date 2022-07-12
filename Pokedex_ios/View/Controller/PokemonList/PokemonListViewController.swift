@@ -11,7 +11,6 @@ class PokemonListViewController: UIViewController {
     @IBOutlet weak var pokemonsTableView: UITableView!
     @IBOutlet weak var pokemonSearchTextField: UITextField!
     @IBOutlet weak var searchView: UIView!
-    
     let pokemonCell = "PokemonTableViewCell"
     let pokeCellIdentifier = "PokeCell"
 
@@ -34,12 +33,13 @@ class PokemonListViewController: UIViewController {
     }
     func setUpAdvanceFilterPopup() {
         let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
-        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain, target: self, action: #selector(showAdvancedFilterPopup))
+        let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
+                                                   target: self, action: #selector(showAdvancedFilterPopup))
         navigationItem.rightBarButtonItem = advancedFilterButton
     }
     @objc func showAdvancedFilterPopup() {
-//        let vc = AdvancedFilterPopup()
         let vc = AdvancedFilterPopupViewController()
+        vc.viewmodel = viewModel.filter
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
@@ -62,7 +62,6 @@ class PokemonListViewController: UIViewController {
 
     func initViewModel() {
         viewModel.getPokemons()
-
         viewModel.reloadData = { [weak self] in
             DispatchQueue.main.async {
                 self?.pokemonsTableView.reloadData()
@@ -76,7 +75,6 @@ class PokemonListViewController: UIViewController {
             self.navigationController?.present(sheet, animated: true, completion: nil)
         }
     }
-    
     func setSearchView() {
         pokemonSearchTextField.addTarget(self, action: #selector(PokemonListViewController.textFieldDidChange(_:)), for: .editingChanged)
         searchView.layer.cornerRadius = 10

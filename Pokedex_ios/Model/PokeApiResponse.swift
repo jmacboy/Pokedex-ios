@@ -31,9 +31,13 @@ struct PokemonRaw: Codable {
 }
 
 // MARK: - Generation
-struct Generation: Codable {
+struct Generation: Codable, Equatable {
     let id: Int
     let name: String
+    public static func == (lhs: Generation, rhs: Generation) -> Bool {
+        return
+            lhs.id == rhs.id && lhs.name == rhs.name
+    }
 }
 
 // MARK: - PokemonDetail
@@ -45,8 +49,12 @@ struct PokemonDetail: Codable {
 }
 
 // MARK: - TypeElement
-struct TypeElement: Codable {
+struct TypeElement: Codable, Equatable {
     let type: Generation
+    public static func == (lhs: TypeElement, rhs: TypeElement) -> Bool {
+            return
+                lhs.type == rhs.type
+        }
 }
 
 // MARK: - Weakness

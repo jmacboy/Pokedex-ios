@@ -13,6 +13,11 @@ class PokemonListViewModel: NSObject {
 
     var reloadData: (() -> Void)?
     var showErrorAlert: (() -> Void)?
+    var filter = AdvancedFilterPopupViewModel() {
+        didSet {
+            filter.delegate = self
+        }
+    }
 
     var pokemonsOriginalList = [PokemonRaw]()
     var pokemons = [PokemonRaw]() {
@@ -22,8 +27,12 @@ class PokemonListViewModel: NSObject {
     }
     var searchText = ""
 
-    init(pokedexService: PokedexServiceProtocol = PokedexService()) {
+    init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService()) {
         self.pokedexService = pokedexService
+        super.init()
+        defer {
+            self.filter = filterVM
+        }
     }
 
     func getPokemons() {
@@ -32,7 +41,8 @@ class PokemonListViewModel: NSObject {
             case .success(let pokemons):
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
-            case .failure( _):
+                self.filter.pokemons = pokemons
+            case .failure:
                 self.showErrorAlert?()
             }
         }
@@ -40,7 +50,6 @@ class PokemonListViewModel: NSObject {
 
     func applyFilters() {
         pokemons = self.pokemonsOriginalList
-        
         self.searchPokemonsByName()
     }
 
@@ -51,11 +60,9 @@ class PokemonListViewModel: NSObject {
             })
         }
     }
-
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]
     }
-
     func getPokemonsImageBy(id: Int) -> UIImage? {
         let urlStr = pokedexService.getPokemonsImageBy(id: id)
         let url = URL(string: urlStr)
@@ -63,5 +70,11 @@ class PokemonListViewModel: NSObject {
         let image = UIImage(data: data!)
 
         return image
+    }
+}
+
+extension PokemonListViewModel: ReevaluateDataProtocol {
+    func reevaluate(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
     }
 }

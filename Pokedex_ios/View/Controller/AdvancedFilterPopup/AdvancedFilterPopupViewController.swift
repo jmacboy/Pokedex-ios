@@ -19,9 +19,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
     var selectedTypesForWeakness = [TypeElement]()
     var selectedTypesForTypes = [TypeElement]()
 
-    lazy var viewmodel = {
-        AdvancedFilterPopupViewModel()
-    }()
+    var viewmodel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +29,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     func initViewModel() {
-        viewmodel.closePopup = {[weak self] in
+        viewmodel?.closePopup = {[weak self] in
             self?.animateDismissView()
         }
     }
@@ -64,10 +62,11 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        viewmodel.applyFilters()
+        viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
-        viewmodel.resetFilters()
+        viewmodel?.resetFilters()
+        typesCollectionView.reloadData()
     }
 }
 
@@ -86,7 +85,7 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
         }
         if collectionView == self.typesCollectionView {
-            let index = selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id })
+            let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id })
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
         }
         return cell
@@ -103,10 +102,10 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             weaknessesCollectionView.reloadItems(at: [indexPath])
         }
         if collectionView == self.typesCollectionView {
-            if let index = selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
-                selectedTypesForTypes.remove(at: index)
+            if let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
+                viewmodel?.selectedTypesForTypes.remove(at: index)
             } else {
-                selectedTypesForTypes.append(pokemonType)
+                viewmodel?.selectedTypesForTypes.append(pokemonType)
             }
             typesCollectionView.reloadItems(at: [indexPath])
         }
