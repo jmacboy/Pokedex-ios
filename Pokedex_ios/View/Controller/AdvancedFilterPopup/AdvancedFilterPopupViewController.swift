@@ -105,7 +105,7 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
         }
         if collectionView == self.weightCollectionView {
             let pokemonWeight = ConstantVariables.pokemonWeight[indexPath.row]
-            let index = viewmodel?.selectedWeigth[indexPath.row] ?? false
+            let index = viewmodel?.selectedWeight[indexPath.row] ?? false
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonWeightCollectionCell.identifier, for: indexPath)
                     as? PokemonWeightCollectionCell else { return UICollectionViewCell() }
             cell.setupData(pokemonType: pokemonWeight, isTypeSelected: index)
@@ -133,10 +133,10 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             typesCollectionView.reloadItems(at: [indexPath])
         }
         if collectionView == self.weightCollectionView {
-            if viewmodel?.selectedWeigth[indexPath.row] == true {
-                viewmodel?.selectedWeigth[indexPath.row] = false
+            if viewmodel?.selectedWeight[indexPath.row] == true {
+                viewmodel?.selectedWeight[indexPath.row] = false
             } else {
-                viewmodel?.selectedWeigth[indexPath.row] = true
+                viewmodel?.selectedWeight[indexPath.row] = true
             }
             weightCollectionView.reloadItems(at: [indexPath])
         }
