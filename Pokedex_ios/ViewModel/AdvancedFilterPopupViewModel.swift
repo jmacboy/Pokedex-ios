@@ -19,8 +19,7 @@ class AdvancedFilterPopupViewModel {
     var closePopup: (() -> Void)?
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
-    var selectedWeight = [false, false, false]
-
+    var selectedWeight: [Bool] = Array(repeating: false, count: 3)
     func applyFilters() {
         closePopup?()
         // Do not rearrange the following filters functions
