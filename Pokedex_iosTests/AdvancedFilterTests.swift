@@ -1,14 +1,28 @@
 //
+//  AdvanceFilterTests.swift
+//  Pokedex_iosTests
+//
+//  Created by Alvaro Choque on 11/7/22.
+//
 //  AdvancedFilterPokemonTests.swift
 //  Pokedex_iosTests
 //
 //  Created by admin on 7/11/22.
 //
-
 import XCTest
 @testable import Pokedex_ios
 
 class AdvancedFilterTests: XCTestCase {
+    let advancedFilterViewModel = AdvancedFilterPopupViewModel()
+    func testGetPokemonsFilteredByTest() {
+        advancedFilterViewModel.selectedTypesForTypes = TestResources.shared.filterTypesCriteria
+        advancedFilterViewModel.pokemons = TestResources.shared.pokemonsList
+        
+        let result = advancedFilterViewModel.filterByTypes()
+        
+        XCTAssertEqual(result.count, 2)
+    }
+    
     var mockTest: MockPokedexService?
     var viewModel: PokemonListViewModel?
 
@@ -22,9 +36,11 @@ class AdvancedFilterTests: XCTestCase {
     }
 
     func testWeaknessesFilterWithSelectedValues() throws {
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
+//        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
+        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByTypes()
         advancedFilterViewModel.selectedWeaknesses = TestResources.filterByWeankessCriteria
-        advancedFilterViewModel.pokemonOriginal = TestResources.pokemonRaw
+//        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
@@ -32,9 +48,9 @@ class AdvancedFilterTests: XCTestCase {
     }
 
     func testWeaknessesFilterWithNoSelectedValues() throws {
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
+        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByTypes()
         advancedFilterViewModel.selectedWeaknesses = []
-        advancedFilterViewModel.pokemonOriginal = TestResources.pokemonRaw
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
@@ -49,3 +65,4 @@ class AdvancedFilterTests: XCTestCase {
     }
 
 }
+

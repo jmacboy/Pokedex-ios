@@ -12,11 +12,15 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var weaknessesCollectionView: UICollectionView!
 
+    // Collection Views
+    @IBOutlet weak var typesCollectionView: UICollectionView!
+    var selectedTypesForTypes = [TypeElement]()
+
+    @IBOutlet weak var weaknessesCollectionView: UICollectionView!
     var selectedTypesForWeakness = [TypeElement]()
 
-    var viewModel: AdvancedFilterPopupViewModel?
+    var viewmodel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +30,18 @@ class AdvancedFilterPopupViewController: PopupViewController {
     }
 
     func initViewModel() {
-        viewModel?.closePopup = {[weak self] in
+        viewmodel?.closePopup = {[weak self] in
             self?.animateDismissView()
         }
     }
 
     func setupElements() {
         let uiNibPokemonTypeCell = UINib(nibName: PokemonTypeCollectionCell.nibName, bundle: nil)
+        // For Types collection view
+        typesCollectionView.register(uiNibPokemonTypeCell, forCellWithReuseIdentifier: PokemonTypeCollectionCell.identifier)
+        typesCollectionView.delegate = self
+        typesCollectionView.dataSource = self
+        // For Weaknesses collection view
         weaknessesCollectionView.register(uiNibPokemonTypeCell, forCellWithReuseIdentifier: PokemonTypeCollectionCell.identifier)
         weaknessesCollectionView.delegate = self
         weaknessesCollectionView.dataSource = self
@@ -47,17 +56,17 @@ class AdvancedFilterPopupViewController: PopupViewController {
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
-            contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
             contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 40),
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
         ])
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        viewModel?.applyFilters()
+        viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
-        viewModel?.resetFilters()
+        viewmodel?.resetFilters()
+        typesCollectionView.reloadData()
         weaknessesCollectionView.reloadData()
     }
 }
@@ -72,20 +81,35 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
                 as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
 
-        let index = viewModel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id })
-        cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+        if collectionView == self.weaknessesCollectionView {
+            let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id })
+            cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+        }
+        if collectionView == self.typesCollectionView {
+            let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id })
+            cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+        }
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
-
-        if let index = viewModel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
-            viewModel?.selectedWeaknesses.remove(at: index)
-        } else {
-            viewModel?.selectedWeaknesses.append(pokemonType)
+        if collectionView == self.weaknessesCollectionView {
+             if let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
+                viewmodel?.selectedWeaknesses.remove(at: index)
+             } else {
+                viewmodel?.selectedWeaknesses.append(pokemonType)
+             }
+            weaknessesCollectionView.reloadItems(at: [indexPath])
         }
-        weaknessesCollectionView.reloadItems(at: [indexPath])
+        if collectionView == self.typesCollectionView {
+            if let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
+                viewmodel?.selectedTypesForTypes.remove(at: index)
+            } else {
+                viewmodel?.selectedTypesForTypes.append(pokemonType)
+            }
+            typesCollectionView.reloadItems(at: [indexPath])
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -91,6 +91,8 @@ playground.xcworkspace
 
 Pods/
 .Podfile.swp
+.Podfile.lock.swp
+.Podfile.lock.swo
 
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
