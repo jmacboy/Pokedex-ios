@@ -56,6 +56,26 @@ class AdvancedFilterTests: XCTestCase {
 
         XCTAssertEqual(result.count, 3)
     }
+    
+    func testWeigthFilterWithSelectedValues() throws {
+            let advancedFilterViewModel = AdvancedFilterPopupViewModel()
+            advancedFilterViewModel.filtered = TestResources.pokemonRaw
+            //low weigth
+            advancedFilterViewModel.caterpieSelected = true
+            let resultLow = advancedFilterViewModel.filterLowWeigth()
+            XCTAssertEqual(resultLow.count, 1)
+            //mid weigth
+            advancedFilterViewModel.laprasSelected = true
+            advancedFilterViewModel.filtered = TestResources.pokemonRaw
+            let resultMid = advancedFilterViewModel.filterMidWeigth()
+            XCTAssertEqual(resultMid.count, 1)
+            // heavy weigth
+            advancedFilterViewModel.snorlaxSelected =  true
+            advancedFilterViewModel.filtered = TestResources.pokemonRaw
+            let resultHeavy = advancedFilterViewModel.filterHeavyWeigth()
+            XCTAssertEqual(resultHeavy.count, 1)
+        }
+        
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

@@ -9,7 +9,9 @@ import UIKit
 
 class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet weak var contentStackView: UIStackView!
-
+    @IBOutlet weak var weigthLaprasButton: UIButton!
+    @IBOutlet weak var weigthSnorlaxButton: UIButton!
+    @IBOutlet weak var weightCaterpieButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
 
@@ -60,14 +62,50 @@ class AdvancedFilterPopupViewController: PopupViewController {
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
         ])
     }
+    func resetButtonImages() {
+           viewmodel?.caterpieSelected = false
+           viewmodel?.laprasSelected = false
+           viewmodel?.snorlaxSelected = false
+           weightCaterpieButton.setImage(UIImage(named: "CaterpieUnselected.png"), for: .normal)
+           weigthLaprasButton.setImage(UIImage(named: "LaprasUnselected.png"), for: .normal)
+           weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxUnselected.png"), for: .normal)
+       }
 
     @IBAction func applyFilters(_ sender: Any) {
         viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
         viewmodel?.resetFilters()
+        resetButtonImages()
         typesCollectionView.reloadData()
         weaknessesCollectionView.reloadData()
+    }
+    @IBAction func weigthCaterpieSelected(_ sender: Any) {
+        if viewmodel?.caterpieSelected == true {
+                  viewmodel?.caterpieSelected = false
+                          weightCaterpieButton.setImage(UIImage(named: "CaterpieUnselected.png"), for: .normal)
+                      } else {
+                          viewmodel?.caterpieSelected = true
+                          weightCaterpieButton.setImage(UIImage(named: "CaterpieSelected.png"), for: .normal)
+                      }
+    }
+    @IBAction func weigthLaprasSelected(_ sender: Any) {
+        if viewmodel?.laprasSelected == true {
+                    viewmodel?.laprasSelected = false
+                           weigthLaprasButton.setImage(UIImage(named: "LaprasUnselected.png"), for: .normal)
+                       } else {
+                           viewmodel?.laprasSelected = true
+                           weigthLaprasButton.setImage(UIImage(named: "LaprasSelected.png"), for: .normal)
+                       }
+    }
+    @IBAction func weightSnorlaxSelected(_ sender: Any) {
+        if viewmodel?.snorlaxSelected == true {
+                   viewmodel?.snorlaxSelected = false
+                       weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxUnselected.png"), for: .normal)
+                   } else {
+                       viewmodel?.snorlaxSelected = true
+                       weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxSelected.png"), for: .normal)
+                   }
     }
 }
 

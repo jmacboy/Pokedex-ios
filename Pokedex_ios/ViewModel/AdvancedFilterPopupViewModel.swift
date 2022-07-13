@@ -15,9 +15,10 @@ class AdvancedFilterPopupViewModel {
 
     var filtered = [PokemonRaw]()
     var selectedWeaknesses = [TypeElement]()
-
+    var caterpieSelected: Bool = false
+    var laprasSelected: Bool = false
+    var snorlaxSelected: Bool = false
     var delegate: ReevaluateDataProtocol?
-
     var closePopup: (() -> Void)?
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
@@ -27,6 +28,9 @@ class AdvancedFilterPopupViewModel {
         // Do not rearrange the following filters functions
         filterByTypes()
         filterByWeaknesses()
+        filterLowWeigth()
+        filterMidWeigth()
+        filterHeavyWeigth()
         delegate?.reevaluate(pokemons: filtered)
     }
 
@@ -68,4 +72,25 @@ class AdvancedFilterPopupViewModel {
         }
         return filtered
     }
+    @discardableResult
+       func filterLowWeigth() -> [PokemonRaw] {
+           if  caterpieSelected == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 0  && $0.pokemonDetails[0].weight < 132 })
+           }
+           return filtered
+       }
+       @discardableResult
+       func filterMidWeigth() -> [PokemonRaw] {
+           if  laprasSelected == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 132  && $0.pokemonDetails[0].weight < 451 })
+           }
+           return filtered
+       }
+       @discardableResult
+       func filterHeavyWeigth() -> [PokemonRaw] {
+           if  snorlaxSelected == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 451 })
+           }
+           return filtered
+       }
 }
