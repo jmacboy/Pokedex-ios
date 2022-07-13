@@ -15,22 +15,18 @@ class AdvancedFilterPopupViewModel {
 
     var filtered = [PokemonRaw]()
     var selectedWeaknesses = [TypeElement]()
-    var caterpieSelected: Bool = false
-    var laprasSelected: Bool = false
-    var snorlaxSelected: Bool = false
     var delegate: ReevaluateDataProtocol?
     var closePopup: (() -> Void)?
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
+    var selectedWeigth = [false, false, false]
 
     func applyFilters() {
         closePopup?()
         // Do not rearrange the following filters functions
         filterByTypes()
         filterByWeaknesses()
-        filterLowWeigth()
-        filterMidWeigth()
-        filterHeavyWeigth()
+        filterByWeight()
         delegate?.reevaluate(pokemons: filtered)
     }
 
@@ -38,6 +34,7 @@ class AdvancedFilterPopupViewModel {
         // Make all the logic for reset the filters
         selectedTypesForTypes.removeAll()
         selectedWeaknesses.removeAll()
+        selectedWeigth = Array(repeating: false, count: selectedWeigth.count)
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
@@ -73,23 +70,17 @@ class AdvancedFilterPopupViewModel {
         return filtered
     }
     @discardableResult
-       func filterLowWeigth() -> [PokemonRaw] {
-           if  caterpieSelected == true {
-               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 0  && $0.pokemonDetails[0].weight < 132 })
+       func filterByWeight() -> [PokemonRaw] {
+           if  selectedWeigth[0] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.inicialWeight
+                && $0.pokemonDetails[0].weight < ConstantVariables.LowWeight })
            }
-           return filtered
-       }
-       @discardableResult
-       func filterMidWeigth() -> [PokemonRaw] {
-           if  laprasSelected == true {
-               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 132  && $0.pokemonDetails[0].weight < 451 })
+           if  selectedWeigth[1] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.LowWeight
+                && $0.pokemonDetails[0].weight < ConstantVariables.HeavyWeight })
            }
-           return filtered
-       }
-       @discardableResult
-       func filterHeavyWeigth() -> [PokemonRaw] {
-           if  snorlaxSelected == true {
-               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > 451 })
+           if  selectedWeigth[2] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.HeavyWeight })
            }
            return filtered
        }

@@ -61,18 +61,20 @@ class AdvancedFilterTests: XCTestCase {
             let advancedFilterViewModel = AdvancedFilterPopupViewModel()
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
             //low weigth
-            advancedFilterViewModel.caterpieSelected = true
-            let resultLow = advancedFilterViewModel.filterLowWeigth()
+            advancedFilterViewModel.selectedWeigth[0] = true
+            let resultLow = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultLow.count, 1)
             //mid weigth
-            advancedFilterViewModel.laprasSelected = true
+            advancedFilterViewModel.resetFilters()
+            advancedFilterViewModel.selectedWeigth[1] = true
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
-            let resultMid = advancedFilterViewModel.filterMidWeigth()
+            let resultMid = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultMid.count, 1)
             // heavy weigth
-            advancedFilterViewModel.snorlaxSelected =  true
+            advancedFilterViewModel.resetFilters() 
+            advancedFilterViewModel.selectedWeigth[2] = true
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
-            let resultHeavy = advancedFilterViewModel.filterHeavyWeigth()
+            let resultHeavy = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultHeavy.count, 1)
         }
         

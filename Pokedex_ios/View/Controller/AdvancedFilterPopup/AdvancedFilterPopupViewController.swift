@@ -9,9 +9,6 @@ import UIKit
 
 class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet weak var contentStackView: UIStackView!
-    @IBOutlet weak var weigthLaprasButton: UIButton!
-    @IBOutlet weak var weigthSnorlaxButton: UIButton!
-    @IBOutlet weak var weightCaterpieButton: UIButton!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
 
@@ -21,6 +18,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
     @IBOutlet weak var weaknessesCollectionView: UICollectionView!
     var selectedTypesForWeakness = [TypeElement]()
+    @IBOutlet weak var weightCollectionView: UICollectionView!
 
     var viewmodel: AdvancedFilterPopupViewModel?
 
@@ -47,6 +45,11 @@ class AdvancedFilterPopupViewController: PopupViewController {
         weaknessesCollectionView.register(uiNibPokemonTypeCell, forCellWithReuseIdentifier: PokemonTypeCollectionCell.identifier)
         weaknessesCollectionView.delegate = self
         weaknessesCollectionView.dataSource = self
+        // For weight collection view
+        let uiNibPokemonWeightCell = UINib(nibName: PokemonWeightCollectionCell.nibName, bundle: nil)
+        weightCollectionView.register(uiNibPokemonWeightCell, forCellWithReuseIdentifier: PokemonWeightCollectionCell.identifier)
+        weightCollectionView.delegate = self
+        weightCollectionView.dataSource = self
     }
 
     func setupContent() {
@@ -62,72 +65,53 @@ class AdvancedFilterPopupViewController: PopupViewController {
             contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -40)
         ])
     }
-    func resetButtonImages() {
-           viewmodel?.caterpieSelected = false
-           viewmodel?.laprasSelected = false
-           viewmodel?.snorlaxSelected = false
-           weightCaterpieButton.setImage(UIImage(named: "CaterpieUnselected.png"), for: .normal)
-           weigthLaprasButton.setImage(UIImage(named: "LaprasUnselected.png"), for: .normal)
-           weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxUnselected.png"), for: .normal)
-       }
 
     @IBAction func applyFilters(_ sender: Any) {
         viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
         viewmodel?.resetFilters()
-        resetButtonImages()
         typesCollectionView.reloadData()
         weaknessesCollectionView.reloadData()
-    }
-    @IBAction func weigthCaterpieSelected(_ sender: Any) {
-        if viewmodel?.caterpieSelected == true {
-                  viewmodel?.caterpieSelected = false
-                          weightCaterpieButton.setImage(UIImage(named: "CaterpieUnselected.png"), for: .normal)
-                      } else {
-                          viewmodel?.caterpieSelected = true
-                          weightCaterpieButton.setImage(UIImage(named: "CaterpieSelected.png"), for: .normal)
-                      }
-    }
-    @IBAction func weigthLaprasSelected(_ sender: Any) {
-        if viewmodel?.laprasSelected == true {
-                    viewmodel?.laprasSelected = false
-                           weigthLaprasButton.setImage(UIImage(named: "LaprasUnselected.png"), for: .normal)
-                       } else {
-                           viewmodel?.laprasSelected = true
-                           weigthLaprasButton.setImage(UIImage(named: "LaprasSelected.png"), for: .normal)
-                       }
-    }
-    @IBAction func weightSnorlaxSelected(_ sender: Any) {
-        if viewmodel?.snorlaxSelected == true {
-                   viewmodel?.snorlaxSelected = false
-                       weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxUnselected.png"), for: .normal)
-                   } else {
-                       viewmodel?.snorlaxSelected = true
-                       weigthSnorlaxButton.setImage(UIImage(named: "SnorlaxSelected.png"), for: .normal)
-                   }
+        weightCollectionView.reloadData()
     }
 }
 
 extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ConstantVariables.pokemonTypes.count
+        if collectionView == self.weightCollectionView {
+            return ConstantVariables.pokemonWeight.count
+        } else {
+            return ConstantVariables.pokemonTypes.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
-                as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
 
         if collectionView == self.weaknessesCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
+                    as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
             let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id })
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+            return cell
         }
         if collectionView == self.typesCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
+                    as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
             let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id })
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+            return cell
         }
-        return cell
+        if collectionView == self.weightCollectionView {
+            let pokemonWeight = ConstantVariables.pokemonWeight[indexPath.row]
+            let index = viewmodel?.selectedWeigth[indexPath.row] ?? false
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonWeightCollectionCell.identifier, for: indexPath)
+                    as? PokemonWeightCollectionCell else { return UICollectionViewCell() }
+            cell.setupData(pokemonType: pokemonWeight, isTypeSelected: index)
+            return cell
+        }
+        return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -147,6 +131,14 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
                 viewmodel?.selectedTypesForTypes.append(pokemonType)
             }
             typesCollectionView.reloadItems(at: [indexPath])
+        }
+        if collectionView == self.weightCollectionView {
+            if viewmodel?.selectedWeigth[indexPath.row] == true {
+                viewmodel?.selectedWeigth[indexPath.row] = false
+            } else {
+                viewmodel?.selectedWeigth[indexPath.row] = true
+            }
+            weightCollectionView.reloadItems(at: [indexPath])
         }
     }
 
