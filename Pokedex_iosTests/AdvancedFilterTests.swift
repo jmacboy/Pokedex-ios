@@ -13,8 +13,8 @@ import XCTest
 @testable import Pokedex_ios
 
 class AdvancedFilterTests: XCTestCase {
+    let advancedFilterViewModel = AdvancedFilterPopupViewModel()
     func testGetPokemonsFilteredByTest() {
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.selectedTypesForTypes = TestResources.shared.filterTypesCriteria
         advancedFilterViewModel.pokemons = TestResources.shared.pokemonsList
         
@@ -36,9 +36,11 @@ class AdvancedFilterTests: XCTestCase {
     }
 
     func testWeaknessesFilterWithSelectedValues() throws {
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
-        advancedFilterViewModel.selectedWeaknesses = TestResources.filterByWeankessCriteria
+//        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
         advancedFilterViewModel.pokemons = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByTypes()
+        advancedFilterViewModel.selectedWeaknesses = TestResources.filterByWeankessCriteria
+//        advancedFilterViewModel.pokemons = TestResources.pokemonRaw
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
@@ -46,9 +48,9 @@ class AdvancedFilterTests: XCTestCase {
     }
 
     func testWeaknessesFilterWithNoSelectedValues() throws {
-        let advancedFilterViewModel = AdvancedFilterPopupViewModel()
-        advancedFilterViewModel.selectedWeaknesses = []
         advancedFilterViewModel.pokemons = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByTypes()
+        advancedFilterViewModel.selectedWeaknesses = []
 
         let result = advancedFilterViewModel.filterByWeaknesses()
 
