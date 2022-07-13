@@ -57,22 +57,22 @@ class AdvancedFilterTests: XCTestCase {
         XCTAssertEqual(result.count, 3)
     }
     
-    func testWeigthFilterWithSelectedValues() throws {
+    func testWeightFilterWithSelectedValues() throws {
             let advancedFilterViewModel = AdvancedFilterPopupViewModel()
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
-            //low weigth
-            advancedFilterViewModel.selectedWeigth[0] = true
+            //low weight
+            advancedFilterViewModel.selectedWeight[0] = true
             let resultLow = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultLow.count, 1)
-            //mid weigth
+            //mid weight
             advancedFilterViewModel.resetFilters()
-            advancedFilterViewModel.selectedWeigth[1] = true
+            advancedFilterViewModel.selectedWeight[1] = true
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
             let resultMid = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultMid.count, 1)
-            // heavy weigth
+            // heavy weight
             advancedFilterViewModel.resetFilters() 
-            advancedFilterViewModel.selectedWeigth[2] = true
+            advancedFilterViewModel.selectedWeight[2] = true
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
             let resultHeavy = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultHeavy.count, 1)
