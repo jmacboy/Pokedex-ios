@@ -43,6 +43,7 @@ class PokemonListViewModel: NSObject {
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
                 self.filterViewModel.pokemons = pokemons
+                GenerationFilterPopupViewModel.shared.pokemons = pokemons
             case .failure:
                 self.showErrorAlert?()
             }

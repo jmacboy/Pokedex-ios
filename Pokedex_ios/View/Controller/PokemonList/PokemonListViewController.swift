@@ -26,22 +26,34 @@ class PokemonListViewController: UIViewController {
         setBackground()
         initViewModel()
         setSearchView()
-        // Setup for the advanced filter image and button
-        setUpAdvanceFilterPopup()
+        // Setup for all filter image and button
+        setFiltersPopup()
         // Register the custom cell
         setSearchView()
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
-    func setUpAdvanceFilterPopup() {
+    func setFiltersPopup() {
         let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
         let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
                                                    target: self, action: #selector(showAdvancedFilterPopup))
-        navigationItem.rightBarButtonItem = advancedFilterButton
+
+        let generationFilterImage = UIImage(named: "generationFilterIcon")?.withRenderingMode(.alwaysOriginal)
+        let generationFilterButton = UIBarButtonItem(image: generationFilterImage, style: .plain,
+                                                   target: self, action: #selector(showGenerationFilterPopup))
+
+        navigationItem.rightBarButtonItems = [advancedFilterButton, generationFilterButton]
     }
+
     @objc func showAdvancedFilterPopup() {
         let vc = AdvancedFilterPopupViewController()
         vc.viewmodel = viewModel.filterViewModel
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
+
+    @objc func showGenerationFilterPopup() {
+        let vc = GenerationFilterPopupViewController()
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
@@ -103,5 +115,17 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setUpPokemonData(pokemon: cellData)
 
       return cell
+    }
+}
+
+extension PokemonListViewController: GenerationFilterPopUpDelegate {
+    func applyFilter(filtered: [PokemonRaw]) {
+        print("works")
+        viewModel.pokemons = filtered
+        viewModel.reloadData = { [weak self] in
+            DispatchQueue.main.async {
+                self?.pokemonsTableView.reloadData()
+            }
+        }
     }
 }
