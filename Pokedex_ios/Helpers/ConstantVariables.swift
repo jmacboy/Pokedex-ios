@@ -41,4 +41,12 @@ class ConstantVariables {
         GenerationAux(name: "Generation VII", description: "generation-vii"),
         GenerationAux(name: "Generation VIII", description: "generation-viii")
     ]
+   static let pokemonWeight = [
+    "low",
+    "mid",
+    "heavy"
+   ]
+    static let inicialWeight = 0
+    static let LowWeight  = 132
+    static let HeavyWeight =  451
 }

@@ -7,17 +7,12 @@
 
 import UIKit
 
-protocol GenerationFilterPopUpDelegate {
-    func applyFilter(filtered: [PokemonRaw]) -> Void
-}
-
 class GenerationFilterPopupViewController: PopupViewController {
-    
+
     @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var generationCollectionView: UICollectionView!
 
-    // var viewmodel: GenerationFilterPopupViewModel
-    var delegate: GenerationFilterPopUpDelegate?
+    var viewmodel: GenerationFilterPopupViewModel?
     let cellIdentifier = "PokemonGenerationCell"
 
     override func viewDidLoad() {
@@ -26,9 +21,9 @@ class GenerationFilterPopupViewController: PopupViewController {
         setUpContent()
         setUpElements()
     }
-    
+
     func initViewModel() {
-        GenerationFilterPopupViewModel.shared.closePopup = {[weak self] in
+        viewmodel?.closePopup = {[weak self] in
             self?.animateDismissView()
         }
     }
@@ -66,7 +61,7 @@ extension GenerationFilterPopupViewController: UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
                 as? GenerationCollectionViewCell ?? GenerationCollectionViewCell()
 
-        let index = GenerationFilterPopupViewModel.shared.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name })
+        let index = viewmodel?.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name })
         cell.setUpData(generation: pokemonGeneration, isTypeSelected: index != nil)
 
         return cell
@@ -78,13 +73,12 @@ extension GenerationFilterPopupViewController: UICollectionViewDelegate, UIColle
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let pokemonGeneration = ConstantVariables.pokemonGenerations[indexPath.row]
-        if let index = GenerationFilterPopupViewModel.shared.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name }) {
-            GenerationFilterPopupViewModel.shared.selectedGeneration.remove(at: index)
-            GenerationFilterPopupViewModel.shared.resetFilter()
+        if let index = viewmodel?.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name }) {
+            viewmodel?.selectedGeneration.remove(at: index)
+            viewmodel?.resetFilter()
         } else {
-            GenerationFilterPopupViewModel.shared.selectedGeneration.append(pokemonGeneration)
-            GenerationFilterPopupViewModel.shared.applyFilter()
-            self.delegate?.applyFilter(filtered: GenerationFilterPopupViewModel.shared.filtered)
+            viewmodel?.selectedGeneration.append(pokemonGeneration)
+            viewmodel?.applyFilter()
         }
        generationCollectionView.reloadItems(at: [indexPath])
     }

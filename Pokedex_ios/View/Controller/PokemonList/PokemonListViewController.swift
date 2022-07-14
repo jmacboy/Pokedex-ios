@@ -54,6 +54,7 @@ class PokemonListViewController: UIViewController {
 
     @objc func showGenerationFilterPopup() {
         let vc = GenerationFilterPopupViewController()
+        vc.viewmodel = viewModel.filterGenerationViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
@@ -115,17 +116,5 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.setUpPokemonData(pokemon: cellData)
 
       return cell
-    }
-}
-
-extension PokemonListViewController: GenerationFilterPopUpDelegate {
-    func applyFilter(filtered: [PokemonRaw]) {
-        print("works")
-        viewModel.pokemons = filtered
-        viewModel.reloadData = { [weak self] in
-            DispatchQueue.main.async {
-                self?.pokemonsTableView.reloadData()
-            }
-        }
     }
 }

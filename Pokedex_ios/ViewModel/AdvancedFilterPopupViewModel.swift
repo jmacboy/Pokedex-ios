@@ -15,18 +15,17 @@ class AdvancedFilterPopupViewModel {
 
     var filtered = [PokemonRaw]()
     var selectedWeaknesses = [TypeElement]()
-
     var delegate: ReevaluateDataProtocol?
-
     var closePopup: (() -> Void)?
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
-
+    var selectedWeight: [Bool] = Array(repeating: false, count: 3)
     func applyFilters() {
         closePopup?()
         // Do not rearrange the following filters functions
         filterByTypes()
         filterByWeaknesses()
+        filterByWeight()
         delegate?.reevaluate(pokemons: filtered)
     }
 
@@ -34,6 +33,7 @@ class AdvancedFilterPopupViewModel {
         // Make all the logic for reset the filters
         selectedTypesForTypes.removeAll()
         selectedWeaknesses.removeAll()
+        selectedWeight = Array(repeating: false, count: selectedWeight.count)
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
@@ -68,4 +68,19 @@ class AdvancedFilterPopupViewModel {
         }
         return filtered
     }
+    @discardableResult
+       func filterByWeight() -> [PokemonRaw] {
+           if  selectedWeight[0] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.inicialWeight
+                && $0.pokemonDetails[0].weight < ConstantVariables.LowWeight })
+           }
+           if  selectedWeight[1] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.LowWeight
+                && $0.pokemonDetails[0].weight < ConstantVariables.HeavyWeight })
+           }
+           if  selectedWeight[2] == true {
+               filtered = filtered.filter({ $0.pokemonDetails[0].weight  > ConstantVariables.HeavyWeight })
+           }
+           return filtered
+       }
 }

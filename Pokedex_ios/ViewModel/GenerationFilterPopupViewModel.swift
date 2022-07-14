@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol ReevaluateDataProtocolGeneration: AnyObject {
+    func reevaluateGeneration(pokemons: [PokemonRaw])
+    func devaluateGeneration(pokemons: [PokemonRaw])
+}
+
 struct GenerationAux {
     let name: String
     let description: String
@@ -14,37 +19,36 @@ struct GenerationAux {
 
 class GenerationFilterPopupViewModel {
 
-    static let shared = GenerationFilterPopupViewModel()
-
     var filtered = [PokemonRaw]()
     var selectedGeneration = [GenerationAux]()
     var pokemons = [PokemonRaw]()
 
-    var delegate: ReevaluateDataProtocol?
+    var delegate: ReevaluateDataProtocolGeneration?
     var closePopup: (() -> Void)?
 
     func applyFilter() {
         closePopup?()
         filterByGeneration()
-        delegate?.reevaluate(pokemons: filtered)
+        delegate?.reevaluateGeneration(pokemons: filtered)
     }
 
     func resetFilter() {
+        closePopup?()
         selectedGeneration.removeAll()
-        filtered.removeAll()
+        delegate?.devaluateGeneration(pokemons: pokemons)
     }
 
     @discardableResult
     func filterByGeneration() -> [PokemonRaw] {
-        filtered = pokemons
         if selectedGeneration.isEmpty {
+            filtered = pokemons
             return pokemons
         }
 
         filtered = pokemons.filter({ pokemon in
             return pokemon.generation.name == selectedGeneration.first?.description.lowercased()
         })
-        print(filtered.count)
+
         return filtered
     }
 }

@@ -27,7 +27,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dby-5j-XXg">
                             <rect key="frame" x="0.0" y="0.0" width="334" height="70"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBh-zY-S3R">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBh-zY-S3R">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                     <nil key="textColor"/>
@@ -40,6 +40,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="u3O-8k-TXc" firstAttribute="leading" secondItem="dby-5j-XXg" secondAttribute="leading" constant="5" id="GI7-7o-TQX"/>
+                                <constraint firstItem="EBh-zY-S3R" firstAttribute="leading" secondItem="dby-5j-XXg" secondAttribute="leading" constant="5" id="Xtr-1k-JGK"/>
+                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UQU-tz-MHX">
                             <rect key="frame" x="0.0" y="90" width="334" height="550"/>
