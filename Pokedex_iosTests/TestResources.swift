@@ -25,7 +25,7 @@ class TestResources {
 
 
     static let pokemonRaw = [
-        PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
+        PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-i"), pokemonDetails: [
             PokemonDetail(name: "poke1", height: 25, weight: 131, types: [
                 TypeElement(type: Generation(id: 1, name: "grass"))
             ], weaknesses: [
@@ -33,14 +33,14 @@ class TestResources {
                 Weakness(fromType: Generation(id: 5, name: "dragon"), damageTaken: 2.0)
             ])
         ]),
-        PokemonRaw(id: 2, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
+        PokemonRaw(id: 2, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-ii"), pokemonDetails: [
             PokemonDetail(name: "poke2", height: 25, weight: 450, types: [
                 TypeElement(type: Generation(id: 3, name: "water"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 4, name: "normal"), damageTaken: 0.5)
             ])
         ]),
-        PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
+        PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-v"), pokemonDetails: [
             PokemonDetail(name: "poke2", height: 25, weight: 455, types: [
                 TypeElement(type: Generation(id: 5, name: "dragon"))
             ], weaknesses: [
@@ -52,5 +52,9 @@ class TestResources {
     static let filterByWeankessCriteria = [
         TypeElement(type: Generation(id: 2, name: "fire")),
         TypeElement(type: Generation(id: 5, name: "dragon"))
+    ]
+    
+    static let filterByGenerationCriteria = [
+        GenerationAux(name: "Generation I", description: "generation-i")
     ]
 }

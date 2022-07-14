@@ -77,8 +77,10 @@ extension GenerationFilterPopupViewController: UICollectionViewDelegate, UIColle
             viewmodel?.selectedGeneration.remove(at: index)
             viewmodel?.resetFilter()
         } else {
-            viewmodel?.selectedGeneration.append(pokemonGeneration)
-            viewmodel?.applyFilter()
+            if let selected = viewmodel?.selectedGeneration.isEmpty, selected {
+                viewmodel?.selectedGeneration.append(pokemonGeneration)
+                viewmodel?.applyFilter()
+            }
         }
        generationCollectionView.reloadItems(at: [indexPath])
     }
