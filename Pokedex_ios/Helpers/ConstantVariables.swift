@@ -31,4 +31,12 @@ class ConstantVariables {
         TypeElement(type: Generation(id: 17, name: "dark")),
         TypeElement(type: Generation(id: 18, name: "fairy"))
     ]
+   static let pokemonWeight = [
+    "low",
+    "mid",
+    "heavy"
+   ]
+    static let inicialWeight = 0
+    static let LowWeight  = 132
+    static let HeavyWeight =  451
 }

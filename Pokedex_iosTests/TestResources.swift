@@ -26,7 +26,7 @@ class TestResources {
 
     static let pokemonRaw = [
         PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
-            PokemonDetail(name: "poke1", height: 25, weight: 25, types: [
+            PokemonDetail(name: "poke1", height: 25, weight: 131, types: [
                 TypeElement(type: Generation(id: 1, name: "grass"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 2, name: "fire"), damageTaken: 2.0),
@@ -34,14 +34,14 @@ class TestResources {
             ])
         ]),
         PokemonRaw(id: 2, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
-            PokemonDetail(name: "poke2", height: 25, weight: 25, types: [
+            PokemonDetail(name: "poke2", height: 25, weight: 450, types: [
                 TypeElement(type: Generation(id: 3, name: "water"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 4, name: "normal"), damageTaken: 0.5)
             ])
         ]),
         PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
-            PokemonDetail(name: "poke2", height: 25, weight: 25, types: [
+            PokemonDetail(name: "poke2", height: 25, weight: 455, types: [
                 TypeElement(type: Generation(id: 5, name: "dragon"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 5, name: "dragon"), damageTaken: 2.0)
