@@ -18,8 +18,8 @@ class GenerationFilterPopupViewController: PopupViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        setUpContent()
-        setUpElements()
+        setupContent()
+        setupElements()
     }
 
     func initViewModel() {
@@ -28,7 +28,7 @@ class GenerationFilterPopupViewController: PopupViewController {
         }
     }
 
-    func setUpContent() {
+    func setupContent() {
         let spacer = UIView()
         contentStackView.addArrangedSubview(spacer)
         containerView.addSubview(contentStackView)
@@ -40,7 +40,7 @@ class GenerationFilterPopupViewController: PopupViewController {
         ])
     }
 
-    func setUpElements() {
+    func setupElements() {
         self.generationCollectionView.delegate = self
         self.generationCollectionView.dataSource = self
 
@@ -62,7 +62,7 @@ extension GenerationFilterPopupViewController: UICollectionViewDelegate, UIColle
                 as? GenerationCollectionViewCell ?? GenerationCollectionViewCell()
 
         let index = viewmodel?.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name })
-        cell.setUpData(generation: pokemonGeneration, isTypeSelected: index != nil)
+        cell.setupData(generation: pokemonGeneration, isTypeSelected: index != nil)
 
         return cell
     }

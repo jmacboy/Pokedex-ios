@@ -41,11 +41,4 @@ class GenerationFilterTests: XCTestCase {
     override func tearDownWithError() throws {
         
     }
-
-    func testPerformanceExample() throws {
-        self.measure {
-            
-        }
-    }
-
 }

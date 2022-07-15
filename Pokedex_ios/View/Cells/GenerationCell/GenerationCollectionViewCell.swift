@@ -18,7 +18,7 @@ class GenerationCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func setUpData(generation: GenerationAux, isTypeSelected: Bool) {
+    func setupData(generation: GenerationFilter, isTypeSelected: Bool) {
         generationLabel.text = generation.name
         let imageName = "pokemon-\(generation.description)"
         generationImageView.image = UIImage(named: imageName)

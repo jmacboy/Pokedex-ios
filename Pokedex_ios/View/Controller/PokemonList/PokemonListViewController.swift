@@ -27,13 +27,13 @@ class PokemonListViewController: UIViewController {
         initViewModel()
         setSearchView()
         // Setup for all filter image and button
-        setFiltersPopup()
+        setFiltersIconsPopup()
         // Register the custom cell
         setSearchView()
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
-    func setFiltersPopup() {
+    func setFiltersIconsPopup() {
         let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
         let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
                                                    target: self, action: #selector(showAdvancedFilterPopup))

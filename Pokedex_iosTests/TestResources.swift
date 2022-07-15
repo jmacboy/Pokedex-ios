@@ -55,6 +55,6 @@ class TestResources {
     ]
     
     static let filterByGenerationCriteria = [
-        GenerationAux(name: "Generation I", description: "generation-i")
+        GenerationFilter(name: "Generation I", description: "generation-i")
     ]
 }
