@@ -13,6 +13,7 @@ class GenerationFilterPopupViewController: PopupViewController {
     @IBOutlet weak var generationCollectionView: UICollectionView!
 
     var viewmodel: GenerationFilterPopupViewModel?
+    let cellNib = "GenerationCollectionViewCell"
     let cellIdentifier = "PokemonGenerationCell"
 
     override func viewDidLoad() {
@@ -44,7 +45,7 @@ class GenerationFilterPopupViewController: PopupViewController {
         self.generationCollectionView.delegate = self
         self.generationCollectionView.dataSource = self
 
-        let uiNibPokemonGenerationCell = UINib(nibName: "GenerationCollectionViewCell", bundle: nil)
+        let uiNibPokemonGenerationCell = UINib(nibName: cellNib, bundle: nil)
         self.generationCollectionView.register(uiNibPokemonGenerationCell, forCellWithReuseIdentifier: cellIdentifier)
     }
 

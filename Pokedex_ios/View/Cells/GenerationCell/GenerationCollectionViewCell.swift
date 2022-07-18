@@ -24,10 +24,10 @@ class GenerationCollectionViewCell: UICollectionViewCell {
         generationImageView.image = UIImage(named: imageName)
 
         if isTypeSelected {
-            generationLabel.textColor = UIColor(named: "TextWhiteColor")
-            patternImageView.backgroundColor = UIColor(named: "background-generation-selected")
-            generationBackground.backgroundColor = UIColor(named: "background-generation-selected")
-            generationImageView.tintColor = UIColor(named: "background-generation-selected")
+            generationLabel.textColor = UIColor(named: "background-white")
+            patternImageView.backgroundColor = UIColor(named: "apply-button")
+            generationBackground.backgroundColor = UIColor(named: "apply-button")
+            generationImageView.tintColor = UIColor(named: "apply-button")
         }
     }
 }
