@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,25 +27,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EoH-0K-Bjl">
-                    <rect key="frame" x="20" y="614" width="374" height="297"/>
+                    <rect key="frame" x="40" y="614" width="334" height="299.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DA-0l-Z2E">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Pokemons alphabetically or by National Pokedex number!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr7-f9-0qV">
-                            <rect key="frame" x="0.0" y="37" width="374" height="36"/>
+                            <rect key="frame" x="0.0" y="39.5" width="334" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="jNL-ik-Yad"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="TextGreyColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYH-pS-fOZ">
-                            <rect key="frame" x="0.0" y="81" width="374" height="48"/>
+                            <rect key="frame" x="0.0" y="83.5" width="334" height="48"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="BQm-Pd-N89"/>
@@ -57,7 +58,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNN-uZ-hdH">
-                            <rect key="frame" x="0.0" y="137" width="374" height="48"/>
+                            <rect key="frame" x="0.0" y="139.5" width="334" height="48"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="1sd-C5-83O"/>
@@ -70,7 +71,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-bn-Dw3">
-                            <rect key="frame" x="0.0" y="193" width="374" height="48"/>
+                            <rect key="frame" x="0.0" y="195.5" width="334" height="48"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="T8e-Uj-pq6"/>
@@ -83,7 +84,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-dv-23C">
-                            <rect key="frame" x="0.0" y="249" width="374" height="48"/>
+                            <rect key="frame" x="0.0" y="251.5" width="334" height="48"/>
                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="Vm6-SS-vum"/>
@@ -101,13 +102,16 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="EoH-0K-Bjl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2zz-bp-duA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EoH-0K-Bjl" secondAttribute="trailing" constant="20" id="zQg-v6-WTt"/>
+                <constraint firstItem="EoH-0K-Bjl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="2zz-bp-duA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EoH-0K-Bjl" secondAttribute="trailing" constant="40" id="zQg-v6-WTt"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="70.982142857142847"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="TextGreyColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
