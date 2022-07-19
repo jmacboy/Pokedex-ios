@@ -2,7 +2,7 @@
 //  SortPokemonListViewModel.swift
 //  Pokedex_ios
 //
-//  Created by admin on 7/15/22.
+//  Created by adri on 7/15/22.
 //
 
 import UIKit
@@ -15,10 +15,6 @@ class SortPokemonListViewModel {
 
     init(pokemons: [PokemonRaw]) {
         self.pokemons = pokemons
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     var closePopup: (() -> Void)?
