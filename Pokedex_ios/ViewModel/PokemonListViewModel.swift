@@ -76,7 +76,8 @@ class PokemonListViewModel: NSObject {
         let urlStr = pokedexService.getPokemonsImageBy(id: id)
         let url = URL(string: urlStr)
         let data = try? Data(contentsOf: url!)
-        let image = UIImage(data: data!)
+        guard let dataValue = data else {return UIImage(named: "questionIcon")}
+        let image = UIImage(data: dataValue)
 
         return image
     }
@@ -94,6 +95,12 @@ extension PokemonListViewModel: ReevaluateDataProtocolGeneration {
     }
 
     func devaluateGeneration(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
+    }
+}
+
+extension PokemonListViewModel: SortButtonActionDelegateDelegate {
+    func sortButtonAction(pokemons: [PokemonRaw]) {
         self.pokemons = pokemons
     }
 }

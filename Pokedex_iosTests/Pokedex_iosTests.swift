@@ -71,4 +71,32 @@ class Pokedex_iosTests: XCTestCase {
         }
     }
 
+    func testSmallestNumberFirst(){
+        let pokemonExample = [4, 1, 5, 2, 3, 6]
+        let pokemonSorted = pokemonExample.sorted(by: <)
+        XCTAssertEqual(pokemonSorted[0], 1)
+        XCTAssertEqual(pokemonSorted[1], 2)
+    }
+    
+    func testHighestNumberFirst(){
+        let pokemonExample = [4, 1, 5, 2, 3, 6]
+        let pokemonSorted = pokemonExample.sorted(by: >)
+        XCTAssertEqual(pokemonSorted[0], 6)
+        XCTAssertEqual(pokemonSorted[1], 5)
+    }
+    
+    func testAToZt(){
+        let pokemonExample = ["Plusle", "Regice", "Altaria", "Celebi", "Zubat" ,"Deoxys", "Fearon", "Nincada"]
+        let pokemonSorted = pokemonExample.sorted(by: <)
+        XCTAssertEqual(pokemonSorted[0], "Altaria")
+        XCTAssertEqual(pokemonSorted[1], "Celebi")
+    }
+    
+    func testZToA(){
+        let pokemonExample = ["Plusle", "Regice", "Altaria", "Celebi", "Zubat" ,"Deoxys", "Fearon", "Nincada"]
+        let pokemonSorted = pokemonExample.sorted(by: >)
+        XCTAssertEqual(pokemonSorted[0], "Zubat")
+        XCTAssertEqual(pokemonSorted[1], "Regice")
+    }
+    
 }

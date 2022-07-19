@@ -6,24 +6,117 @@
 //
 
 import UIKit
+import Foundation
 
-class SortFilterViewController: UIViewController {
+protocol SortButtonActionDelegateDelegate: AnyObject {
+    func sortButtonAction(pokemons: [PokemonRaw])
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class SortFilterViewController: PopupViewController {
+    @IBOutlet weak var contentStackView: UIStackView!
+        @IBOutlet weak var sortLabel: UILabel!
+        @IBOutlet weak var sortDescriptionLabel: UILabel!
+        @IBOutlet weak var smallestNumberFirstButton: UIButton!
+        @IBOutlet weak var heighestNumberFirstButton: UIButton!
+        @IBOutlet weak var aToZButton: UIButton!
+        @IBOutlet weak var zToAButton: UIButton!
+       var sortPokemonListViewModel: SortPokemonListViewModel
 
-        // Do any additional setup after loading the view.
+       init(sortPokemonListViewModel: SortPokemonListViewModel) {
+           self.sortPokemonListViewModel = sortPokemonListViewModel
+           super.init(nibName: nil, bundle: nil)
+       }
+
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           initViewModel()
+           setupContent()
+       }
+
+       func initViewModel() {
+           sortPokemonListViewModel.closePopup = {[weak self] in
+               self?.animateDismissView()
+           }
+       }
+
+       required init?(coder: NSCoder) {
+           fatalError("init(coder:) has not been implemented")
+       }
+
+       func setupContent() {
+           smallestNumberFirstButton.layer.cornerRadius = 10
+           heighestNumberFirstButton.layer.cornerRadius = 10
+           aToZButton.layer.cornerRadius = 10
+           zToAButton.layer.cornerRadius = 10
+           let spacer = UIView()
+           contentStackView.addArrangedSubview(spacer)
+           containerView.addSubview(contentStackView)
+           contentStackView.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+               contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
+               contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+               contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+               contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+           ])
+       }
+    func delayDismiss() {
+        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { (_) in
+            self.dismiss(animated: true)
+        }
     }
+    @IBAction func smallestNumberFirstButton(_ sender: Any) {
+        if let button: UIButton = sender as? UIButton {
+            button.isSelected = !button.isSelected
+            if button.isSelected {
+               button.tintColor = UIColor.white
+               button.backgroundColor = UIColor(named: "apply-button")
+            } else {
+               button.backgroundColor = UIColor.systemGray6
+            }
+        }
+            sortPokemonListViewModel.sortWithSmallestNumberFirst()
+        delayDismiss()
+        }
 
+    @IBAction func highestNumberFirst(_ sender: Any) {
+        if let button: UIButton = sender as? UIButton {
+             button.isSelected = !button.isSelected
+            if button.isSelected {
+               button.tintColor = UIColor.white
+               button.backgroundColor = UIColor(named: "apply-button")
+             } else {
+               button.backgroundColor = UIColor.systemGray6
+             }
+         }
+          sortPokemonListViewModel.sortWithHighestNumberFirst()
+          delayDismiss()
+        }
 
-    /*
-    // MARK: - Navigation
+    @IBAction func aToZ(_ sender: Any) {
+       if let button: UIButton = sender as? UIButton {
+            button.isSelected = !button.isSelected
+           if button.isSelected {
+              button.tintColor = UIColor.white
+              button.backgroundColor = UIColor(named: "apply-button")
+            } else {
+              button.backgroundColor = UIColor.systemGray6
+            }
+        }
+          sortPokemonListViewModel.sortWithAtoZ()
+          delayDismiss()
+      }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     @IBAction func zToA(_ sender: Any) {
+      if let button: UIButton = sender as? UIButton {
+           button.isSelected = !button.isSelected
+                if button.isSelected {
+                   button.tintColor = UIColor.white
+                   button.backgroundColor = UIColor(named: "apply-button")
+                } else {
+                   button.backgroundColor = UIColor.systemGray6
+                }
+            }
+            sortPokemonListViewModel.sortWithZtoA()
+            delayDismiss()
+        }
 }

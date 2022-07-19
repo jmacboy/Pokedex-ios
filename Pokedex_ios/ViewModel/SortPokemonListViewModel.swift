@@ -6,24 +6,48 @@
 //
 
 import UIKit
+import Foundation
 
-class SortPokemonListViewModel: UIViewController {
+class SortPokemonListViewModel {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var pokemons: [PokemonRaw]
+    weak var sortButtonActionDelegateDelegate: SortButtonActionDelegateDelegate?
 
-        // Do any additional setup after loading the view.
+    init(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    */
 
+    var closePopup: (() -> Void)?
+        @objc func applyFilters() {
+            closePopup?()
+        }
+    // MARK: Sorting Logic
+    func sortWithSmallestNumberFirst() {
+        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
+            return pokemanRow1.id < pokemanRow2.id
+        })
+        sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
+    }
+    func sortWithHighestNumberFirst() {
+        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
+            return pokemanRow1.id > pokemanRow2.id
+        })
+        sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
+    }
+    func sortWithAtoZ() {
+        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
+            return pokemanRow1.name < pokemanRow2.name
+        })
+        sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
+    }
+    func sortWithZtoA() {
+        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
+            return pokemanRow1.name > pokemanRow2.name
+        })
+        sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
+    }
 }
