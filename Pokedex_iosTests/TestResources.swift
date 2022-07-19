@@ -35,13 +35,8 @@ class TestResources {
     let filterHeightsCriteria: [PokemonHeigths] = [.large]
 
     static let pokemonRaw = [
-<<<<<<< HEAD
         PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-i"), pokemonDetails: [
             PokemonDetail(name: "poke1", height: 25, weight: 131, types: [
-=======
-        PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
-            PokemonDetail(name: "poke1", height: 10, weight: 131, types: [
->>>>>>> develop
                 TypeElement(type: Generation(id: 1, name: "grass"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 2, name: "fire"), damageTaken: 2.0),
@@ -55,13 +50,8 @@ class TestResources {
                 Weakness(fromType: Generation(id: 4, name: "normal"), damageTaken: 0.5)
             ])
         ]),
-<<<<<<< HEAD
         PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-v"), pokemonDetails: [
             PokemonDetail(name: "poke2", height: 25, weight: 455, types: [
-=======
-        PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-1"), pokemonDetails: [
-            PokemonDetail(name: "poke2", height: 15, weight: 455, types: [
->>>>>>> develop
                 TypeElement(type: Generation(id: 5, name: "dragon"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 5, name: "dragon"), damageTaken: 2.0)
