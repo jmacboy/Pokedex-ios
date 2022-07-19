@@ -36,6 +36,7 @@ class AdvancedFilterPopupViewModel {
         selectedTypesForTypes.removeAll()
         selectedWeaknesses.removeAll()
         selectedWeight = Array(repeating: false, count: selectedWeight.count)
+        selectedHeights.removeAll()
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
