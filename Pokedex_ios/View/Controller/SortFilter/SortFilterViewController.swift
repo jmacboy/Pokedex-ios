@@ -2,7 +2,7 @@
 //  SortFilterViewController.swift
 //  Pokedex_ios
 //
-//  Created by admin on 7/15/22.
+//  Created by adri on 7/15/22.
 //
 
 import UIKit
@@ -64,7 +64,6 @@ class SortFilterViewController: PopupViewController {
             self.dismiss(animated: true)
         }
     }
-    
     @IBAction func smallestNumberFirstButton(_ sender: Any) {
         if let button: UIButton = sender as? UIButton {
             button.isSelected = !button.isSelected
@@ -120,13 +119,4 @@ class SortFilterViewController: PopupViewController {
          sortPokemonListViewModel.sortWithZtoA()
          delayDismiss()
        }
-}
-
-extension UIColor {
-    class func applyButtonColor() -> UIColor {
-        return UIColor(named: "apply-button") ?? UIColor.systemGray6
-    }
-    class func unAppliedButtonColor() -> UIColor {
-        return UIColor.systemGray6
-    }
 }
