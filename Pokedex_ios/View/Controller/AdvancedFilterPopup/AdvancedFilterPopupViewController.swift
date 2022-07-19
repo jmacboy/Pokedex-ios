@@ -20,6 +20,9 @@ class AdvancedFilterPopupViewController: PopupViewController {
     var selectedTypesForWeakness = [TypeElement]()
     @IBOutlet weak var weightCollectionView: UICollectionView!
 
+    @IBOutlet var heightsViewCollection: UICollectionView!
+    var selectedHeights = [PokemonHeigths]()
+
     var viewmodel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
@@ -50,6 +53,11 @@ class AdvancedFilterPopupViewController: PopupViewController {
         weightCollectionView.register(uiNibPokemonWeightCell, forCellWithReuseIdentifier: PokemonWeightCollectionCell.identifier)
         weightCollectionView.delegate = self
         weightCollectionView.dataSource = self
+        // For Heights collection view
+        let uiNibPokemonHeightCell = UINib(nibName: PokemonHeightCollectionViewCell.identifier, bundle: nil)
+        heightsViewCollection.register(uiNibPokemonHeightCell, forCellWithReuseIdentifier: PokemonHeightCollectionViewCell.identifier)
+        heightsViewCollection.delegate = self
+        heightsViewCollection.dataSource = self
     }
 
     func setupContent() {
@@ -74,11 +82,15 @@ class AdvancedFilterPopupViewController: PopupViewController {
         typesCollectionView.reloadData()
         weaknessesCollectionView.reloadData()
         weightCollectionView.reloadData()
+        heightsViewCollection.reloadData()
     }
 }
 
 extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.heightsViewCollection {
+            return ConstantVariables.pokemonHeights.count
+        }
         if collectionView == self.weightCollectionView {
             return ConstantVariables.pokemonWeight.count
         } else {
@@ -111,10 +123,27 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             cell.setupData(pokemonType: pokemonWeight, isTypeSelected: index)
             return cell
         }
+        if collectionView == self.heightsViewCollection {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonHeightCollectionViewCell.identifier, for: indexPath)
+                    as? PokemonHeightCollectionViewCell ?? PokemonHeightCollectionViewCell()
+            let pokemonHeight = ConstantVariables.pokemonHeights[indexPath.row]
+            let index = viewmodel?.selectedHeights.firstIndex(where: { $0.rawValue == pokemonHeight.rawValue })
+            cell.setupData(pokemonHeight: pokemonHeight, isHeightSelected: index != nil)
+            return cell
+        }
         return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.heightsViewCollection {
+            let pokemonHeight = ConstantVariables.pokemonHeights[indexPath.row]
+            if let index = viewmodel?.selectedHeights.firstIndex(where: { $0.rawValue == pokemonHeight.rawValue }) {
+                viewmodel?.selectedHeights.remove(at: index)
+             } else {
+                viewmodel?.selectedHeights.append(pokemonHeight)
+             }
+            heightsViewCollection.reloadItems(at: [indexPath])
+        }
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
         if collectionView == self.weaknessesCollectionView {
              if let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id }) {

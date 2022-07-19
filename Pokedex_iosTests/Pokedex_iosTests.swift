@@ -8,42 +8,41 @@
 import XCTest
 @testable import Pokedex_ios
 
-
 class MockPokedexService: PokedexServiceProtocol {
     var getPokemonsGotCalled = false
     func getPokemons(completion: @escaping (Result<[PokemonRaw], Error>) -> Void) {
         completion(.success(TestResources.shared.pokemonsList))
         getPokemonsGotCalled = true
     }
-    
+
     func getPokemonsImageBy(id: Int) -> String {
         return "some"
     }
 }
 
-class Pokedex_iosTests: XCTestCase {
+class PokedexIosTests: XCTestCase {
     let mockTest = MockPokedexService()
     let viewModel = PokemonListViewModel(pokedexService: MockPokedexService())
-    
+
     func testGetPokemonsFromNetwork() {
         viewModel.getPokemons()
         XCTAssertEqual(viewModel.pokemons.count, 4)
     }
-    
+
     func testSearchByNameSuccess() {
         viewModel.getPokemons()
         viewModel.searchText = "so"
         viewModel.searchPokemonsByName()
         XCTAssertEqual(viewModel.pokemons.count, 4)
     }
-    
+
     func testSearchByNameFailure() {
         viewModel.getPokemons()
         viewModel.searchText = "someo"
         viewModel.searchPokemonsByName()
         XCTAssertEqual(viewModel.pokemons.count, 0)
     }
-    
+
     func testSearchByNameEmpty() {
         viewModel.getPokemons()
         viewModel.searchText = ""

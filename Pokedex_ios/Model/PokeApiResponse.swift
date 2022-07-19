@@ -62,3 +62,9 @@ struct Weakness: Codable {
     let fromType: Generation
     let damageTaken: Double
 }
+
+enum PokemonHeigths: String {
+    case small
+    case medium
+    case large
+}

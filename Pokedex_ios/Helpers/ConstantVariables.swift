@@ -39,4 +39,5 @@ class ConstantVariables {
     static let inicialWeight = 0
     static let LowWeight  = 132
     static let HeavyWeight =  451
+    static let pokemonHeights: [PokemonHeigths] = [.small, .medium, .large]
 }

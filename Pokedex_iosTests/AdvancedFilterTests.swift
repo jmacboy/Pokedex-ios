@@ -17,12 +17,12 @@ class AdvancedFilterTests: XCTestCase {
     func testGetPokemonsFilteredByTest() {
         advancedFilterViewModel.selectedTypesForTypes = TestResources.shared.filterTypesCriteria
         advancedFilterViewModel.pokemons = TestResources.shared.pokemonsList
-        
+
         let result = advancedFilterViewModel.filterByTypes()
-        
+
         XCTAssertEqual(result.count, 2)
     }
-    
+
     var mockTest: MockPokedexService?
     var viewModel: PokemonListViewModel?
 
@@ -56,16 +56,15 @@ class AdvancedFilterTests: XCTestCase {
 
         XCTAssertEqual(result.count, 3)
     }
-    
+
     func testLowWeightFilterWithSelectedValues() throws {
             let advancedFilterViewModel = AdvancedFilterPopupViewModel()
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
             advancedFilterViewModel.selectedWeight[0] = true
             let resultLow = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultLow.count, 1)
-        
         }
-    
+
     func testMidWeightFilterWithSelectedValues() throws {
             let advancedFilterViewModel = AdvancedFilterPopupViewModel()
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
@@ -73,7 +72,7 @@ class AdvancedFilterTests: XCTestCase {
             let resultMid = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultMid.count, 1)
         }
-    
+
     func testHeavyWeightFilterWithSelectedValues() throws {
             let advancedFilterViewModel = AdvancedFilterPopupViewModel()
             advancedFilterViewModel.filtered = TestResources.pokemonRaw
@@ -81,6 +80,27 @@ class AdvancedFilterTests: XCTestCase {
             let resultHeavy = advancedFilterViewModel.filterByWeight()
             XCTAssertEqual(resultHeavy.count, 1)
         }
+
+    func testHeightsFilterWithSelectedValues() throws {
+        advancedFilterViewModel.filtered = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByHeights()
+        advancedFilterViewModel.selectedHeights = TestResources.shared.filterHeightsCriteria
+
+        let result = advancedFilterViewModel.filterByHeights()
+
+        XCTAssertEqual(result.count, 1)
+    }
+
+    func testHeightsFilterWithNoSelectedValues() throws {
+        advancedFilterViewModel.filtered = TestResources.pokemonRaw
+        advancedFilterViewModel.filterByHeights()
+        advancedFilterViewModel.selectedHeights = []
+
+        let result = advancedFilterViewModel.filterByHeights()
+
+        XCTAssertEqual(result.count, 3)
+
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
@@ -90,4 +110,3 @@ class AdvancedFilterTests: XCTestCase {
     }
 
 }
-
