@@ -19,6 +19,11 @@ class PokemonListViewModel: NSObject {
             filterViewModel.delegate = self
         }
     }
+    var filterGenerationViewModel = GenerationFilterPopupViewModel() {
+        didSet {
+            filterGenerationViewModel.delegate = self
+        }
+    }
 
     var pokemonsOriginalList = [PokemonRaw]()
     var pokemons = [PokemonRaw]() {
@@ -28,10 +33,11 @@ class PokemonListViewModel: NSObject {
     }
     var searchText = ""
 
-    init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService()) {
+    init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService(), filterG: GenerationFilterPopupViewModel = GenerationFilterPopupViewModel()) {
         self.pokedexService = pokedexService
         defer {
             self.filterViewModel = filterVM
+            self.filterGenerationViewModel = filterG
         }
         super.init()
     }
@@ -43,6 +49,7 @@ class PokemonListViewModel: NSObject {
                 self.pokemonsOriginalList = pokemons
                 self.pokemons = pokemons
                 self.filterViewModel.pokemons = pokemons
+                self.filterGenerationViewModel.pokemons = pokemons
             case .failure:
                 self.showErrorAlert?()
             }
@@ -77,6 +84,16 @@ class PokemonListViewModel: NSObject {
 
 extension PokemonListViewModel: ReevaluateDataProtocol {
     func reevaluate(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
+    }
+}
+
+extension PokemonListViewModel: ReevaluateDataProtocolGeneration {
+    func reevaluateGeneration(pokemons: [PokemonRaw]) {
+        self.pokemons = pokemons
+    }
+
+    func devaluateGeneration(pokemons: [PokemonRaw]) {
         self.pokemons = pokemons
     }
 }
