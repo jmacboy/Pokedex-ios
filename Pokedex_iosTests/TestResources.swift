@@ -43,14 +43,14 @@ class TestResources {
                 Weakness(fromType: Generation(id: 5, name: "dragon"), damageTaken: 2.0)
             ])
         ]),
-        PokemonRaw(id: 2, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-ii"), pokemonDetails: [
+        PokemonRaw(id: 92, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-ii"), pokemonDetails: [
             PokemonDetail(name: "poke2", height: 15, weight: 450, types: [
                 TypeElement(type: Generation(id: 3, name: "water"))
             ], weaknesses: [
                 Weakness(fromType: Generation(id: 4, name: "normal"), damageTaken: 0.5)
             ])
         ]),
-        PokemonRaw(id: 1, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-v"), pokemonDetails: [
+        PokemonRaw(id: 100, name: "poke2", urlImage: "Url", generation: Generation(id: 1, name: "generation-v"), pokemonDetails: [
             PokemonDetail(name: "poke2", height: 25, weight: 455, types: [
                 TypeElement(type: Generation(id: 5, name: "dragon"))
             ], weaknesses: [
