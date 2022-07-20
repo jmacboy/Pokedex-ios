@@ -23,6 +23,9 @@ class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet var heightsViewCollection: UICollectionView!
     var selectedHeights = [PokemonHeigths]()
 
+    @IBOutlet var numberRangeCollectionView: UICollectionView!
+    let rangeSlider = RangeSlider()
+
     var viewmodel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
@@ -58,6 +61,11 @@ class AdvancedFilterPopupViewController: PopupViewController {
         heightsViewCollection.register(uiNibPokemonHeightCell, forCellWithReuseIdentifier: PokemonHeightCollectionViewCell.identifier)
         heightsViewCollection.delegate = self
         heightsViewCollection.dataSource = self
+        // For Heights collection view
+        let uiNibPokemonNumberRange = UINib(nibName: PokemonNumberRangeCollectionViewCell.identifier, bundle: nil)
+        numberRangeCollectionView.register(uiNibPokemonNumberRange, forCellWithReuseIdentifier: PokemonNumberRangeCollectionViewCell.identifier)
+        numberRangeCollectionView.delegate = self
+        numberRangeCollectionView.dataSource = self
     }
 
     func setupContent() {
@@ -88,6 +96,9 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
 extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.numberRangeCollectionView {
+            return 1
+        }
         if collectionView == self.heightsViewCollection {
             return ConstantVariables.pokemonHeights.count
         }
@@ -131,6 +142,11 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             cell.setupData(pokemonHeight: pokemonHeight, isHeightSelected: index != nil)
             return cell
         }
+        if collectionView == self.numberRangeCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonNumberRangeCollectionViewCell.identifier, for: indexPath)
+                    as? PokemonNumberRangeCollectionViewCell ?? PokemonNumberRangeCollectionViewCell()
+            return cell
+        }
         return UICollectionViewCell()
     }
 
@@ -172,6 +188,11 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.numberRangeCollectionView {
+            let width = collectionView.frame.width
+            let height = collectionView.frame.height * 1.2
+            return CGSize(width: width, height: height)
+        }
         let width = collectionView.frame.width / 6.7
         let height = width
         return CGSize(width: width, height: height)
