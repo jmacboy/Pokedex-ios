@@ -48,8 +48,6 @@
 		CE72B139288790CF00075C01 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B138288790CF00075C01 /* RangeSlider.swift */; };
 		CE72B13B288790EB00075C01 /* RangeSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B13A288790EB00075C01 /* RangeSliderThumbLayer.swift */; };
 		CE72B13D2887910B00075C01 /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B13C2887910B00075C01 /* RangeSliderTrackLayer.swift */; };
-		CE72B1412887953000075C01 /* PokemonNumberRangeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72B13F2887953000075C01 /* PokemonNumberRangeCollectionViewCell.swift */; };
-		CE72B1422887953000075C01 /* PokemonNumberRangeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE72B1402887953000075C01 /* PokemonNumberRangeCollectionViewCell.xib */; };
 		CEAEFD6F288633A40098CD03 /* PokemonHeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEFD6D288633A40098CD03 /* PokemonHeightCollectionViewCell.swift */; };
 		CEAEFD70288633A40098CD03 /* PokemonHeightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAEFD6E288633A40098CD03 /* PokemonHeightCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -109,8 +107,6 @@
 		CE72B138288790CF00075C01 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		CE72B13A288790EB00075C01 /* RangeSliderThumbLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderThumbLayer.swift; sourceTree = "<group>"; };
 		CE72B13C2887910B00075C01 /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
-		CE72B13F2887953000075C01 /* PokemonNumberRangeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonNumberRangeCollectionViewCell.swift; sourceTree = "<group>"; };
-		CE72B1402887953000075C01 /* PokemonNumberRangeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonNumberRangeCollectionViewCell.xib; sourceTree = "<group>"; };
 		CEAEFD6D288633A40098CD03 /* PokemonHeightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAEFD6E288633A40098CD03 /* PokemonHeightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonHeightCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE40841C22B257F2FA48873A /* Pods-Pokedex_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_ios.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 		8471C8FD286CF50D005E069A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE72B13E2887951100075C01 /* PokemonNumberRangeCell */,
 				845DC012287E8421003FB5D0 /* GenerationCell */,
 				CEAEFD6C288632EE0098CD03 /* PokemonHeightCell */,
 				8435C886287F20F900A9D108 /* PokemonWeight */,
@@ -382,15 +377,6 @@
 			path = RangeSlider;
 			sourceTree = "<group>";
 		};
-		CE72B13E2887951100075C01 /* PokemonNumberRangeCell */ = {
-			isa = PBXGroup;
-			children = (
-				CE72B13F2887953000075C01 /* PokemonNumberRangeCollectionViewCell.swift */,
-				CE72B1402887953000075C01 /* PokemonNumberRangeCollectionViewCell.xib */,
-			);
-			path = PokemonNumberRangeCell;
-			sourceTree = "<group>";
-		};
 		CEAEFD6C288632EE0098CD03 /* PokemonHeightCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,7 +483,6 @@
 				845DC016287E8451003FB5D0 /* GenerationCollectionViewCell.xib in Resources */,
 				849EAB45286CC4060064705B /* LaunchScreen.storyboard in Resources */,
 				8471C902286CF54D005E069A /* PokemonTableViewCell.xib in Resources */,
-				CE72B1422887953000075C01 /* PokemonNumberRangeCollectionViewCell.xib in Resources */,
 				849EAB42286CC4060064705B /* Assets.xcassets in Resources */,
 				84A226592877D9EF001F3881 /* PokemonTypeCollectionCell.xib in Resources */,
 				CEAEFD70288633A40098CD03 /* PokemonHeightCollectionViewCell.xib in Resources */,
@@ -593,7 +578,6 @@
 				845DC015287E8451003FB5D0 /* GenerationCollectionViewCell.swift in Sources */,
 				C2FBBB262877606B00246202 /* AdvancedFilterPopupViewController.swift in Sources */,
 				8435C889287F217500A9D108 /* PokemonWeightCollectionCell.swift in Sources */,
-				CE72B1412887953000075C01 /* PokemonNumberRangeCollectionViewCell.swift in Sources */,
 				C2343AB22874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift in Sources */,
 				CEAEFD6F288633A40098CD03 /* PokemonHeightCollectionViewCell.swift in Sources */,
 				C2FEC5BA286D302200220A13 /* PokedexService.swift in Sources */,

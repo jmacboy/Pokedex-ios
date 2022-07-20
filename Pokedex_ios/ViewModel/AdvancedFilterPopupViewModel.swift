@@ -21,6 +21,10 @@ class AdvancedFilterPopupViewModel {
     var selectedTypesForTypes = [TypeElement]()
     var selectedWeight: [Bool] = Array(repeating: false, count: 3)
     var selectedHeights = [PokemonHeigths]()
+    var selectedRangeLimits = [
+        ConstantVariables.rangeValuesLowerUpper[0],
+        ConstantVariables.rangeValuesLowerUpper[1]
+    ]
     func applyFilters() {
         closePopup?()
         // Do not rearrange the following filters functions
@@ -28,6 +32,7 @@ class AdvancedFilterPopupViewModel {
         filterByWeaknesses()
         filterByWeight()
         filterByHeights()
+        filterByNumberRange()
         delegate?.reevaluate(pokemons: filtered)
     }
 
@@ -37,6 +42,10 @@ class AdvancedFilterPopupViewModel {
         selectedWeaknesses.removeAll()
         selectedWeight = Array(repeating: false, count: selectedWeight.count)
         selectedHeights.removeAll()
+        selectedRangeLimits = [
+            ConstantVariables.rangeValuesLowerUpper[0],
+            ConstantVariables.rangeValuesLowerUpper[1]
+        ]
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
@@ -101,6 +110,13 @@ class AdvancedFilterPopupViewModel {
            }
         }
         self.filtered = pokemonList
+        return filtered
+   }
+
+    @discardableResult
+    func filterByNumberRange() -> [PokemonRaw] {
+        filtered = filtered.filter({ $0.id >= Int(selectedRangeLimits[0])
+            && $0.id <= Int(selectedRangeLimits[1]) })
         return filtered
    }
 

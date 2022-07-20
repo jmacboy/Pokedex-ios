@@ -53,4 +53,5 @@ class ConstantVariables {
 
     static let applyButtonColor = "apply-button"
     static let backgroundWhite = "background-white"
+    static let rangeValuesLowerUpper = [1.0, 898.0]
 }

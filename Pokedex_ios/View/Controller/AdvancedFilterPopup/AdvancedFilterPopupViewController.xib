@@ -14,7 +14,7 @@
                 <outlet property="applyButton" destination="8Au-PF-P4h" id="aXw-Q6-9hM"/>
                 <outlet property="contentStackView" destination="mQc-Ze-f4u" id="rl9-jC-0Of"/>
                 <outlet property="heightsViewCollection" destination="GFX-2J-N4r" id="7L9-Jk-BGQ"/>
-                <outlet property="numberRangeCollectionView" destination="yTI-tb-b1A" id="yEM-1D-GbR"/>
+                <outlet property="rangeSliderSlotUiView" destination="weC-te-cp1" id="U3t-2a-rQJ"/>
                 <outlet property="resetButton" destination="GwL-L8-s21" id="1lV-8R-Mxt"/>
                 <outlet property="typesCollectionView" destination="DSx-1j-Vil" id="zmH-9h-GIq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -194,24 +194,8 @@
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weC-te-cp1">
                                     <rect key="frame" x="0.0" y="39.5" width="334" height="100"/>
-                                    <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yTI-tb-b1A">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Io5-sV-GDu">
-                                                <size key="itemSize" width="128" height="128"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                        </collectionView>
-                                    </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="yTI-tb-b1A" secondAttribute="trailing" constant="-40" id="60e-2F-e9S"/>
-                                        <constraint firstItem="yTI-tb-b1A" firstAttribute="leading" secondItem="weC-te-cp1" secondAttribute="leading" id="9Dl-Bn-k9F"/>
-                                        <constraint firstItem="yTI-tb-b1A" firstAttribute="top" secondItem="weC-te-cp1" secondAttribute="top" id="Cdg-bZ-x7h"/>
-                                        <constraint firstAttribute="bottom" secondItem="yTI-tb-b1A" secondAttribute="bottom" id="lA8-SP-1Wq"/>
                                         <constraint firstAttribute="height" constant="100" id="vh4-3X-rdq"/>
                                     </constraints>
                                 </view>

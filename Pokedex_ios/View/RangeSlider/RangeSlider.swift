@@ -11,10 +11,10 @@ import QuartzCore
 
 class RangeSlider: UIControl {
 
-    var minimumValue = 1.0
-    var maximumValue = 898.0
-    var lowerValue = 1.0
-    var upperValue = 898.0
+    var minimumValue = ConstantVariables.rangeValuesLowerUpper[0]
+    var maximumValue = ConstantVariables.rangeValuesLowerUpper[1]
+    var lowerValue = ConstantVariables.rangeValuesLowerUpper[0]
+    var upperValue = ConstantVariables.rangeValuesLowerUpper[1]
 
     let trackLayer = RangeSliderTrackLayer() // = CALayer() defined in RangeSliderTrackLayer.swift
     let lowerThumbLayer = RangeSliderThumbLayer() // CALayer()

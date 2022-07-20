@@ -23,7 +23,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet var heightsViewCollection: UICollectionView!
     var selectedHeights = [PokemonHeigths]()
 
-    @IBOutlet var numberRangeCollectionView: UICollectionView!
+    @IBOutlet var rangeSliderSlotUiView: UIView!
     let rangeSlider = RangeSlider()
 
     var viewmodel: AdvancedFilterPopupViewModel?
@@ -33,6 +33,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
         initViewModel()
         setupContent()
         setupElements()
+        setupRageSlider()
     }
 
     func initViewModel() {
@@ -61,11 +62,6 @@ class AdvancedFilterPopupViewController: PopupViewController {
         heightsViewCollection.register(uiNibPokemonHeightCell, forCellWithReuseIdentifier: PokemonHeightCollectionViewCell.identifier)
         heightsViewCollection.delegate = self
         heightsViewCollection.dataSource = self
-        // For Heights collection view
-        let uiNibPokemonNumberRange = UINib(nibName: PokemonNumberRangeCollectionViewCell.identifier, bundle: nil)
-        numberRangeCollectionView.register(uiNibPokemonNumberRange, forCellWithReuseIdentifier: PokemonNumberRangeCollectionViewCell.identifier)
-        numberRangeCollectionView.delegate = self
-        numberRangeCollectionView.dataSource = self
     }
 
     func setupContent() {
@@ -82,7 +78,19 @@ class AdvancedFilterPopupViewController: PopupViewController {
         ])
     }
 
+    func setupRageSlider() {
+        if let selectedRangeLimits = viewmodel?.selectedRangeLimits {
+            rangeSlider.lowerValue = selectedRangeLimits[0]
+            rangeSlider.upperValue = selectedRangeLimits[1]
+        }
+        rangeSliderSlotUiView.addSubview(rangeSlider)
+        let margin: CGFloat = 0.0
+        let width = rangeSliderSlotUiView.bounds.width - 1.0 * margin
+        rangeSlider.frame = CGRect(x: margin, y: margin, width: width - 25.0, height: 25.0)
+    }
+
     @IBAction func applyFilters(_ sender: Any) {
+        viewmodel?.selectedRangeLimits = [rangeSlider.lowerValue, rangeSlider.upperValue]
         viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
@@ -91,14 +99,12 @@ class AdvancedFilterPopupViewController: PopupViewController {
         weaknessesCollectionView.reloadData()
         weightCollectionView.reloadData()
         heightsViewCollection.reloadData()
+        rangeSlider.resetValues()
     }
 }
 
 extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.numberRangeCollectionView {
-            return 1
-        }
         if collectionView == self.heightsViewCollection {
             return ConstantVariables.pokemonHeights.count
         }
@@ -142,11 +148,6 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
             cell.setupData(pokemonHeight: pokemonHeight, isHeightSelected: index != nil)
             return cell
         }
-        if collectionView == self.numberRangeCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonNumberRangeCollectionViewCell.identifier, for: indexPath)
-                    as? PokemonNumberRangeCollectionViewCell ?? PokemonNumberRangeCollectionViewCell()
-            return cell
-        }
         return UICollectionViewCell()
     }
 
@@ -188,11 +189,6 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.numberRangeCollectionView {
-            let width = collectionView.frame.width
-            let height = collectionView.frame.height * 1.2
-            return CGSize(width: width, height: height)
-        }
         let width = collectionView.frame.width / 6.7
         let height = width
         return CGSize(width: width, height: height)
