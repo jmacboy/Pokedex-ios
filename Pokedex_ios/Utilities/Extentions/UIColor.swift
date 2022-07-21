@@ -8,10 +8,10 @@ import UIKit
 import Foundation
 
 extension UIColor {
-    class func applyButtonColor() -> UIColor {
-        return UIColor(named: "apply-button") ?? UIColor.systemGray6
+    static var applyButtonColor: UIColor {
+        return UIColor(named: ConstantVariables.applyButtonColor) ?? systemGray6
     }
-    class func unAppliedButtonColor() -> UIColor {
+    static var unAppliedButtonColor: UIColor {
         return UIColor.systemGray6
     }
 }

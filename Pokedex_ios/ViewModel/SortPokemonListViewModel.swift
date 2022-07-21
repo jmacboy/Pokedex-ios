@@ -23,26 +23,26 @@ class SortPokemonListViewModel {
         }
     // MARK: Sorting Logic
     func sortWithSmallestNumberFirst() {
-        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
-            return pokemanRow1.id < pokemanRow2.id
+        pokemons = pokemons.sorted(by: { pokemonRow1, pokemonRow2 in
+            return pokemonRow1.id < pokemonRow2.id
         })
         sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
     }
     func sortWithHighestNumberFirst() {
-        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
-            return pokemanRow1.id > pokemanRow2.id
+        pokemons = pokemons.sorted(by: { pokemonRow1, pokemonRow2 in
+            return pokemonRow1.id > pokemonRow2.id
         })
         sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
     }
     func sortWithAtoZ() {
-        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
-            return pokemanRow1.name < pokemanRow2.name
+        pokemons = pokemons.sorted(by: { pokemonRow1, pokemonRow2 in
+            return pokemonRow1.name < pokemonRow2.name
         })
         sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
     }
     func sortWithZtoA() {
-        pokemons = pokemons.sorted(by: { pokemanRow1, pokemanRow2 in
-            return pokemanRow1.name > pokemanRow2.name
+        pokemons = pokemons.sorted(by: { pokemonRow1, pokemonRow2 in
+            return pokemonRow1.name > pokemonRow2.name
         })
         sortButtonActionDelegateDelegate?.sortButtonAction(pokemons: pokemons)
     }

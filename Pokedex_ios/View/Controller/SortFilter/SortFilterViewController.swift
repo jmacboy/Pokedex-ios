@@ -69,9 +69,9 @@ class SortFilterViewController: PopupViewController {
             button.isSelected = !button.isSelected
             if button.isSelected {
                button.tintColor = UIColor.white
-                button.backgroundColor = UIColor.applyButtonColor()
+                button.backgroundColor = UIColor.applyButtonColor
             } else {
-               button.backgroundColor = UIColor.unAppliedButtonColor()
+               button.backgroundColor = UIColor.unAppliedButtonColor
             }
         }
         sortPokemonListViewModel.sortWithSmallestNumberFirst()
@@ -83,9 +83,9 @@ class SortFilterViewController: PopupViewController {
              button.isSelected = !button.isSelected
             if button.isSelected {
                button.tintColor = UIColor.white
-               button.backgroundColor = UIColor.applyButtonColor()
+               button.backgroundColor = UIColor.applyButtonColor
              } else {
-               button.backgroundColor = UIColor.unAppliedButtonColor()
+               button.backgroundColor = UIColor.unAppliedButtonColor
              }
          }
          sortPokemonListViewModel.sortWithHighestNumberFirst()
@@ -97,9 +97,9 @@ class SortFilterViewController: PopupViewController {
             button.isSelected = !button.isSelected
            if button.isSelected {
               button.tintColor = UIColor.white
-              button.backgroundColor = UIColor.applyButtonColor()
+              button.backgroundColor = UIColor.applyButtonColor
             } else {
-              button.backgroundColor = UIColor.unAppliedButtonColor()
+              button.backgroundColor = UIColor.unAppliedButtonColor
             }
          }
          sortPokemonListViewModel.sortWithAtoZ()
@@ -111,9 +111,9 @@ class SortFilterViewController: PopupViewController {
              button.isSelected = !button.isSelected
             if button.isSelected {
                button.tintColor = UIColor.white
-            button.backgroundColor = UIColor.applyButtonColor()
+            button.backgroundColor = UIColor.applyButtonColor
              } else {
-               button.backgroundColor = UIColor.unAppliedButtonColor()
+               button.backgroundColor = UIColor.unAppliedButtonColor
              }
          }
          sortPokemonListViewModel.sortWithZtoA()
