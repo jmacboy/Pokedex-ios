@@ -24,7 +24,7 @@ class RangeSlider: UIControl {
     var previousLocation = CGPoint()
 
     var trackTintColor = UIColor(white: 0.9, alpha: 1.0)
-    var trackHighlightTintColor = UIColor(named: "apply-button")
+    var trackHighlightTintColor = UIColor(named: ConstantVariables.applyButtonColor)
     var thumbTintColor = UIColor.white
 
     var curvaceousness = CGFloat(1.0)

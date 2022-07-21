@@ -32,12 +32,6 @@ class RangeSliderThumbLayer: CALayer {
             ctx.addPath(thumbPath.cgPath)
             ctx.strokePath()
 
-            // Add a shadow when highlighted
-            /*if highlighted {
-                ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
-                ctx.addPath(thumbPath.cgPath)
-                ctx.fillPath()
-            }*/
         }
     }
 }
