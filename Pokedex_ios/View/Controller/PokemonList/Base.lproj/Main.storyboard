@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9t-JU-kg3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1519" y="21"/>
+            <point key="canvasLocation" x="1518.840579710145" y="20.758928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5jn-2a-2uW">
@@ -133,10 +133,10 @@
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <namedColor name="TextGreyColor">
-            <color red="0.090000003576278687" green="0.090000003576278687" blue="0.10599999874830246" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="background-grey">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
