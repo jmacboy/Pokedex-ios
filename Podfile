@@ -7,7 +7,8 @@ target 'Pokedex_ios' do
 
   # Pods for Pokedex_ios
   pod 'SwiftLint', '0.47.1'
-
+  pod 'Kingfisher'
+ 
   target 'Pokedex_iosTests' do
     inherit! :search_paths
     # Pods for testing

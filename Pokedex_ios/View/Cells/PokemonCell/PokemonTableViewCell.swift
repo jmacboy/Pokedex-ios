@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class PokemonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infoContainer: UIView!
@@ -37,9 +37,10 @@ class PokemonTableViewCell: UITableViewCell {
         numberLabel.text = setPokemonNumber(id: pokemon.id)
         nameLabel.text = pokemon.name.capitalized
         if let image = viewModel.getPokemonsImageBy(id: pokemon.id) {
-            pokemonImageView.image = image
+            pokemonImageView.kf.setImage(with: image)
+        } else {
+            pokemonImageView.image = UIImage(named: "questionIcon")
         }
-
         guard let types = pokemon.pokemonDetails.first?.types else { return }
         setPokemonTypes(types: types)
     }
