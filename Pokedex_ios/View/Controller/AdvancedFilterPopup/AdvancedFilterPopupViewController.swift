@@ -23,6 +23,9 @@ class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet var heightsViewCollection: UICollectionView!
     var selectedHeights = [PokemonHeigths]()
 
+    @IBOutlet var rangeSliderSlotUiView: UIView!
+    let rangeSlider = RangeSlider()
+
     var viewmodel: AdvancedFilterPopupViewModel?
 
     override func viewDidLoad() {
@@ -30,6 +33,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
         initViewModel()
         setupContent()
         setupElements()
+        setupRageSlider()
     }
 
     func initViewModel() {
@@ -74,7 +78,19 @@ class AdvancedFilterPopupViewController: PopupViewController {
         ])
     }
 
+    func setupRageSlider() {
+        if let selectedRangeLimits = viewmodel?.selectedRangeLimits {
+            rangeSlider.lowerValue = selectedRangeLimits[0]
+            rangeSlider.upperValue = selectedRangeLimits[1]
+        }
+        rangeSliderSlotUiView.addSubview(rangeSlider)
+        let margin: CGFloat = 0.0
+        let width = rangeSliderSlotUiView.bounds.width - 1.0 * margin
+        rangeSlider.frame = CGRect(x: margin, y: margin, width: width - 25.0, height: 25.0)
+    }
+
     @IBAction func applyFilters(_ sender: Any) {
+        viewmodel?.selectedRangeLimits = [rangeSlider.lowerValue, rangeSlider.upperValue]
         viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
@@ -83,6 +99,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
         weaknessesCollectionView.reloadData()
         weightCollectionView.reloadData()
         heightsViewCollection.reloadData()
+        rangeSlider.resetValues()
     }
 }
 

@@ -90,6 +90,8 @@ extension PopupViewController {
         // change to false to immediately listen on gesture movement
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
+        // IMPORTANT: cancelsTouchesInView in false allows the range slider work propertly
+        panGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(panGesture)
     }
     // MARK: Pan gesture handler
