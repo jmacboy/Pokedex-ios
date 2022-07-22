@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37846AD65FD119F4748A2F3C /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72E4EFEEABAC82352A26DD4 /* Pods_Pokedex_ios.framework */; };
+		516CEB2AC1417A72F127CABF /* Pods_Pokedex_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B8B78ECE54CF5296B74FF0 /* Pods_Pokedex_iosTests.framework */; };
 		8435C889287F217500A9D108 /* PokemonWeightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435C887287F217500A9D108 /* PokemonWeightCollectionCell.swift */; };
 		8435C88A287F217500A9D108 /* PokemonWeightCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435C888287F217500A9D108 /* PokemonWeightCollectionCell.xib */; };
 		843AEF08287394FD007039DB /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 843AEF07287394FD007039DB /* queries.graphql */; };
@@ -34,13 +36,9 @@
 		84A226592877D9EF001F3881 /* PokemonTypeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A226582877D9EF001F3881 /* PokemonTypeCollectionCell.xib */; };
 		84A2265B2877DA08001F3881 /* PokemonTypeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2265A2877DA08001F3881 /* PokemonTypeCollectionCell.swift */; };
 		84AFCD61286F9B2F00F5B7D6 /* GraphQLResultConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */; };
-<<<<<<< HEAD
 		84D763472881AEA000D9C557 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D763452881AEA000D9C557 /* SortFilterViewController.swift */; };
 		84D763482881AEA000D9C557 /* SortFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D763462881AEA000D9C557 /* SortFilterViewController.xib */; };
 		84D7634A2881B05400D9C557 /* SortPokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D763492881B05400D9C557 /* SortPokemonListViewModel.swift */; };
-		A1320CB03B2868A10E299EF5 /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */; };
-=======
->>>>>>> e9eedfac1f6cb32ed9a85ddc6d4a4d096ed4825b
 		C2343AAB2874CE32008D7022 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C2343AAA2874CE32008D7022 /* Apollo */; };
 		C2343AB22874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2343AB12874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift */; };
 		C24185F52873C3E4009C3061 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C24185F42873C3E4009C3061 /* Apollo */; };
@@ -100,13 +98,10 @@
 		84A226582877D9EF001F3881 /* PokemonTypeCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PokemonTypeCollectionCell.xib; sourceTree = "<group>"; };
 		84A2265A2877DA08001F3881 /* PokemonTypeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonTypeCollectionCell.swift; sourceTree = "<group>"; };
 		84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLResultConverter.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		84D763452881AEA000D9C557 /* SortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFilterViewController.swift; sourceTree = "<group>"; };
 		84D763462881AEA000D9C557 /* SortFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortFilterViewController.xib; sourceTree = "<group>"; };
 		84D763492881B05400D9C557 /* SortPokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPokemonListViewModel.swift; sourceTree = "<group>"; };
-		908D32039BC710BCC9AFAE00 /* Pods_Pokedex_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-=======
->>>>>>> e9eedfac1f6cb32ed9a85ddc6d4a4d096ed4825b
+		A6B8B78ECE54CF5296B74FF0 /* Pods_Pokedex_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2343AB12874DE2B008D7022 /* AdvancedFilterPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFilterPopupViewModel.swift; sourceTree = "<group>"; };
 		C25299D828763598007C74AB /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		C2599BEB28739A420079F454 /* TestResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResources.swift; sourceTree = "<group>"; };
@@ -120,6 +115,7 @@
 		CEAEFD6D288633A40098CD03 /* PokemonHeightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEAEFD6E288633A40098CD03 /* PokemonHeightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonHeightCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE40841C22B257F2FA48873A /* Pods-Pokedex_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_ios.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		E72E4EFEEABAC82352A26DD4 /* Pods_Pokedex_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +126,7 @@
 				849F5D2E286F984B007B782B /* Apollo in Frameworks */,
 				C2343AAB2874CE32008D7022 /* Apollo in Frameworks */,
 				C24185F52873C3E4009C3061 /* Apollo in Frameworks */,
+				37846AD65FD119F4748A2F3C /* Pods_Pokedex_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516CEB2AC1417A72F127CABF /* Pods_Pokedex_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +155,8 @@
 		552E1F1E518280CFFB1986C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E72E4EFEEABAC82352A26DD4 /* Pods_Pokedex_ios.framework */,
+				A6B8B78ECE54CF5296B74FF0 /* Pods_Pokedex_iosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

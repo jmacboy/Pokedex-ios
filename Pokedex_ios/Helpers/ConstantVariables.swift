@@ -11,7 +11,6 @@ class ConstantVariables {
     static let pokeApiEndpoint = "https://beta.pokeapi.co/graphql/v1beta"
     static let pokemonImageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/%d.png"
     static let pokeImageHeader = "PokeballSVG"
-    static var applyButtonColor = "apply-button"
     static let pokemonTypes = [
         TypeElement(type: Generation(id: 1, name: "normal")),
         TypeElement(type: Generation(id: 2, name: "fighting")),
