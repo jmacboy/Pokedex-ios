@@ -18,16 +18,16 @@ class GenerationCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func setUpData(generation: GenerationAux, isTypeSelected: Bool) {
+    func setupData(generation: GenerationFilter, isTypeSelected: Bool) {
         generationLabel.text = generation.name
         let imageName = "pokemon-\(generation.description)"
         generationImageView.image = UIImage(named: imageName)
 
         if isTypeSelected {
-            generationLabel.textColor = UIColor(named: "TextWhiteColor")
-            patternImageView.backgroundColor = UIColor(named: "background-generation-selected")
-            generationBackground.backgroundColor = UIColor(named: "background-generation-selected")
-            generationImageView.tintColor = UIColor(named: "background-generation-selected")
+            generationLabel.textColor = UIColor(named: ConstantVariables.backgroundWhite)
+            patternImageView.backgroundColor = UIColor(named: ConstantVariables.applyButtonColor)
+            generationBackground.backgroundColor = UIColor(named: ConstantVariables.applyButtonColor)
+            generationImageView.tintColor = UIColor(named: ConstantVariables.applyButtonColor)
         }
     }
 }

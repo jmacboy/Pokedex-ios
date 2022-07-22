@@ -20,12 +20,14 @@ class AdvancedFilterPopupViewModel {
     var pokemons = [PokemonRaw]()
     var selectedTypesForTypes = [TypeElement]()
     var selectedWeight: [Bool] = Array(repeating: false, count: 3)
+    var selectedHeights = [PokemonHeigths]()
     func applyFilters() {
         closePopup?()
         // Do not rearrange the following filters functions
         filterByTypes()
         filterByWeaknesses()
         filterByWeight()
+        filterByHeights()
         delegate?.reevaluate(pokemons: filtered)
     }
 
@@ -34,6 +36,7 @@ class AdvancedFilterPopupViewModel {
         selectedTypesForTypes.removeAll()
         selectedWeaknesses.removeAll()
         selectedWeight = Array(repeating: false, count: selectedWeight.count)
+        selectedHeights.removeAll()
     }
     private func checkAllTypes(arr: [TypeElement], target: [TypeElement]) -> Bool {
         target.allSatisfy({ type in
@@ -83,4 +86,33 @@ class AdvancedFilterPopupViewModel {
            }
            return filtered
        }
+    @discardableResult
+    func filterByHeights() -> [PokemonRaw] {
+        guard !selectedHeights.isEmpty else { return filtered }
+        var pokemonList: [PokemonRaw] = []
+        for height in selectedHeights {
+           switch height {
+           case .small:
+               pokemonList += self.filterSmall(pokemons: self.filtered)
+           case .medium:
+               pokemonList += self.filterMedium(pokemons: self.filtered)
+           case .large:
+               pokemonList += self.filterLarge(pokemons: self.filtered)
+           }
+        }
+        self.filtered = pokemonList
+        return filtered
+   }
+
+   private func filterSmall(pokemons: [PokemonRaw]) -> [PokemonRaw] {
+       return pokemons.filter({ $0.pokemonDetails[0].height < 13 })
+   }
+
+   private func filterMedium(pokemons: [PokemonRaw]) -> [PokemonRaw] {
+       return pokemons.filter({ $0.pokemonDetails[0].height >= 13 && $0.pokemonDetails[0].height < 22 })
+   }
+
+   private func filterLarge(pokemons: [PokemonRaw]) -> [PokemonRaw] {
+       return pokemons.filter({ $0.pokemonDetails[0].height >= 22 })
+   }
 }

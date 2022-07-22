@@ -12,7 +12,7 @@ protocol ReevaluateDataProtocolGeneration: AnyObject {
     func devaluateGeneration(pokemons: [PokemonRaw])
 }
 
-struct GenerationAux {
+struct GenerationFilter {
     let name: String
     let description: String
 }
@@ -20,7 +20,7 @@ struct GenerationAux {
 class GenerationFilterPopupViewModel {
 
     var filtered = [PokemonRaw]()
-    var selectedGeneration = [GenerationAux]()
+    var selectedGeneration = [GenerationFilter]()
     var pokemons = [PokemonRaw]()
 
     var delegate: ReevaluateDataProtocolGeneration?

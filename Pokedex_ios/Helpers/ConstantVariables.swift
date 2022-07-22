@@ -33,14 +33,14 @@ class ConstantVariables {
         TypeElement(type: Generation(id: 18, name: "fairy"))
     ]
     static let pokemonGenerations = [
-        GenerationAux(name: "Generation I", description: "generation-i"),
-        GenerationAux(name: "Generation II", description: "generation-ii"),
-        GenerationAux(name: "Generation III", description: "generation-iii"),
-        GenerationAux(name: "Generation IV", description: "generation-iv"),
-        GenerationAux(name: "Generation V", description: "generation-v"),
-        GenerationAux(name: "Generation VI", description: "generation-vi"),
-        GenerationAux(name: "Generation VII", description: "generation-vii"),
-        GenerationAux(name: "Generation VIII", description: "generation-viii")
+        GenerationFilter(name: "Generation I", description: "generation-i"),
+        GenerationFilter(name: "Generation II", description: "generation-ii"),
+        GenerationFilter(name: "Generation III", description: "generation-iii"),
+        GenerationFilter(name: "Generation IV", description: "generation-iv"),
+        GenerationFilter(name: "Generation V", description: "generation-v"),
+        GenerationFilter(name: "Generation VI", description: "generation-vi"),
+        GenerationFilter(name: "Generation VII", description: "generation-vii"),
+        GenerationFilter(name: "Generation VIII", description: "generation-viii")
     ]
    static let pokemonWeight = [
     "low",
@@ -50,4 +50,8 @@ class ConstantVariables {
     static let inicialWeight = 0
     static let LowWeight  = 132
     static let HeavyWeight =  451
+    static let pokemonHeights: [PokemonHeigths] = [.small, .medium, .large]
+    
+    static let applyButtonColor = "apply-button"
+    static let backgroundWhite = "background-white"
 }

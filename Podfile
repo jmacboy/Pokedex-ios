@@ -13,8 +13,4 @@ target 'Pokedex_ios' do
     # Pods for testing
   end
 
-  target 'Pokedex_iosUITests' do
-    # Pods for testing
-  end
-
 end

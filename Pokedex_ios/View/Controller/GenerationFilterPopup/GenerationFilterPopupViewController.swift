@@ -13,13 +13,14 @@ class GenerationFilterPopupViewController: PopupViewController {
     @IBOutlet weak var generationCollectionView: UICollectionView!
 
     var viewmodel: GenerationFilterPopupViewModel?
+    let cellNib = "GenerationCollectionViewCell"
     let cellIdentifier = "PokemonGenerationCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initViewModel()
-        setUpContent()
-        setUpElements()
+        setupContent()
+        setupElements()
     }
 
     func initViewModel() {
@@ -28,7 +29,7 @@ class GenerationFilterPopupViewController: PopupViewController {
         }
     }
 
-    func setUpContent() {
+    func setupContent() {
         let spacer = UIView()
         contentStackView.addArrangedSubview(spacer)
         containerView.addSubview(contentStackView)
@@ -40,11 +41,11 @@ class GenerationFilterPopupViewController: PopupViewController {
         ])
     }
 
-    func setUpElements() {
+    func setupElements() {
         self.generationCollectionView.delegate = self
         self.generationCollectionView.dataSource = self
 
-        let uiNibPokemonGenerationCell = UINib(nibName: "GenerationCollectionViewCell", bundle: nil)
+        let uiNibPokemonGenerationCell = UINib(nibName: cellNib, bundle: nil)
         self.generationCollectionView.register(uiNibPokemonGenerationCell, forCellWithReuseIdentifier: cellIdentifier)
     }
 
@@ -62,7 +63,7 @@ extension GenerationFilterPopupViewController: UICollectionViewDelegate, UIColle
                 as? GenerationCollectionViewCell ?? GenerationCollectionViewCell()
 
         let index = viewmodel?.selectedGeneration.firstIndex(where: { $0.name == pokemonGeneration.name })
-        cell.setUpData(generation: pokemonGeneration, isTypeSelected: index != nil)
+        cell.setupData(generation: pokemonGeneration, isTypeSelected: index != nil)
 
         return cell
     }
