@@ -42,7 +42,11 @@ class PokemonListViewController: UIViewController {
         let generationFilterButton = UIBarButtonItem(image: generationFilterImage, style: .plain,
                                                    target: self, action: #selector(showGenerationFilterPopup))
 
-        navigationItem.rightBarButtonItems = [advancedFilterButton, generationFilterButton]
+        let sortFilterImage = UIImage(named: "sortIcon")?.withRenderingMode(.alwaysOriginal)
+        let sortFilterButton = UIBarButtonItem(image: sortFilterImage, style: .plain,
+                                                   target: self, action: #selector(showSortFilterPopup))
+
+        navigationItem.rightBarButtonItems = [advancedFilterButton, sortFilterButton, generationFilterButton]
     }
 
     @objc func showAdvancedFilterPopup() {
@@ -51,14 +55,19 @@ class PokemonListViewController: UIViewController {
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
-
     @objc func showGenerationFilterPopup() {
         let vc = GenerationFilterPopupViewController()
         vc.viewmodel = viewModel.filterGenerationViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
-
+    @objc func showSortFilterPopup() {
+        let sortPokemonListViewModel = SortPokemonListViewModel(pokemons: viewModel.pokemons)
+        sortPokemonListViewModel.sortButtonActionDelegateDelegate = viewModel.self
+        let vc = SortFilterViewController(sortPokemonListViewModel: sortPokemonListViewModel)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
     private func setBackground() {
         let margins = view.layoutMarginsGuide
 

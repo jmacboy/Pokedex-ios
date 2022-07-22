@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SortFilterViewController" customModule="Pokedex_ios" customModuleProvider="target">
+            <connections>
+                <outlet property="aToZButton" destination="BRE-bn-Dw3" id="oBr-zA-PcR"/>
+                <outlet property="contentStackView" destination="EoH-0K-Bjl" id="aQy-Dd-ciQ"/>
+                <outlet property="heighestNumberFirstButton" destination="pNN-uZ-hdH" id="zRU-C5-rBk"/>
+                <outlet property="smallestNumberFirstButton" destination="nYH-pS-fOZ" id="1T7-OA-y2N"/>
+                <outlet property="sortDescriptionLabel" destination="Tr7-f9-0qV" id="nn6-7Z-fGU"/>
+                <outlet property="sortLabel" destination="5DA-0l-Z2E" id="C0u-Mu-ZGZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="zToAButton" destination="sFv-dv-23C" id="ggE-92-o9b"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EoH-0K-Bjl">
+                    <rect key="frame" x="40" y="614" width="334" height="299.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DA-0l-Z2E">
+                            <rect key="frame" x="0.0" y="0.0" width="334" height="31.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Pokemons alphabetically or by National Pokedex number!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr7-f9-0qV">
+                            <rect key="frame" x="0.0" y="39.5" width="334" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="jNL-ik-Yad"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" name="TextGreyColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYH-pS-fOZ">
+                            <rect key="frame" x="0.0" y="83.5" width="334" height="48"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="BQm-Pd-N89"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Smallest number first"/>
+                            <connections>
+                                <action selector="smallestNumberFirstButton:" destination="-1" eventType="touchUpInside" id="STZ-85-ohg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNN-uZ-hdH">
+                            <rect key="frame" x="0.0" y="139.5" width="334" height="48"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="1sd-C5-83O"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Highest number first"/>
+                            <connections>
+                                <action selector="highestNumberFirst:" destination="-1" eventType="touchUpInside" id="N4D-On-Zxw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-bn-Dw3">
+                            <rect key="frame" x="0.0" y="195.5" width="334" height="48"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="T8e-Uj-pq6"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="A-Z"/>
+                            <connections>
+                                <action selector="aToZ:" destination="-1" eventType="touchUpInside" id="Kuz-ct-wgb"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-dv-23C">
+                            <rect key="frame" x="0.0" y="251.5" width="334" height="48"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Vm6-SS-vum"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Z-A"/>
+                            <connections>
+                                <action selector="zToA:" destination="-1" eventType="touchUpInside" id="BRK-TG-L66"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EoH-0K-Bjl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="2zz-bp-duA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EoH-0K-Bjl" secondAttribute="trailing" constant="40" id="zQg-v6-WTt"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="70.982142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="TextGreyColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.46274509803921571" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
