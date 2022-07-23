@@ -64,16 +64,14 @@ function optimize_format {
   fi
 
   # local reference=$(jq -r '.actions._values[2].actionResult.coverage.archiveRef.id._value'  tmp.json)
-  local reference=$(jq -r '.actions._values[]|[.actionResult.coverage.archiveRef.id],._values'  tmp.json 
-| grep value | cut -d : -f 2 | cut -d \" -f 2)
+  local reference=$(jq -r '.actions._values[]|[.actionResult.coverage.archiveRef.id],._values'  tmp.json | grep value | cut -d : -f 2 | cut -d \" -f 2)
   if [ $? -ne 0 ]; then 
     echo 'Failed to execute jq (https://stedolan.github.io/jq/)' 1>&2
     exit -1
   fi
   # $reference can be a list of IDs (from a merged .xcresult bundle of multiple test plans)
   for test_ref in $reference; do
-    xcrun xcresulttool export --type directory --path "$xccovarchive_file" --id "$test_ref" 
---output-path tmp.xccovarchive
+    xcrun xcresulttool export --type directory --path "$xccovarchive_file" --id "$test_ref" --output-path tmp.xccovarchive
     if [ $? -ne 0 ]; then 
       echo "Failed to execute xcrun xcresulttool export for reference ${test_ref}" 1>&2
       exit -1
