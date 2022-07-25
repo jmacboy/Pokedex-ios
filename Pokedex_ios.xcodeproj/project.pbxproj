@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35753F660812011EB529FFF9 /* Pods_Pokedex_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871FF22C9175A2CEC6CA40 /* Pods_Pokedex_iosTests.framework */; };
+		6FB1B4BE5A65DD34BEE105FF /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB807527A441DD8ECCAFE08 /* Pods_Pokedex_ios.framework */; };
 		8435C889287F217500A9D108 /* PokemonWeightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435C887287F217500A9D108 /* PokemonWeightCollectionCell.swift */; };
 		8435C88A287F217500A9D108 /* PokemonWeightCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435C888287F217500A9D108 /* PokemonWeightCollectionCell.xib */; };
 		843AEF08287394FD007039DB /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 843AEF07287394FD007039DB /* queries.graphql */; };
@@ -69,7 +71,9 @@
 /* Begin PBXFileReference section */
 		359906566F4F71F40961968A /* Pods-Pokedex_iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_iosTests.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex_iosTests/Pods-Pokedex_iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		37AD5AEF5B6106D1420184F4 /* Pods-Pokedex_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_ios.release.xcconfig"; path = "Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios.release.xcconfig"; sourceTree = "<group>"; };
+		3BB807527A441DD8ECCAFE08 /* Pods_Pokedex_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D02B9176EA8F4744DAA893 /* Pods-Pokedex_iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_iosTests.release.xcconfig"; path = "Target Support Files/Pods-Pokedex_iosTests/Pods-Pokedex_iosTests.release.xcconfig"; sourceTree = "<group>"; };
+		55871FF22C9175A2CEC6CA40 /* Pods_Pokedex_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8435C887287F217500A9D108 /* PokemonWeightCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeightCollectionCell.swift; sourceTree = "<group>"; };
 		8435C888287F217500A9D108 /* PokemonWeightCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonWeightCollectionCell.xib; sourceTree = "<group>"; };
 		843AEF07287394FD007039DB /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				849F5D2E286F984B007B782B /* Apollo in Frameworks */,
 				C2343AAB2874CE32008D7022 /* Apollo in Frameworks */,
 				C24185F52873C3E4009C3061 /* Apollo in Frameworks */,
+				6FB1B4BE5A65DD34BEE105FF /* Pods_Pokedex_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35753F660812011EB529FFF9 /* Pods_Pokedex_iosTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +161,8 @@
 		552E1F1E518280CFFB1986C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BB807527A441DD8ECCAFE08 /* Pods_Pokedex_ios.framework */,
+				55871FF22C9175A2CEC6CA40 /* Pods_Pokedex_iosTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -426,6 +434,7 @@
 				849EAB31286CC4040064705B /* Sources */,
 				849EAB32286CC4040064705B /* Frameworks */,
 				849EAB33286CC4040064705B /* Resources */,
+				C2287536288F03BF000DF8EF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -565,6 +574,23 @@
 			inputPaths = (
 			);
 			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		C2287536288F03BF000DF8EF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
 			outputFileListPaths = (
 			);
 			outputPaths = (

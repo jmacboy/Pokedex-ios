@@ -28,12 +28,9 @@ class TestResources {
         pokemonDetails: [PokemonDetail(name: "detail1", height: 5, weight: 5,
         types: [TypeElement(type: Generation(id: 12, name: "grass")), TypeElement(type: Generation(id: 6, name: "rock"))])])
     ]
-
     let filterTypesCriteria: [TypeElement] = [TypeElement(type: Generation(id: 12, name: "grass")),
         TypeElement(type: Generation(id: 6, name: "rock"))]
-
     let filterHeightsCriteria: [PokemonHeigths] = [.large]
-
     static let pokemonRaw = [
         PokemonRaw(id: 1, name: "poke1", urlImage: "Url", generation: Generation(id: 1, name: "generation-i"), pokemonDetails: [
             PokemonDetail(name: "poke1", height: 10, weight: 131, types: [
@@ -58,12 +55,10 @@ class TestResources {
             ])
         ])
     ]
-
     static let filterByWeankessCriteria = [
         TypeElement(type: Generation(id: 2, name: "fire")),
         TypeElement(type: Generation(id: 5, name: "dragon"))
     ]
-
     static let filterByGenerationCriteria = [
         GenerationFilter(name: "Generation I", description: "generation-i")
     ]
