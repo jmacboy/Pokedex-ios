@@ -26,26 +26,48 @@ class PokemonListViewController: UIViewController {
         setBackground()
         initViewModel()
         setSearchView()
-        // Setup for the advanced filter image and button
-        setUpAdvanceFilterPopup()
+        // Setup for all filter image and button
+        setFiltersIconsPopup()
         // Register the custom cell
         setSearchView()
         let uiNib = UINib(nibName: pokemonCell, bundle: nil)
         pokemonsTableView.register(uiNib, forCellReuseIdentifier: pokeCellIdentifier)
     }
-    func setUpAdvanceFilterPopup() {
+    func setFiltersIconsPopup() {
         let advancedFilterImage = UIImage(named: "AdvancedFilterSVG")?.withRenderingMode(.alwaysOriginal)
         let advancedFilterButton = UIBarButtonItem(image: advancedFilterImage, style: .plain,
                                                    target: self, action: #selector(showAdvancedFilterPopup))
-        navigationItem.rightBarButtonItem = advancedFilterButton
+
+        let generationFilterImage = UIImage(named: "generationFilterIcon")?.withRenderingMode(.alwaysOriginal)
+        let generationFilterButton = UIBarButtonItem(image: generationFilterImage, style: .plain,
+                                                   target: self, action: #selector(showGenerationFilterPopup))
+
+        let sortFilterImage = UIImage(named: "sortIcon")?.withRenderingMode(.alwaysOriginal)
+        let sortFilterButton = UIBarButtonItem(image: sortFilterImage, style: .plain,
+                                                   target: self, action: #selector(showSortFilterPopup))
+
+        navigationItem.rightBarButtonItems = [advancedFilterButton, sortFilterButton, generationFilterButton]
     }
+
     @objc func showAdvancedFilterPopup() {
         let vc = AdvancedFilterPopupViewController()
         vc.viewmodel = viewModel.filterViewModel
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: false)
     }
-
+    @objc func showGenerationFilterPopup() {
+        let vc = GenerationFilterPopupViewController()
+        vc.viewmodel = viewModel.filterGenerationViewModel
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
+    @objc func showSortFilterPopup() {
+        let sortPokemonListViewModel = SortPokemonListViewModel(pokemons: viewModel.pokemons)
+        sortPokemonListViewModel.sortButtonActionDelegateDelegate = viewModel.self
+        let vc = SortFilterViewController(sortPokemonListViewModel: sortPokemonListViewModel)
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
+    }
     private func setBackground() {
         let margins = view.layoutMarginsGuide
 

@@ -9,7 +9,6 @@ import UIKit
 
 class AdvancedFilterPopupViewController: PopupViewController {
     @IBOutlet weak var contentStackView: UIStackView!
-
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
 
@@ -19,6 +18,13 @@ class AdvancedFilterPopupViewController: PopupViewController {
 
     @IBOutlet weak var weaknessesCollectionView: UICollectionView!
     var selectedTypesForWeakness = [TypeElement]()
+    @IBOutlet weak var weightCollectionView: UICollectionView!
+
+    @IBOutlet var heightsViewCollection: UICollectionView!
+    var selectedHeights = [PokemonHeigths]()
+
+    @IBOutlet var rangeSliderSlotUiView: UIView!
+    let rangeSlider = RangeSlider()
 
     var viewmodel: AdvancedFilterPopupViewModel?
 
@@ -27,6 +33,7 @@ class AdvancedFilterPopupViewController: PopupViewController {
         initViewModel()
         setupContent()
         setupElements()
+        setupRageSlider()
     }
 
     func initViewModel() {
@@ -45,6 +52,16 @@ class AdvancedFilterPopupViewController: PopupViewController {
         weaknessesCollectionView.register(uiNibPokemonTypeCell, forCellWithReuseIdentifier: PokemonTypeCollectionCell.identifier)
         weaknessesCollectionView.delegate = self
         weaknessesCollectionView.dataSource = self
+        // For weight collection view
+        let uiNibPokemonWeightCell = UINib(nibName: PokemonWeightCollectionCell.nibName, bundle: nil)
+        weightCollectionView.register(uiNibPokemonWeightCell, forCellWithReuseIdentifier: PokemonWeightCollectionCell.identifier)
+        weightCollectionView.delegate = self
+        weightCollectionView.dataSource = self
+        // For Heights collection view
+        let uiNibPokemonHeightCell = UINib(nibName: PokemonHeightCollectionViewCell.identifier, bundle: nil)
+        heightsViewCollection.register(uiNibPokemonHeightCell, forCellWithReuseIdentifier: PokemonHeightCollectionViewCell.identifier)
+        heightsViewCollection.delegate = self
+        heightsViewCollection.dataSource = self
     }
 
     func setupContent() {
@@ -61,38 +78,89 @@ class AdvancedFilterPopupViewController: PopupViewController {
         ])
     }
 
+    func setupRageSlider() {
+        if let selectedRangeLimits = viewmodel?.selectedRangeLimits {
+            rangeSlider.lowerValue = selectedRangeLimits[0]
+            rangeSlider.upperValue = selectedRangeLimits[1]
+        }
+        rangeSliderSlotUiView.addSubview(rangeSlider)
+        let margin: CGFloat = 0.0
+        let width = rangeSliderSlotUiView.bounds.width - 1.0 * margin
+        rangeSlider.frame = CGRect(x: margin, y: margin, width: width - 25.0, height: 25.0)
+    }
+
     @IBAction func applyFilters(_ sender: Any) {
+        viewmodel?.selectedRangeLimits = [rangeSlider.lowerValue, rangeSlider.upperValue]
         viewmodel?.applyFilters()
     }
     @IBAction func resetFilters(_ sender: Any) {
         viewmodel?.resetFilters()
         typesCollectionView.reloadData()
         weaknessesCollectionView.reloadData()
+        weightCollectionView.reloadData()
+        heightsViewCollection.reloadData()
+        rangeSlider.resetValues()
     }
 }
 
 extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ConstantVariables.pokemonTypes.count
+        if collectionView == self.heightsViewCollection {
+            return ConstantVariables.pokemonHeights.count
+        }
+        if collectionView == self.weightCollectionView {
+            return ConstantVariables.pokemonWeight.count
+        } else {
+            return ConstantVariables.pokemonTypes.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
-                as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
 
         if collectionView == self.weaknessesCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
+                    as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
             let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id })
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+            return cell
         }
         if collectionView == self.typesCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonTypeCollectionCell.identifier, for: indexPath)
+                    as? PokemonTypeCollectionCell else { return UICollectionViewCell() }
             let index = viewmodel?.selectedTypesForTypes.firstIndex(where: { $0.type.id == pokemonType.type.id })
             cell.setupData(pokemonType: pokemonType, isTypeSelected: index != nil)
+            return cell
         }
-        return cell
+        if collectionView == self.weightCollectionView {
+            let pokemonWeight = ConstantVariables.pokemonWeight[indexPath.row]
+            let index = viewmodel?.selectedWeight[indexPath.row] ?? false
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonWeightCollectionCell.identifier, for: indexPath)
+                    as? PokemonWeightCollectionCell else { return UICollectionViewCell() }
+            cell.setupData(pokemonType: pokemonWeight, isTypeSelected: index)
+            return cell
+        }
+        if collectionView == self.heightsViewCollection {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonHeightCollectionViewCell.identifier, for: indexPath)
+                    as? PokemonHeightCollectionViewCell ?? PokemonHeightCollectionViewCell()
+            let pokemonHeight = ConstantVariables.pokemonHeights[indexPath.row]
+            let index = viewmodel?.selectedHeights.firstIndex(where: { $0.rawValue == pokemonHeight.rawValue })
+            cell.setupData(pokemonHeight: pokemonHeight, isHeightSelected: index != nil)
+            return cell
+        }
+        return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.heightsViewCollection {
+            let pokemonHeight = ConstantVariables.pokemonHeights[indexPath.row]
+            if let index = viewmodel?.selectedHeights.firstIndex(where: { $0.rawValue == pokemonHeight.rawValue }) {
+                viewmodel?.selectedHeights.remove(at: index)
+             } else {
+                viewmodel?.selectedHeights.append(pokemonHeight)
+             }
+            heightsViewCollection.reloadItems(at: [indexPath])
+        }
         let pokemonType = ConstantVariables.pokemonTypes[indexPath.row]
         if collectionView == self.weaknessesCollectionView {
              if let index = viewmodel?.selectedWeaknesses.firstIndex(where: { $0.type.id == pokemonType.type.id }) {
@@ -109,6 +177,14 @@ extension AdvancedFilterPopupViewController: UICollectionViewDelegate, UICollect
                 viewmodel?.selectedTypesForTypes.append(pokemonType)
             }
             typesCollectionView.reloadItems(at: [indexPath])
+        }
+        if collectionView == self.weightCollectionView {
+            if viewmodel?.selectedWeight[indexPath.row] == true {
+                viewmodel?.selectedWeight[indexPath.row] = false
+            } else {
+                viewmodel?.selectedWeight[indexPath.row] = true
+            }
+            weightCollectionView.reloadItems(at: [indexPath])
         }
     }
 
