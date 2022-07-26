@@ -126,4 +126,11 @@ extension PokemonListViewController: UITableViewDelegate, UITableViewDataSource 
 
       return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellData = viewModel.getCellData(at: indexPath)
+        guard let weaknesses = cellData.pokemonDetails[0].weaknesses else { return }
+        let vc = TypeDefensesViewController(weaknesses: weaknesses, forType: cellData.pokemonDetails[0].types[0].type.name)
+        show(vc, sender: nil)
+    }
 }
