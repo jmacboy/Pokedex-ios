@@ -72,14 +72,11 @@ class PokemonListViewModel: NSObject {
     func getCellData(at indexPath: IndexPath) -> PokemonRaw {
         return pokemons[indexPath.row]
     }
-    func getPokemonsImageBy(id: Int) -> UIImage? {
+    func getPokemonsImageBy(id: Int) -> URL? {
         let urlStr = pokedexService.getPokemonsImageBy(id: id)
         let url = URL(string: urlStr)
-        let data = try? Data(contentsOf: url!)
-        guard let dataValue = data else {return UIImage(named: "questionIcon")}
-        let image = UIImage(data: dataValue)
-
-        return image
+        guard (try? Data(contentsOf: url!)) != nil else {return nil}
+        return url
     }
 }
 
