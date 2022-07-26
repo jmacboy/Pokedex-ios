@@ -63,7 +63,6 @@ class TestResources {
         TypeElement(type: Generation(id: 2, name: "fire")),
         TypeElement(type: Generation(id: 5, name: "dragon"))
     ]
-    
     static let filterByGenerationCriteria = [
         GenerationFilter(name: "Generation I", description: "generation-i")
     ]

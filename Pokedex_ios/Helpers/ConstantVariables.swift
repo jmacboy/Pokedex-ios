@@ -50,7 +50,8 @@ class ConstantVariables {
     static let LowWeight  = 132
     static let HeavyWeight =  451
     static let pokemonHeights: [PokemonHeigths] = [.small, .medium, .large]
-    
+
     static let applyButtonColor = "apply-button"
     static let backgroundWhite = "background-white"
+    static let rangeValuesLowerUpper = [1.0, 898.0]
 }

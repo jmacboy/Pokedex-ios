@@ -102,6 +102,24 @@ class AdvancedFilterTests: XCTestCase {
 
     }
 
+    func testRangeNumberFilterWithTheDefaultRange() throws {
+        advancedFilterViewModel.filtered = TestResources.pokemonRaw
+        let result = advancedFilterViewModel.filterByHeights()
+
+        XCTAssertEqual(result.count, 3)
+
+    }
+
+    func testRangeNumberFilterWithSpecificRange() throws {
+        advancedFilterViewModel.filtered = TestResources.pokemonRaw
+        advancedFilterViewModel.selectedRangeLimits = [1, 50]
+
+        let result = advancedFilterViewModel.filterByNumberRange()
+
+        XCTAssertEqual(result.count, 1)
+
+    }
+
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
