@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		26129EFEE184934B356CD491 /* Pods_Pokedex_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9825DA5850004FD8DCC0E0ED /* Pods_Pokedex_ios.framework */; };
 		39299A6B3ECE44FD1358AE2D /* Pods_Pokedex_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7C8F072307A45921658BBC /* Pods_Pokedex_iosTests.framework */; };
+		84067C1B2890378000549300 /* sf-pro-text-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84067C1A2890378000549300 /* sf-pro-text-regular.ttf */; };
+		84067C1E289090B300549300 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 84067C1D289090B300549300 /* schema.json */; };
+		84067C212890922800549300 /* queriestats.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 84067C202890922700549300 /* queriestats.graphql */; };
+		84067C2D2890A6A600549300 /* BaseStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C2B2890A6A600549300 /* BaseStatsTableViewCell.swift */; };
+		84067C2E2890A6A600549300 /* BaseStatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067C2C2890A6A600549300 /* BaseStatsTableViewCell.xib */; };
+		84067C382891831100549300 /* API2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C372891831100549300 /* API2.swift */; };
 		8435C889287F217500A9D108 /* PokemonWeightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435C887287F217500A9D108 /* PokemonWeightCollectionCell.swift */; };
 		8435C88A287F217500A9D108 /* PokemonWeightCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8435C888287F217500A9D108 /* PokemonWeightCollectionCell.xib */; };
 		843AEF08287394FD007039DB /* queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 843AEF07287394FD007039DB /* queries.graphql */; };
@@ -78,7 +84,12 @@
 		37AD5AEF5B6106D1420184F4 /* Pods-Pokedex_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_ios.release.xcconfig"; path = "Target Support Files/Pods-Pokedex_ios/Pods-Pokedex_ios.release.xcconfig"; sourceTree = "<group>"; };
 		3E7C8F072307A45921658BBC /* Pods_Pokedex_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D02B9176EA8F4744DAA893 /* Pods-Pokedex_iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex_iosTests.release.xcconfig"; path = "Target Support Files/Pods-Pokedex_iosTests/Pods-Pokedex_iosTests.release.xcconfig"; sourceTree = "<group>"; };
-		55871FF22C9175A2CEC6CA40 /* Pods_Pokedex_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84067C1A2890378000549300 /* sf-pro-text-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-pro-text-regular.ttf"; sourceTree = "<group>"; };
+		84067C1D289090B300549300 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		84067C202890922700549300 /* queriestats.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queriestats.graphql; sourceTree = "<group>"; };
+		84067C2B2890A6A600549300 /* BaseStatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStatsTableViewCell.swift; sourceTree = "<group>"; };
+		84067C2C2890A6A600549300 /* BaseStatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseStatsTableViewCell.xib; sourceTree = "<group>"; };
+		84067C372891831100549300 /* API2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API2.swift; sourceTree = "<group>"; };
 		8435C887287F217500A9D108 /* PokemonWeightCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeightCollectionCell.swift; sourceTree = "<group>"; };
 		8435C888287F217500A9D108 /* PokemonWeightCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonWeightCollectionCell.xib; sourceTree = "<group>"; };
 		843AEF07287394FD007039DB /* queries.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.graphql; sourceTree = "<group>"; };
@@ -178,6 +189,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84067C1C2890378900549300 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				84067C1A2890378000549300 /* sf-pro-text-regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		84067C2A2890A68600549300 /* BaseStats */ = {
+			isa = PBXGroup;
+			children = (
+				84067C2B2890A6A600549300 /* BaseStatsTableViewCell.swift */,
+				84067C2C2890A6A600549300 /* BaseStatsTableViewCell.xib */,
+			);
+			path = BaseStats;
+			sourceTree = "<group>";
+		};
 		8435C886287F20F900A9D108 /* PokemonWeight */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +218,8 @@
 		843AEF06287394FD007039DB /* GraphQLServices */ = {
 			isa = PBXGroup;
 			children = (
+				84067C202890922700549300 /* queriestats.graphql */,
+				84067C1D289090B300549300 /* schema.json */,
 				843AEF07287394FD007039DB /* queries.graphql */,
 			);
 			path = GraphQLServices;
@@ -216,6 +246,7 @@
 		8471C8FD286CF50D005E069A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84067C2A2890A68600549300 /* BaseStats */,
 				84C370A0288B5EEF00B930E5 /* TypeDefenseCell */,
 				845DC012287E8421003FB5D0 /* GenerationCell */,
 				CEAEFD6C288632EE0098CD03 /* PokemonHeightCell */,
@@ -267,6 +298,7 @@
 		849EAB37286CC4040064705B /* Pokedex_ios */ = {
 			isa = PBXGroup;
 			children = (
+				84067C1C2890378900549300 /* Fonts */,
 				C25299D628763562007C74AB /* Utilities */,
 				C2FEC5B8286D300000220A13 /* Services */,
 				C2FEC5B3286D2D7300220A13 /* Helpers */,
@@ -339,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				849F5D30286F9984007B782B /* API.swift */,
+				84067C372891831100549300 /* API2.swift */,
 				84AFCD60286F9B2F00F5B7D6 /* GraphQLResultConverter.swift */,
 			);
 			path = GraphQLHelpers;
@@ -557,9 +590,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84067C1B2890378000549300 /* sf-pro-text-regular.ttf in Resources */,
 				845DC016287E8451003FB5D0 /* GenerationCollectionViewCell.xib in Resources */,
+				84067C2E2890A6A600549300 /* BaseStatsTableViewCell.xib in Resources */,
 				849EAB45286CC4060064705B /* LaunchScreen.storyboard in Resources */,
 				84C370A3288B5EEF00B930E5 /* DefenseTypeCollectionViewCell.xib in Resources */,
+				84067C1E289090B300549300 /* schema.json in Resources */,
 				8471C902286CF54D005E069A /* PokemonTableViewCell.xib in Resources */,
 				84D763482881AEA000D9C557 /* SortFilterViewController.xib in Resources */,
 				849EAB42286CC4060064705B /* Assets.xcassets in Resources */,
@@ -569,6 +605,7 @@
 				843AEF08287394FD007039DB /* queries.graphql in Resources */,
 				845DC011287E7D62003FB5D0 /* GenerationFilterPopupViewController.xib in Resources */,
 				8435C88A287F217500A9D108 /* PokemonWeightCollectionCell.xib in Resources */,
+				84067C212890922800549300 /* queriestats.graphql in Resources */,
 				849EAB40286CC4040064705B /* Main.storyboard in Resources */,
 				C2FBBB272877606B00246202 /* AdvancedFilterPopupViewController.xib in Resources */,
 			);
@@ -694,9 +731,11 @@
 				84C370AC288B94E400B930E5 /* DoubleExtension.swift in Sources */,
 				CE72B13D2887910B00075C01 /* RangeSliderTrackLayer.swift in Sources */,
 				849F5D31286F9984007B782B /* API.swift in Sources */,
+				84067C2D2890A6A600549300 /* BaseStatsTableViewCell.swift in Sources */,
 				849EAB6D286CC48A0064705B /* PokemonDetailViewController.swift in Sources */,
 				C2FEC5B7286D2F6200220A13 /* PokemonListViewModel.swift in Sources */,
 				849EAB39286CC4040064705B /* AppDelegate.swift in Sources */,
+				84067C382891831100549300 /* API2.swift in Sources */,
 				8471C901286CF54D005E069A /* PokemonTableViewCell.swift in Sources */,
 				845DC018287E8FD8003FB5D0 /* GenerationFilterPopupViewModel.swift in Sources */,
 				849EAB3B286CC4040064705B /* SceneDelegate.swift in Sources */,

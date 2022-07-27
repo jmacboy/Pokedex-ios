@@ -1,0 +1,18 @@
+query pokemonDetails($lang_id: Int = 9, $id: Int = 1) {
+  pokemonDetail: pokemon_v2_pokemon_by_pk(id: $id) {
+    name
+    pokemon_species_id
+    specy: pokemon_v2_pokemonspecy {
+      pokemon_v2_pokemonspeciesnames(where: {language_id: {_eq: $lang_id}}) {
+        genus
+      }
+    }
+    stats: pokemon_v2_pokemonstats {
+      effort
+      base_stat
+      stat: pokemon_v2_stat {
+        name
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@ included: # paths to include during linting. `--path` is ignored if present.
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - Pokedex_ios/Helpers/GraphQLHelpers/API.swift
+  - Pokedex_ios/Helpers/GraphQLHelpers/API2.swift
   - Pokedex_ios/R.generated.swift
 
 # configurable rules can be customized from this configuration file

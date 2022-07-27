@@ -26,4 +26,15 @@ class ConversionHelper {
         }
 
     }
+
+    func convertFromDataToPokemonStatsStruct(data: PokemonDetailsStatsQuery.Data, completion: @escaping(Result<PokemonDetailStats, Error>) -> Void) {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: data.jsonObject)
+            let decode: StatsDataClass = try JSONDecoder().decode(StatsDataClass.self, from: jsonData)
+            completion(.success(decode.pokemonDetail))
+        } catch {
+            completion(.failure(error))
+        }
+
+    }
 }

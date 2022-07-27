@@ -10,11 +10,16 @@ import Foundation
 // MARK: - PokeApiResponse
 struct PokeApiResponse: Codable {
     let data: DataClass
+    let datastat: StatsDataClass
 }
 
 // MARK: - DataClass
 struct DataClass: Codable {
     var species: [PokemonRaw]
+}
+
+struct StatsDataClass: Codable {
+    var pokemonDetail: PokemonDetailStats
 }
 
 struct PokemonRaw: Codable {
@@ -67,4 +72,35 @@ enum PokemonHeigths: String {
     case small
     case medium
     case large
+}
+
+// MARK: - Stats
+struct PokemonDetailStats: Codable {
+    let name: String
+    let specieId: Int
+    let stats: [Stats]
+    
+    enum CodingKeys: String, CodingKey {
+        case name, stats
+        case specieId = "pokemon_species_id"
+    }
+}
+
+struct Specy: Codable {
+    
+}
+
+struct Stats: Codable {
+    let effort: Int
+    let baseStat: Int
+    let stat: Stat
+    
+    enum CodingKeys: String, CodingKey {
+        case effort, stat
+        case baseStat = "base_stat"
+    }
+}
+
+struct Stat: Codable {
+    let name: String
 }

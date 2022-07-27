@@ -10,6 +10,7 @@ import UIKit
 
 class PokemonListViewModel: NSObject {
 
+    static let shared = PokemonListViewModel()
     var pokedexService: PokedexServiceProtocol
 
     var reloadData: (() -> Void)?
@@ -32,6 +33,7 @@ class PokemonListViewModel: NSObject {
         }
     }
     var searchText = ""
+    var stats = [Stats]()
 
     init(filterVM: AdvancedFilterPopupViewModel = AdvancedFilterPopupViewModel(), pokedexService: PokedexServiceProtocol = PokedexService(), filterG: GenerationFilterPopupViewModel = GenerationFilterPopupViewModel()) {
         self.pokedexService = pokedexService
@@ -52,6 +54,18 @@ class PokemonListViewModel: NSObject {
                 self.filterGenerationViewModel.pokemons = pokemons
             case .failure:
                 self.showErrorAlert?()
+            }
+        }
+    }
+
+    func getPokemonStats(pokemondId: Int, completion: ( () -> Void )?) {
+        pokedexService.getPokemonStat(pokemonId: pokemondId) { result in
+            switch result {
+            case .success(let stats):
+                self.stats = stats.stats
+                completion?()
+            case .failure(let error):
+                print(error)
             }
         }
     }
