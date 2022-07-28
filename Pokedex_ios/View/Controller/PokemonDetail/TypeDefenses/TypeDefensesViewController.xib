@@ -66,36 +66,36 @@
                     <rect key="frame" x="20" y="347.5" width="374" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZ7-K6-sZW">
-                            <rect key="frame" x="0.0" y="10" width="45" height="24"/>
+                            <rect key="frame" x="0.0" y="10" width="50" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="45" id="Cbf-sl-GwK"/>
+                                <constraint firstAttribute="width" constant="50" id="Cbf-sl-GwK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD1-PG-Dzq">
-                            <rect key="frame" x="344" y="10" width="30" height="24"/>
+                            <rect key="frame" x="339" y="10" width="35" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="c6B-MJ-5jx"/>
+                                <constraint firstAttribute="width" constant="35" id="c6B-MJ-5jx"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMp-fn-quq">
-                            <rect key="frame" x="55" y="10" width="30" height="24"/>
+                            <rect key="frame" x="60" y="10" width="35" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="pcB-ue-sgq"/>
+                                <constraint firstAttribute="width" constant="35" id="pcB-ue-sgq"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <color key="textColor" name="TextGreyColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOn-5f-jpo">
-                            <rect key="frame" x="304" y="10" width="30" height="24"/>
+                            <rect key="frame" x="294" y="10" width="35" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="Q8m-Zw-uqA"/>
+                                <constraint firstAttribute="width" constant="35" id="Q8m-Zw-uqA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
