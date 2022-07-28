@@ -8,15 +8,20 @@
 import Foundation
 
 extension Double {
-    func getFractionString(withPrecision eps: Double = 1.0E-6) -> String {
-        var x = self
-        var a = floor(x)
-        var (h1, k1, h, k) = (1, 0, Int(a), 1)
-        while x - a > eps * Double(k) * Double(k) {
-            x = 1.0/(x - a)
-            a = floor(x)
-            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+    func getFractionStringForPokemonDefense() -> String {
+        switch self {
+        case 4.0:
+            return "4"
+        case 2.0:
+            return "2"
+        case 1.0:
+            return ""
+        case 0.5:
+            return NSLocalizedString("\u{00BD}", comment: "1/2")
+        case 0.25:
+            return NSLocalizedString("\u{00BC}", comment: "1/4")
+        default:
+            return "N/V"
         }
-        return k == 1 ? "\(h)" : "\(h)/\(k)"
     }
 }

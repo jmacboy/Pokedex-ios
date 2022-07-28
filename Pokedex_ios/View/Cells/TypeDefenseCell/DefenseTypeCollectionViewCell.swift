@@ -25,7 +25,7 @@ class DefenseTypeCollectionViewCell: UICollectionViewCell {
 
     func setData() {
         guard let data = weakness else { return }
-        damageLabel.text = data.damageTaken == 1 ? "" :  data.damageTaken.getFractionString()
+        damageLabel.text = data.damageTaken.getFractionStringForPokemonDefense()
         typeImageView.image = UIImage(named: data.fromType.name)?.withRenderingMode(.alwaysTemplate)
         imageContainerView.backgroundColor = UIColor(named: "type-\(data.fromType.name)")
         typeImageView.tintColor = .white
